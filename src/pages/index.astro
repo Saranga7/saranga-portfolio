@@ -1,0 +1,391 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SocialIcon from "../components/SocialIcon.astro";
+import { awards, education, experience, moreWork, site } from "../data/site";
+
+const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
+const publications = (await getCollection("publications")).sort((a, b) =>
+  b.data.year - a.data.year || a.data.title.localeCompare(b.data.title)
+);
+const domains = [...new Set(publications.flatMap((publication) => publication.data.domains))].sort();
+---
+
+<BaseLayout showLoader>
+  <section class="hero container" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">ML Research · Paris</p>
+      <h1 id="hero-title">Learning<br /><em>across domains.</em></h1>
+      <p class="intro">
+        I’m Saranga, a machine-learning researcher interested in computer vision, multimodal learning, generative modeling, and representation learning. My work so far has involved projects across healthcare, scientific machine learning, cultural heritage, text, and audio.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+        <a class="button secondary" href="/assets/Saranga-Kingkor-Mahanta-CV.pdf" download>Download CV</a>
+      </div>
+      <div class="social-row" aria-label="Profiles">
+        <a href={site.social.github} aria-label="GitHub" title="GitHub"><SocialIcon name="github" /></a>
+        <a href={site.social.linkedin} aria-label="LinkedIn" title="LinkedIn"><SocialIcon name="linkedin" /></a>
+        <a href={site.social.scholar} aria-label="Google Scholar" title="Google Scholar"><SocialIcon name="scholar" /></a>
+        <a href={`mailto:${site.email}`} aria-label="Email" title="Email"><span aria-hidden="true">✉</span></a>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <figure>
+        <div class="portrait-frame">
+          <button class="portrait-switch" type="button" aria-pressed="false" aria-label="Show Saranga monogram">
+            <img class="portrait-photo" src="/assets/profile-photo.jpeg" width="1200" height="1600" alt="Portrait of Saranga Kingkor Mahanta" fetchpriority="high" />
+            <img class="portrait-monogram" src="/assets/saranga-monogram-transparent.png" width="523" height="501" alt="" />
+          </button>
+        </div>
+        <figcaption><span>Currently</span> Doctoral Researcher<br />Sorbonne Université</figcaption>
+      </figure>
+     
+      <div class="portrait-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+   
+  </section>
+
+  <section class="section featured container" id="work" aria-labelledby="work-title">
+    <div class="section-heading">
+      <p class="eyebrow">Selected work · 01—04</p>
+      <div>
+        <h2 id="work-title">Selected<br /><em>research.</em></h2>
+        <p>From ancient seal impressions and blood-smear microscopy to the hidden structure of the cosmos and the acoustics of musical instruments.</p>
+      </div>
+    </div>
+    <div class="project-list">
+      {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+    </div>
+  </section>
+
+  <section class="section publications" id="publications" aria-labelledby="publications-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Publications · Selected</p>
+        <div><h2 id="publications-title">Research<br /><em>publications.</em></h2><p>* Equal contribution where indicated in the author list.</p></div>
+      </div>
+      <div class="filters" aria-label="Filter publications by domain">
+        <button class="active" type="button" data-filter="all" aria-pressed="true">All</button>
+        {domains.map((domain) => <button type="button" data-filter={domain} aria-pressed="false">{domain}</button>)}
+      </div>
+      <ol class="publication-list">
+        {publications.map((publication) => (
+          <li data-domains={publication.data.domains.join("|")}>
+            <span class="pub-year">{publication.data.year}</span>
+            <div>
+              <h3>{publication.data.title}</h3>
+              <p>{publication.data.authors}</p>
+              <span>{publication.data.venueOrStatus}</span>
+            </div>
+            <div class="pub-actions">
+              {publication.data.paperUrl && <a href={publication.data.paperUrl}>Paper ↗</a>}
+              {publication.data.bibtex && (
+                <details class="bibtex">
+                  <summary>BibTeX</summary>
+                  <div class="bibtex-panel">
+                    <button type="button" data-copy-bibtex>Copy citation</button>
+                    <pre><code>{publication.data.bibtex}</code></pre>
+                  </div>
+                </details>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section container" id="experience" aria-labelledby="experience-title">
+    <div class="section-heading">
+      <p class="eyebrow">Experience · 2021—Now</p>
+      <h2 id="experience-title">A path through<br /><em>many domains.</em></h2>
+    </div>
+    <div class="timeline">
+      {experience.map((item, index) => (
+        <article>
+          <span class="timeline-index">{String(index + 1).padStart(2, "0")}</span>
+          <div><p class="eyebrow">{item.dates}</p><h3>{item.role}</h3><p class="institution">{item.institution}</p></div>
+          <div><p>{item.summary}</p><span class="location">{item.location}</span></div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section education-section" id="education" aria-labelledby="education-title">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Education · 2018—Present</p>
+        <h2 id="education-title">Academic<br /><em>record.</em></h2>
+      </div>
+      <div class="education">
+        {education.map((item, index) => (
+          <article>
+            <span class="education-index">{String(index + 1).padStart(2, "0")}</span>
+            <p>{item.dates}</p>
+            <h3>{item.degree}</h3>
+            <strong>{item.institution}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" aria-labelledby="more-title">
+    <div class="section-heading">
+      <p class="eyebrow">More work · Field notes</p>
+      <h2 id="more-title">Additional<br /><em>projects.</em></h2>
+    </div>
+    <div class="bento">
+      {moreWork.map((work, index) => (
+        <article class:list={[`tile-${index + 1}`]}>
+          <span class="eyebrow">{work.label}</span><h3>{work.title}</h3><p>{work.text}</p>
+          {work.href ? <a class="text-link" href={work.href}>Read more ↗</a> : <span class="todo">Link · TODO</span>}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section awards-section">
+    <div class="container awards-grid">
+      <div><p class="eyebrow">Recognition</p><h2>A few markers<br /><em>along the way.</em></h2></div>
+      <div>
+        {awards.map((award) => (
+          <article><span>{award.year}</span><div><h3>{award.title}</h3><p>{award.detail}</p></div></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section container personal" id="misc" aria-labelledby="personal-title">
+    <div class="personal-card">
+      <div class="personal-art" aria-hidden="true">
+        <svg viewBox="0 0 600 600">
+          <g class="contours">
+            <path d="M-30 105C92 18 184 32 248 112s168 78 240 3 122-51 159-9"/>
+            <path d="M-42 151C69 72 164 75 224 148s164 82 245 9 137-48 179-3"/>
+            <path d="M-50 485c116-86 225-71 282 8s164 94 250 17 138-61 180-22"/>
+            <path d="M-53 531c111-77 214-66 274 9s165 87 250 18 141-57 189-20"/>
+          </g>
+          <path class="route" d="M74 428C154 337 190 394 251 310s112-63 151-137 91-61 128-30"/>
+          <circle class="route-point" cx="74" cy="428" r="7"/>
+          <circle class="route-point" cx="251" cy="310" r="7"/>
+          <circle class="route-point" cx="530" cy="143" r="7"/>
+          <g class="postcard" transform="rotate(-7 262 286)">
+            <rect x="125" y="125" width="275" height="330" rx="4"/>
+            <rect x="146" y="147" width="233" height="235"/>
+            <circle cx="322" cy="202" r="26"/>
+            <path d="m146 349 64-77 48 48 42-59 79 88"/>
+            <path d="M156 411h132M156 429h88"/>
+          </g>
+          <g class="camera" transform="translate(385 390)">
+            <rect x="0" y="24" width="126" height="91" rx="12"/>
+            <path d="M24 24 38 4h43l14 20"/>
+            <circle cx="63" cy="69" r="27"/>
+            <circle cx="63" cy="69" r="12"/>
+            <circle cx="105" cy="43" r="4"/>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <p class="eyebrow">Beyond research · Personal</p>
+        <h2 id="personal-title">There’s more to a man than his papers.</h2>
+        <p>I often travel and seldom write...</p>
+        <div class="personal-links">
+          <a class="button" href={site.social.blog}><SocialIcon name="blog" /> Check out my blog</a>
+          <a class="button secondary" href={site.social.instagram}><SocialIcon name="instagram" /> Wander with me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact container" id="contact" aria-labelledby="contact-title">
+    <p class="eyebrow">Contact · Say hello</p>
+    <h2 id="contact-title">Have a question worth<br /><em>exploring together?</em></h2>
+    <a class="email" href={`mailto:${site.email}`}>{site.email} <span aria-hidden="true">↗</span></a>
+    <div class="contact-links">
+      <a href={site.social.linkedin} aria-label="LinkedIn" title="LinkedIn"><SocialIcon name="linkedin" /></a>
+      <a href={site.social.github} aria-label="GitHub" title="GitHub"><SocialIcon name="github" /></a>
+      <a href={site.social.scholar} aria-label="Google Scholar" title="Google Scholar"><SocialIcon name="scholar" /></a>
+    </div>
+  </section>
+
+  <section class="closing-quote" aria-label="Personal quote">
+    <blockquote>
+      <span aria-hidden="true">“</span>
+      <p>To realize our dreams, we must first learn to normalize them.</p>
+      <cite>— SKM</cite>
+    </blockquote>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const publications = document.querySelectorAll<HTMLElement>("[data-domains]");
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      buttons.forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      publications.forEach((item) => {
+        item.hidden = filter !== "all" && !(item.dataset.domains?.split("|").includes(filter ?? ""));
+      });
+    }));
+
+    document.querySelectorAll<HTMLButtonElement>("[data-copy-bibtex]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const citation = button.nextElementSibling?.textContent?.trim();
+        if (!citation) return;
+        await navigator.clipboard.writeText(citation);
+        const original = button.textContent;
+        button.textContent = "Copied";
+        window.setTimeout(() => { button.textContent = original; }, 1400);
+      });
+    });
+
+    const portraitSwitch = document.querySelector<HTMLButtonElement>(".portrait-switch");
+    portraitSwitch?.addEventListener("click", () => {
+      const monogramVisible = portraitSwitch.getAttribute("aria-pressed") !== "true";
+      portraitSwitch.setAttribute("aria-pressed", String(monogramVisible));
+      portraitSwitch.setAttribute("aria-label", monogramVisible ? "Show portrait" : "Show Saranga monogram");
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .hero { position: relative; display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(2rem, 7vw, 7rem); align-items: center; min-height: calc(100svh - 4.5rem); padding: 4rem 0 5rem; }
+  .hero h1 { margin: .75rem 0 1.5rem; font: 500 clamp(4rem, 8.7vw, 8rem)/.82 var(--font-serif); letter-spacing: -.065em; }
+  em { color: var(--accent); font-weight: inherit; }
+  .intro { max-width: 38rem; margin: 0; color: var(--muted); font-size: clamp(1.05rem, 1.6vw, 1.28rem); }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 2rem; }
+  .social-row { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 3rem; }
+  .social-row a, .contact-links a { display: grid; width: 2.45rem; height: 2.45rem; place-items: center; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); text-decoration: none; transition: color .2s, border-color .2s, transform .2s; }
+  .social-row a:hover, .contact-links a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+  .portrait-wrap { position: relative; justify-self: end; width: min(100%, 30rem); padding: 1.5rem 1rem 2rem 2rem; isolation: isolate; }
+  .portrait-wrap::before { position: absolute; z-index: -2; top: -1rem; right: -1.5rem; width: 76%; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 50%; content: ""; }
+  .portrait-wrap::after { position: absolute; z-index: -1; right: -.35rem; bottom: .65rem; width: calc(100% - 2.4rem); height: calc(100% - 2.4rem); border: 1px solid var(--accent); content: ""; clip-path: polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); opacity: .55; transform: translate(.65rem, .65rem); }
+  figure { position: relative; z-index: 2; margin: 0; }
+  .portrait-frame { overflow: hidden; background: var(--surface-2); clip-path: polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); }
+  .portrait-switch { position: relative; display: block; width: 100%; aspect-ratio: 4/5; padding: 0; overflow: hidden; border: 0; color: inherit; background: transparent; cursor: pointer; }
+  .portrait-switch img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+  .portrait-photo { object-fit: cover; object-position: center 55%; filter: saturate(.76) contrast(1.06); transition: opacity .55s, filter .35s, transform .65s cubic-bezier(.2,.7,.2,1); }
+  .portrait-monogram { padding: 9%; object-fit: contain; opacity: 0; clip-path: circle(0 at 50% 50%); transform: rotate(-7deg) scale(.88); transition: opacity .4s, clip-path .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .portrait-switch:hover .portrait-photo { filter: saturate(.9) contrast(1.03); transform: scale(1.015); }
+  .portrait-switch[aria-pressed="true"] .portrait-photo { opacity: 0; transform: scale(1.08); }
+  .portrait-switch[aria-pressed="true"] .portrait-monogram { opacity: 1; clip-path: circle(76% at 50% 50%); transform: rotate(0) scale(1); }
+  figcaption { position: absolute; right: -1rem; bottom: -1.25rem; padding: .85rem 1.05rem; border: 1px solid var(--border); color: var(--muted); background: var(--surface); box-shadow: var(--shadow-soft); font-size: .68rem; line-height: 1.4; }
+  figcaption span { display: block; color: var(--accent); font: 600 .55rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+  .portrait-index { position: absolute; z-index: 3; top: 18%; left: -.6rem; color: var(--accent); font: 600 .57rem var(--font-mono); letter-spacing: .16em; writing-mode: vertical-rl; transform: rotate(180deg); }
+  .portrait-lines { position: absolute; z-index: 3; top: 2.25rem; right: -1rem; display: grid; gap: .38rem; width: 4.5rem; }
+  .portrait-lines span { height: 1px; background: var(--accent); transform-origin: right; }
+  .portrait-lines span:nth-child(2) { transform: scaleX(.7); }
+  .portrait-lines span:nth-child(3) { transform: scaleX(.4); }
+  .scroll-cue { position: absolute; bottom: 1.4rem; left: 0; color: var(--muted); font: 500 .57rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+  .scroll-cue span { color: var(--accent); }
+  .featured { padding-top: 7rem; }
+  .section-heading > div { display: grid; gap: 1rem; }
+  .project-list { display: grid; gap: 2rem; }
+  .awards-grid h2 { margin: .8rem 0 0; font: 500 clamp(3rem, 6.5vw, 6rem)/.93 var(--font-serif); letter-spacing: -.05em; }
+  .timeline { border-top: 1px solid var(--border); }
+  .timeline article { display: grid; grid-template-columns: 3rem minmax(15rem, .8fr) 1.2fr; gap: clamp(1rem, 4vw, 4rem); padding: 2rem 0; border-bottom: 1px solid var(--border); }
+  .timeline-index { color: var(--accent); font: 500 .63rem var(--font-mono); }
+  .timeline h3 { margin: .45rem 0 0; font: 500 1.5rem/1.1 var(--font-serif); }
+  .institution { margin: .35rem 0 0; color: var(--text) !important; font-size: .75rem; }
+  .timeline article > div:last-child p { max-width: 35rem; margin: 0 0 .8rem; color: var(--muted); font-size: .85rem; }
+  .location { color: var(--muted); font: 500 .58rem var(--font-mono); }
+  .education { border-top: 1px solid var(--border); }
+  .education article { display: grid; grid-template-columns: 3rem 10rem minmax(18rem, 1fr) minmax(12rem, .55fr); gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: 2.25rem 0; border-bottom: 1px solid var(--border); }
+  .education-index { color: var(--accent); font: 600 .62rem var(--font-mono); }
+  .education article p { margin: 0; color: var(--muted); font: .62rem/1.5 var(--font-mono); }
+  .education h3 { margin: 0; font: 500 clamp(1.45rem, 2.5vw, 2.15rem)/1.08 var(--font-serif); }
+  .education article strong { color: var(--muted); font-size: .78rem; font-weight: 500; line-height: 1.5; }
+  .publications { background: var(--surface-2); }
+  .filters { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 2rem; }
+  .filters button { padding: .45rem .7rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: transparent; font: 600 .62rem var(--font-mono); cursor: pointer; }
+  .filters button.active { color: var(--surface); background: var(--text); border-color: var(--text); }
+  .publication-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+  .publication-list li { display: grid; grid-template-columns: 4rem 1fr auto; gap: 2rem; padding: 1.65rem 0; border-bottom: 1px solid var(--border); }
+  .publication-list li[hidden] { display: none; }
+  .pub-year { color: var(--accent); font: 600 .63rem var(--font-mono); }
+  .publication-list h3 { max-width: 55rem; margin: 0 0 .5rem; font: 500 clamp(1.25rem, 2vw, 1.65rem)/1.15 var(--font-serif); }
+  .publication-list p { margin: 0 0 .4rem; color: var(--muted); font-size: .73rem; }
+  .publication-list div > span { color: var(--muted); font: 500 .61rem var(--font-mono); }
+  .pub-actions { display: flex; flex-direction: column; gap: .5rem; align-items: flex-end; }
+  .pub-actions a, .pub-actions button, .bibtex summary { color: var(--text); background: none; border: 0; font: 600 .62rem var(--font-mono); text-decoration: none; cursor: pointer; }
+  .bibtex { position: relative; }
+  .bibtex summary { list-style: none; }
+  .bibtex summary::-webkit-details-marker { display: none; }
+  .bibtex summary::after { content: " +"; color: var(--accent); }
+  .bibtex[open] summary::after { content: " −"; }
+  .bibtex-panel { position: absolute; z-index: 8; top: calc(100% + .65rem); right: 0; width: min(36rem, calc(100vw - 3rem)); padding: 1rem; border: 1px solid var(--border); border-radius: .8rem; background: var(--surface); box-shadow: var(--shadow-soft); }
+  .bibtex-panel button { display: block; margin: 0 0 .7rem auto; color: var(--accent); }
+  .bibtex-panel pre { max-height: 18rem; margin: 0; overflow: auto; white-space: pre-wrap; color: var(--muted); font: .62rem/1.55 var(--font-mono); text-align: left; }
+  .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+  .bento article { display: flex; grid-column: span 6; flex-direction: column; min-height: 16rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--surface); }
+  .bento article:nth-child(1), .bento article:nth-child(6), .bento article:nth-child(9) { grid-column: span 7; }
+  .bento article:nth-child(2), .bento article:nth-child(5), .bento article:nth-child(10) { grid-column: span 5; }
+  .bento article:last-child:nth-child(odd) { grid-column: span 12; }
+  .bento h3 { margin: auto 0 .5rem; font: 500 clamp(1.7rem, 3vw, 2.6rem)/1 var(--font-serif); }
+  .bento p { max-width: 34rem; margin: 0 0 1.2rem; color: var(--muted); font-size: .8rem; }
+  .todo { color: var(--muted); font: 500 .58rem var(--font-mono); }
+  .awards-section { background: var(--text); color: var(--surface); }
+  [data-theme="dark"] .awards-section { background: #16231b; color: var(--text); }
+  .awards-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 8rem); }
+  .awards-grid > div:last-child { border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
+  .awards-grid article { display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; padding: 1.35rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
+  .awards-grid article > span { color: var(--accent-bright); font: 600 .65rem var(--font-mono); }
+  .awards-grid h3 { margin: 0 0 .25rem; font: 500 1.2rem var(--font-serif); }
+  .awards-grid article p { margin: 0; opacity: .68; font-size: .75rem; }
+  .personal-card { display: grid; grid-template-columns: .8fr 1.2fr; overflow: hidden; border: 1px solid var(--border); border-radius: 1.5rem; background: var(--surface); }
+  .personal-art { position: relative; min-height: 26rem; overflow: hidden; color: var(--muted); background: #eadfd2; }
+  .personal-art svg { width: 100%; height: 100%; min-height: 26rem; }
+  .contours { fill: none; stroke: currentColor; stroke-width: 1.2; opacity: .22; }
+  .route { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 10; }
+  .route-point { fill: var(--accent); }
+  .postcard rect:first-child { fill: var(--surface); stroke: currentColor; stroke-width: 2; }
+  .postcard rect:nth-child(2) { fill: color-mix(in srgb, #eadfd2 60%, var(--surface)); stroke: currentColor; stroke-width: 1.5; }
+  .postcard circle { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .postcard path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .camera { fill: var(--surface); stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .camera circle { fill: none; }
+  :global([data-theme="dark"]) .personal-art { color: var(--muted); background: #171512; }
+  :global([data-theme="dark"]) .postcard rect:nth-child(2) { fill: #1d1a17; }
+  .personal-card > div:last-child { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 6vw, 5rem); }
+  .personal h2 { margin: .7rem 0 1rem; font: 500 clamp(2.5rem, 5vw, 4.5rem)/.96 var(--font-serif); letter-spacing: -.04em; }
+  .personal p { max-width: 35rem; color: var(--muted); }
+  .personal-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.2rem; }
+  .contact { text-align: center; }
+  .contact h2 { margin: 1rem auto 2.5rem; font: 500 clamp(3.3rem, 8vw, 7.5rem)/.87 var(--font-serif); letter-spacing: -.055em; }
+  .email { display: inline-flex; gap: 1rem; align-items: center; padding-bottom: .35rem; border-bottom: 1px solid var(--accent); font: 500 clamp(1rem, 2.4vw, 1.7rem) var(--font-mono); text-decoration: none; }
+  .email span { color: var(--accent); }
+  .contact-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
+  .closing-quote { padding: clamp(5rem, 10vw, 9rem) 1rem; color: var(--surface); background: var(--text); text-align: center; }
+  [data-theme="dark"] .closing-quote { color: var(--text); background: #16231b; }
+  .closing-quote blockquote { max-width: 66rem; margin: 0 auto; }
+  .closing-quote blockquote > span { display: block; height: 3.5rem; color: inherit; font: 500 6rem/1 var(--font-serif); opacity: .38; }
+  .closing-quote p { margin: 0 auto 1.5rem; font: 500 clamp(2.3rem, 5.5vw, 5rem)/1.05 var(--font-serif); letter-spacing: -.035em; }
+  .closing-quote cite { opacity: .65; font: 500 .62rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding-top: 2.5rem; }
+    .hero-copy { z-index: 4; }
+    .portrait-wrap { justify-self: center; width: min(85%, 28rem); }
+    .scroll-cue { display: none; }
+    .awards-grid, .personal-card { grid-template-columns: 1fr; }
+    .timeline article { grid-template-columns: 2.5rem 1fr; }
+    .timeline article > div:last-child { grid-column: 2; }
+    .education article { grid-template-columns: 2.5rem 1fr; gap: .6rem 1rem; align-items: start; }
+    .education-index { grid-row: 1 / span 3; }
+    .education article p, .education h3, .education article strong { grid-column: 2; }
+    .publication-list li { grid-template-columns: 3rem 1fr; gap: 1rem; }
+    .pub-actions { grid-column: 2; flex-direction: row; align-items: center; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: clamp(3.7rem, 19vw, 5.8rem); }
+    .bento article:nth-child(n) { grid-column: span 12; min-height: 14rem; }
+    .personal-art { min-height: 20rem; }
+    .contact-links { flex-wrap: wrap; gap: 1rem; }
+    .email { font-size: .82rem; }
+  }
+</style>

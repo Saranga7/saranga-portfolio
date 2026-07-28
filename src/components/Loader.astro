@@ -1,0 +1,102 @@
+---
+import sourceLogo from "../assets/logo-moving.svg?raw";
+
+const animationStyles = `<style>
+  #enJQCKbeONz5_tr {
+    opacity: 1;
+    animation: ouroboros-rotation 1100ms cubic-bezier(.45,.05,.2,1) 1 both;
+  }
+  #loader-s {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 4.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 190;
+    stroke-dashoffset: 190;
+    animation: loader-s-draw 950ms 100ms cubic-bezier(.55,.05,.25,1) 1 both;
+  }
+  #loader-s-final {
+    fill: currentColor;
+    opacity: 0;
+    animation: loader-s-finish 1100ms linear 1 both;
+  }
+  @keyframes ouroboros-rotation {
+    from { transform: translate(810.230736px,728.251770px) rotate(360deg); }
+    to { transform: translate(810.230736px,728.251770px) rotate(0deg); }
+  }
+  @keyframes loader-s-draw {
+    0% { stroke-dashoffset: 190; opacity: .25; }
+    70% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+  @keyframes loader-s-finish {
+    0%, 70% { opacity: 0; }
+    86%, 100% { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #enJQCKbeONz5_tr, #loader-s, #loader-s-final { animation: none; }
+    #loader-s { display: none; }
+    #loader-s-final { opacity: 1; }
+  }
+</style>`;
+
+const drawnS = `<path id="loader-s"
+  transform="translate(67.25 88) scale(.84) translate(-67.25 -88)"
+  d="M91 55 H47 L78 88 L47 121 H91" />
+  <text id="loader-s-final" x="67.25" y="92" text-anchor="middle" dominant-baseline="central"
+    font-family="'Times New Roman', Times, serif" font-size="82" font-weight="400">Σ</text>`;
+
+const animatedLogo = sourceLogo
+  .replace("<svg ", '<svg class="loader-mark" ')
+  .replace(/<style>[\s\S]*?<\/style>/, animationStyles)
+  .replace(/<path id="enJQCKbeONz3"[^>]*\/>/, "")
+  .replace(/<path id="enJQCKbeONz4"[^>]*\/>/, "")
+  .replace(/<path id="enJQCKbeONz7"[^>]*\/>/, "")
+  .replace(/<g id="enJQCKbeONz6_ts"[\s\S]*?<\/g>/, "")
+  .replaceAll("rgb(100,255,218)", "currentColor")
+  .replace("</svg>", `${drawnS}</svg>`);
+---
+
+<div id="site-loader" class="loader" aria-hidden="true">
+  <Fragment set:html={animatedLogo} />
+</div>
+
+<script is:inline>
+  (() => {
+    const loader = document.getElementById("site-loader");
+    if (!loader) return;
+    document.documentElement.classList.add("is-loading");
+    const started = performance.now();
+    const finish = () => {
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const minimumDuration = reduced ? 0 : 1100;
+      const remaining = Math.max(0, minimumDuration - (performance.now() - started));
+      setTimeout(() => {
+        loader.classList.add("is-done");
+        document.documentElement.classList.remove("is-loading");
+        setTimeout(() => loader.remove(), reduced ? 0 : 350);
+      }, remaining);
+    };
+    if (document.readyState === "complete") finish();
+    else window.addEventListener("load", finish, { once: true });
+  })();
+</script>
+
+<style>
+  .loader {
+    position: fixed; inset: 0; z-index: 100; display: grid; place-content: center;
+    justify-items: center; color: var(--accent); background: var(--loader-bg);
+    transition: opacity .35s ease, visibility .35s ease;
+  }
+  .loader.is-done { opacity: 0; visibility: hidden; }
+  .loader :global(.loader-mark) {
+    display: block;
+    width: 7rem;
+    height: 7rem;
+    overflow: visible;
+    color: var(--accent);
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) { .loader { transition: none; } }
+</style>

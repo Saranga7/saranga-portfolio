@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Loader from "../components/Loader.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  showLoader?: boolean;
+}
+const {
+  title = `${site.name} · Machine-Learning Researcher`,
+  description = "Machine-learning research across science, healthcare, culture, computer vision, generative AI, NLP, and audio.",
+  showLoader = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F6F2EA" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/profile-photo.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (() => {
+        let saved = null;
+        try { saved = localStorage.getItem("theme"); } catch {}
+        document.documentElement.dataset.theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      })();
+    </script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {showLoader && <Loader />}
+    <Header />
+    <ThemeToggle />
+    <main id="main-content"><slot /></main>
+    <footer>
+      <p>{site.name}</p>
+      <p>© {new Date().getFullYear()} {site.name}</p>
+    </footer>
+  </body>
+</html>

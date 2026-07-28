@@ -1,0 +1,81 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectArt from "../../components/ProjectArt.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({ params: { slug: project.data.slug }, props: { project } }));
+}
+
+interface Props { project: CollectionEntry<"projects">; }
+const { project } = Astro.props;
+const { Content } = await render(project);
+const allProjects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
+const next = allProjects[(allProjects.findIndex((item) => item.id === project.id) + 1) % allProjects.length];
+---
+
+<BaseLayout title={`${project.data.title} · Saranga Kingkor Mahanta`} description={project.data.summary}>
+  <article class="project-detail container">
+    <a class="back" href="/#work">← Selected work</a>
+    <header>
+      <p class="eyebrow">{project.data.domain}</p>
+      <h1>{project.data.title}</h1>
+      <p>{project.data.summary}</p>
+    </header>
+    <ProjectArt variant={project.data.coverVariant} />
+    <div class="project-body">
+      <aside>
+        <div><span>Role</span><p>{project.data.role}</p></div>
+        <div><span>Methods & tools</span><ul>{project.data.technologies.map((item) => <li>{item}</li>)}</ul></div>
+        <div class="resource-links">
+          {project.data.projectUrl && <a href={project.data.projectUrl}>Project ↗</a>}
+          {project.data.paperUrl && <a href={project.data.paperUrl}>Paper ↗</a>}
+          {project.data.codeUrl && <a href={project.data.codeUrl}>Code ↗</a>}
+          {!project.data.projectUrl && !project.data.paperUrl && !project.data.codeUrl && !project.data.articles?.length && <span>Public links · TODO</span>}
+        </div>
+        {project.data.articles?.length && (
+          <div class="article-links">
+            <span>GSoC write-ups</span>
+            {project.data.articles.map((article) => <a href={article.url}>{article.title} <i aria-hidden="true">↗</i></a>)}
+          </div>
+        )}
+      </aside>
+      <div class="prose"><Content /></div>
+    </div>
+    <a class="next-project" href={`/projects/${next.data.slug}/`}>
+      <span class="eyebrow">Next project</span><strong>{next.data.title}</strong><i aria-hidden="true">→</i>
+    </a>
+  </article>
+</BaseLayout>
+
+<style>
+  .project-detail { padding: 4rem 0 8rem; }
+  .back { color: var(--muted); font: 600 .65rem var(--font-mono); text-decoration: none; }
+  header { max-width: 65rem; padding: clamp(4rem, 9vw, 8rem) 0 4rem; }
+  h1 { margin: .8rem 0 1.5rem; font: 500 clamp(4rem, 11vw, 9rem)/.82 var(--font-serif); letter-spacing: -.065em; }
+  header > p:last-child { max-width: 44rem; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.35rem); }
+  :global(.project-art) { min-height: clamp(22rem, 57vw, 43rem); border-radius: 1.5rem; }
+  :global(.project-art svg) { min-height: clamp(22rem, 57vw, 43rem); }
+  .project-body { display: grid; grid-template-columns: .65fr 1.35fr; gap: clamp(3rem, 9vw, 9rem); padding: 5rem 0 7rem; }
+  aside { display: grid; align-content: start; gap: 2rem; }
+  aside > div { padding-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+  aside span { color: var(--muted); font: 600 .58rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+  aside p { margin: .4rem 0 0; font: 500 1.1rem var(--font-serif); }
+  ul { display: flex; flex-wrap: wrap; gap: .4rem; margin: .7rem 0 0; padding: 0; list-style: none; }
+  li { padding: .35rem .55rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: .6rem var(--font-mono); }
+  .resource-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .resource-links a { font-size: .72rem; font-weight: 700; text-decoration: none; }
+  .article-links { display: grid; gap: .8rem; }
+  .article-links a { color: var(--text); font: 500 .88rem/1.35 var(--font-serif); text-decoration: none; }
+  .article-links a:hover { color: var(--accent); }
+  .article-links i { color: var(--accent); font-style: normal; }
+  .prose { color: var(--muted); font-size: 1.05rem; }
+  .prose :global(p:first-child) { margin-top: 0; color: var(--text); font: 500 clamp(1.7rem, 3vw, 2.5rem)/1.25 var(--font-serif); }
+  .prose :global(blockquote) { margin: 2rem 0; padding: 1rem 1.5rem; border-left: 2px solid var(--accent); background: var(--surface); }
+  .next-project { display: grid; grid-template-columns: 1fr auto; gap: .7rem; align-items: end; padding-top: 2rem; border-top: 1px solid var(--border); text-decoration: none; }
+  .next-project span { grid-column: 1; }
+  .next-project strong { font: 500 clamp(2.5rem, 6vw, 5rem)/1 var(--font-serif); }
+  .next-project i { grid-row: 1 / span 2; grid-column: 2; color: var(--accent); font-size: 3rem; font-style: normal; }
+  @media (max-width: 700px) { .project-body { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,52 @@
+---
+interface Props { variant: "seals" | "malaria" | "deeplense" | "music"; }
+const { variant } = Astro.props;
+---
+
+<div class:list={["project-art", variant]} aria-hidden="true">
+  {variant === "seals" && (
+    <img src="/assets/byzantine.png" width="1672" height="941" alt="" loading="lazy" />
+  )}
+  {variant === "malaria" && (
+    <img
+      src="/assets/malaria-detection.png"
+      width="1672"
+      height="941"
+      alt=""
+      loading="lazy"
+      style="position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;"
+    />
+  )}
+  {variant === "deeplense" && (
+    <img
+      src="/assets/deeplense.png"
+      width="1672"
+      height="941"
+      alt=""
+      loading="lazy"
+      style="position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;"
+    />
+  )}
+  {variant === "music" && (
+    <img
+      src="/assets/music-classification.png"
+      width="1672"
+      height="941"
+      alt=""
+      loading="lazy"
+      style="position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:left center;"
+    />
+  )}
+</div>
+
+<style>
+  .project-art { position: relative; height: 100%; min-height: 18rem; overflow: hidden; color: var(--accent); background: var(--soft); }
+  .seals { background: #073b2f; }
+  .seals img,
+  .malaria img,
+  .deeplense img,
+  .music img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .malaria { color: #315d50; background: #d3e0d8; }
+  .deeplense { color: #b3d7c2; background: #070b12; }
+  .music { color: #d7b991; background: #17130f; }
+</style>

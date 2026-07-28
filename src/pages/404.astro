@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Page not found · Saranga Mahanta">
+  <section class="not-found container">
+    <p class="eyebrow">404 · Lost between disciplines</p>
+    <h1>This path hasn’t been explored <em>yet.</em></h1>
+    <a class="button" href="/">Return home</a>
+  </section>
+</BaseLayout>
+<style>
+  .not-found { display: grid; min-height: 75svh; place-content: center; text-align: center; }
+  h1 { max-width: 14ch; margin: 1rem auto 2rem; font: 500 clamp(3.5rem, 9vw, 7rem)/.9 var(--font-serif); letter-spacing: -.05em; }
+  em { color: var(--accent); font-weight: inherit; }
+  .button { justify-self: center; }
+</style>

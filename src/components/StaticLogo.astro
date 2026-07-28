@@ -1,0 +1,27 @@
+---
+import sourceLogo from "../assets/logo-moving.svg?raw";
+
+interface Props { class?: string; }
+const { class: className = "" } = Astro.props;
+
+const staticS = `<text x="80.5" y="88" text-anchor="middle" dominant-baseline="central"
+  font-family="'Times New Roman', Times, serif" font-size="82" font-weight="400"
+  fill="currentColor">Σ</text>`;
+
+const staticLogo = sourceLogo
+  .replace("<svg ", `<svg class="static-logo ${className}" role="img" aria-label="Saranga monogram" `)
+  .replace(/<style>[\s\S]*?<\/style>/, "")
+  .replace(/<path id="enJQCKbeONz3"[^>]*\/>/, "")
+  .replace(/<path id="enJQCKbeONz4"[^>]*\/>/, "")
+  .replace(/<path id="enJQCKbeONz7"[^>]*\/>/, "")
+  .replace(/<g id="enJQCKbeONz6_ts"[\s\S]*?<\/g>/, "")
+  .replace('id="enJQCKbeONz5_tr" transform="translate(810.230736,728.251770) rotate(360)"', 'id="static-ouroboros" transform="translate(810.230736,728.251770) rotate(0)"')
+  .replaceAll("rgb(100,255,218)", "currentColor")
+  .replace("</svg>", `${staticS}</svg>`);
+---
+
+<Fragment set:html={staticLogo} />
+
+<style>
+  :global(.static-logo) { display: block; overflow: visible; color: currentColor; }
+</style>
