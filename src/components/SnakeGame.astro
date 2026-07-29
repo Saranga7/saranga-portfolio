@@ -1,0 +1,210 @@
+<dialog class="snake-dialog" data-snake-dialog aria-labelledby="snake-title">
+  <div class="snake-shell">
+    <header>
+      <div>
+        <p>Ouroboros protocol</p>
+        <h2 id="snake-title">Snake</h2>
+      </div>
+      <button class="snake-close" type="button" data-snake-close aria-label="Close Snake game">×</button>
+    </header>
+
+    <div class="snake-meta">
+      <span>Score <strong data-snake-score>0</strong></span>
+      <span data-snake-status>Press Start</span>
+    </div>
+
+    <canvas width="360" height="360" data-snake-canvas aria-label="Snake game board"></canvas>
+
+    <div class="snake-actions">
+      <button type="button" data-snake-start>Start</button>
+      <span>Arrow keys or WASD</span>
+    </div>
+
+    <div class="snake-pad" aria-label="Snake direction controls">
+      <button type="button" data-direction="up" aria-label="Move up">↑</button>
+      <button type="button" data-direction="left" aria-label="Move left">←</button>
+      <button type="button" data-direction="down" aria-label="Move down">↓</button>
+      <button type="button" data-direction="right" aria-label="Move right">→</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>("[data-snake-dialog]");
+  const canvas = dialog?.querySelector<HTMLCanvasElement>("[data-snake-canvas]");
+  const context = canvas?.getContext("2d");
+  const scoreLabel = dialog?.querySelector<HTMLElement>("[data-snake-score]");
+  const statusLabel = dialog?.querySelector<HTMLElement>("[data-snake-status]");
+  const startButton = dialog?.querySelector<HTMLButtonElement>("[data-snake-start]");
+  const closeButton = dialog?.querySelector<HTMLButtonElement>("[data-snake-close]");
+
+  if (dialog && canvas && context && scoreLabel && statusLabel && startButton && closeButton) {
+    const cells = 20;
+    const size = canvas.width / cells;
+    type Point = { x: number; y: number };
+    const vectors: Record<string, Point> = {
+      up: { x: 0, y: -1 },
+      down: { x: 0, y: 1 },
+      left: { x: -1, y: 0 },
+      right: { x: 1, y: 0 },
+    };
+    let snake: Point[] = [];
+    let food: Point = { x: 14, y: 10 };
+    let direction = vectors.right;
+    let queuedDirection = vectors.right;
+    let score = 0;
+    let running = false;
+    let timer = 0;
+
+    const colors = () => {
+      const style = getComputedStyle(document.documentElement);
+      return {
+        board: style.getPropertyValue("--surface").trim(),
+        grid: style.getPropertyValue("--border").trim(),
+        snake: style.getPropertyValue("--accent-2").trim(),
+        head: style.getPropertyValue("--accent").trim(),
+        food: style.getPropertyValue("--text").trim(),
+      };
+    };
+    const draw = () => {
+      const palette = colors();
+      context.fillStyle = palette.board;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.strokeStyle = palette.grid;
+      context.lineWidth = .5;
+      for (let index = 1; index < cells; index++) {
+        context.beginPath();
+        context.moveTo(index * size, 0);
+        context.lineTo(index * size, canvas.height);
+        context.moveTo(0, index * size);
+        context.lineTo(canvas.width, index * size);
+        context.stroke();
+      }
+      context.fillStyle = palette.food;
+      context.beginPath();
+      context.arc(food.x * size + size / 2, food.y * size + size / 2, size * .3, 0, Math.PI * 2);
+      context.fill();
+      snake.forEach((part, index) => {
+        context.fillStyle = index === 0 ? palette.head : palette.snake;
+        context.fillRect(part.x * size + 1.5, part.y * size + 1.5, size - 3, size - 3);
+      });
+    };
+    const placeFood = () => {
+      do {
+        food = {
+          x: Math.floor(Math.random() * cells),
+          y: Math.floor(Math.random() * cells),
+        };
+      } while (snake.some((part) => part.x === food.x && part.y === food.y));
+    };
+    const stop = (message: string) => {
+      running = false;
+      clearInterval(timer);
+      statusLabel.textContent = message;
+      startButton.textContent = "Restart";
+    };
+    const tick = () => {
+      direction = queuedDirection;
+      const head = {
+        x: (snake[0].x + direction.x + cells) % cells,
+        y: (snake[0].y + direction.y + cells) % cells,
+      };
+      const collision = snake.some((part) => part.x === head.x && part.y === head.y);
+      if (collision) {
+        stop("Game over");
+        return;
+      }
+      snake.unshift(head);
+      if (head.x === food.x && head.y === food.y) {
+        score += 1;
+        scoreLabel.textContent = String(score);
+        placeFood();
+      } else {
+        snake.pop();
+      }
+      draw();
+    };
+    const start = () => {
+      clearInterval(timer);
+      snake = [{ x: 6, y: 10 }, { x: 5, y: 10 }, { x: 4, y: 10 }];
+      direction = vectors.right;
+      queuedDirection = vectors.right;
+      score = 0;
+      running = true;
+      scoreLabel.textContent = "0";
+      statusLabel.textContent = "Running";
+      startButton.textContent = "Restart";
+      placeFood();
+      draw();
+      timer = window.setInterval(tick, 115);
+    };
+    const steer = (next: Point) => {
+      if (next.x === -direction.x && next.y === -direction.y) return;
+      queuedDirection = next;
+    };
+    const keyDirection: Record<string, Point> = {
+      ArrowUp: vectors.up, w: vectors.up, W: vectors.up,
+      ArrowDown: vectors.down, s: vectors.down, S: vectors.down,
+      ArrowLeft: vectors.left, a: vectors.left, A: vectors.left,
+      ArrowRight: vectors.right, d: vectors.right, D: vectors.right,
+    };
+
+    window.addEventListener("open-snake-game", () => {
+      if (!dialog.open) dialog.showModal();
+      snake = [{ x: 6, y: 10 }, { x: 5, y: 10 }, { x: 4, y: 10 }];
+      statusLabel.textContent = "Press Start";
+      startButton.textContent = "Start";
+      draw();
+      startButton.focus();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (!dialog.open) return;
+      const next = keyDirection[event.key];
+      if (next) {
+        event.preventDefault();
+        if (!running) start();
+        steer(next);
+      }
+    });
+    startButton.addEventListener("click", start);
+    closeButton.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("close", () => {
+      clearInterval(timer);
+      running = false;
+    });
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.querySelectorAll<HTMLButtonElement>("[data-direction]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!running) start();
+        steer(vectors[button.dataset.direction ?? "right"]);
+      });
+    });
+  }
+</script>
+
+<style>
+  .snake-dialog { width: min(calc(100% - 2rem), 29rem); padding: 0; border: 1px solid var(--border); border-radius: 1.2rem; color: var(--text); background: var(--bg); box-shadow: var(--shadow); }
+  .snake-dialog::backdrop { background: rgb(0 0 0 / .68); backdrop-filter: blur(5px); }
+  .snake-shell { padding: 1.2rem; }
+  header { display: flex; align-items: start; justify-content: space-between; margin-bottom: 1rem; }
+  header p { margin: 0 0 .15rem; color: var(--accent); font: 600 .55rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+  h2 { margin: 0; font: 500 2.5rem/1 var(--font-serif); }
+  .snake-close { width: 2.3rem; height: 2.3rem; border: 1px solid var(--border); border-radius: 999px; color: var(--text); background: var(--surface); font-size: 1.25rem; cursor: pointer; }
+  .snake-meta { display: flex; justify-content: space-between; margin-bottom: .55rem; color: var(--muted); font: 600 .6rem var(--font-mono); text-transform: uppercase; }
+  canvas { width: 100%; height: auto; border: 1px solid var(--border); border-radius: .5rem; image-rendering: pixelated; }
+  .snake-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .8rem; }
+  .snake-actions button { padding: .65rem 1rem; border: 0; border-radius: 999px; color: var(--surface); background: var(--text); font-weight: 700; cursor: pointer; }
+  .snake-actions span { color: var(--muted); font-size: .65rem; }
+  .snake-pad { display: none; grid-template-columns: repeat(3, 2.8rem); justify-content: center; gap: .35rem; margin-top: 1rem; }
+  .snake-pad button { width: 2.8rem; height: 2.8rem; border: 1px solid var(--border); border-radius: .55rem; color: var(--text); background: var(--surface); font-size: 1rem; }
+  .snake-pad button:first-child { grid-column: 2; }
+  .snake-pad button:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .snake-pad button:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .snake-pad button:nth-child(4) { grid-column: 3; grid-row: 2; }
+  @media (pointer: coarse), (max-width: 600px) {
+    .snake-pad { display: grid; }
+    .snake-actions span { display: none; }
+  }
+</style>

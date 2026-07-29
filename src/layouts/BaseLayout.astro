@@ -3,6 +3,8 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Loader from "../components/Loader.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import BlogPets from "../components/BlogPets.astro";
+import SnakeGame from "../components/SnakeGame.astro";
 import { site } from "../data/site";
 
 interface Props {
@@ -15,6 +17,7 @@ const {
   description = "Machine-learning research across science, healthcare, culture, computer vision, generative AI, NLP, and audio.",
   showLoader = false,
 } = Astro.props;
+const isBlog = Astro.url.pathname === "/blog" || Astro.url.pathname.startsWith("/blog/");
 ---
 
 <!doctype html>
@@ -47,6 +50,11 @@ const {
     {showLoader && <Loader />}
     <Header />
     <ThemeToggle />
+    <BlogPets
+      defaultVisible={isBlog}
+      storageKey={isBlog ? "seventh-insight-pets" : "portfolio-dali"}
+    />
+    <SnakeGame />
     <main id="main-content"><slot /></main>
     <footer>
       <p>{site.name}</p>

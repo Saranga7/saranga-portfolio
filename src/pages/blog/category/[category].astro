@@ -66,6 +66,7 @@ const { category, posts } = Astro.props;
           index={index}
           featured={category.slug !== "poems" && index === 0}
           minimal={category.slug === "poems"}
+          showReadingTime={category.slug === "write-ups"}
         />
       ))}
     </div>

@@ -5,8 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
-    "check": "astro check",
+    "build": "npm run validate:factoids && astro check && astro build",
+    "check": "npm run validate:factoids && astro check",
+    "validate:factoids": "node scripts/validate-dali-factoids.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

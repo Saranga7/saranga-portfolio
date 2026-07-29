@@ -32,7 +32,8 @@ const { post, previous, next } = Astro.props;
 const { Content } = await render(post);
 const plainText = (post.body ?? "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const readingMinutes = Math.max(1, Math.ceil(plainText.split(" ").length / 220));
-const showReadingTime = !["poem", "haiku"].includes(post.data.kind);
+const showReadingFeatures = !["poem", "haiku"].includes(post.data.kind)
+  && !["thoughts", "random-bullshit"].includes(post.data.slug);
 ---
 
 <BlogLayout
@@ -40,6 +41,12 @@ const showReadingTime = !["poem", "haiku"].includes(post.data.kind);
   description={post.data.excerpt}
   active={post.data.category === "travelogues" ? "write-ups" : post.data.category}
 >
+  {showReadingFeatures && (
+    <div class="reading-progress" aria-hidden="true">
+      <span data-reading-progress></span>
+    </div>
+  )}
+
   <article class:list={["blog-article", `kind-${post.data.kind}`]}>
     <header class="article-header container">
       <a class="back" href="/blog">← The anthology</a>
@@ -56,10 +63,12 @@ const showReadingTime = !["poem", "haiku"].includes(post.data.kind);
           {categoryLabel(post.data.category)}
         </a>
         <time datetime={post.data.date.toISOString()}>{blogDate(post.data.date)}</time>
-        {showReadingTime && <span>{readingMinutes} min read</span>}
+        {showReadingFeatures && <span>{readingMinutes} min read</span>}
       </div>
       <h1>{post.data.title}</h1>
-      {!["haiku", "thoughts", "random-bullshit"].includes(post.data.slug) && <p>{post.data.excerpt}</p>}
+      {post.data.kind !== "poem"
+        && !["haiku", "thoughts", "random-bullshit"].includes(post.data.slug)
+        && <p>{post.data.excerpt}</p>}
     </header>
 
     <div class="article-grid container">
@@ -112,10 +121,55 @@ const showReadingTime = !["poem", "haiku"].includes(post.data.kind);
         copyButton.textContent = "Copy unavailable";
       }
     });
+
+    const article = document.querySelector<HTMLElement>(".blog-article");
+    const progressBar = document.querySelector<HTMLElement>("[data-reading-progress]");
+    let progressFrame = 0;
+
+    const updateReadingProgress = () => {
+      progressFrame = 0;
+      if (!article || !progressBar) return;
+
+      const articleTop = article.getBoundingClientRect().top + window.scrollY;
+      const scrollableDistance = Math.max(1, article.offsetHeight - window.innerHeight);
+      const progress = Math.min(
+        1,
+        Math.max(0, (window.scrollY - articleTop) / scrollableDistance),
+      );
+
+      progressBar.style.transform = `scaleX(${progress})`;
+    };
+
+    const requestProgressUpdate = () => {
+      if (progressFrame === 0) {
+        progressFrame = window.requestAnimationFrame(updateReadingProgress);
+      }
+    };
+
+    window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+    window.addEventListener("resize", requestProgressUpdate, { passive: true });
+    requestProgressUpdate();
   </script>
 </BlogLayout>
 
 <style>
+  .reading-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 60;
+    height: 3px;
+    background: color-mix(in srgb, var(--border) 35%, transparent);
+    pointer-events: none;
+  }
+  .reading-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+  }
   .article-header { padding: clamp(4rem, 9vw, 8rem) 0 clamp(3rem, 7vw, 6rem); }
   .back { display: inline-block; margin-bottom: clamp(4rem, 9vw, 8rem); color: var(--muted); font: 600 .62rem var(--font-mono); text-decoration: none; }
   .article-meta { display: flex; flex-wrap: wrap; gap: .7rem 1.3rem; color: var(--muted); font: 600 .6rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }

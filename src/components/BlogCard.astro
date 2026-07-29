@@ -7,8 +7,21 @@ interface Props {
   index: number;
   featured?: boolean;
   minimal?: boolean;
+  showReadingTime?: boolean;
 }
-const { post, index, featured = false, minimal = false } = Astro.props;
+const {
+  post,
+  index,
+  featured = false,
+  minimal = false,
+  showReadingTime = false,
+} = Astro.props;
+const plainText = (post.body ?? "")
+  .replace(/<[^>]*>/g, " ")
+  .replace(/\s+/g, " ")
+  .trim();
+const wordCount = plainText ? plainText.split(" ").length : 0;
+const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
 ---
 
 <article class:list={["blog-card", { featured, minimal, "has-cover": Boolean(post.data.coverImage) && !minimal }]}>
@@ -21,6 +34,7 @@ const { post, index, featured = false, minimal = false } = Astro.props;
         <span>{String(index + 1).padStart(2, "0")}</span>
         <span>{categoryLabel(post.data.category)}</span>
         <time datetime={post.data.date.toISOString()}>{blogDate(post.data.date)}</time>
+        {showReadingTime && <span>{readingMinutes} min read</span>}
       </div>
       <h2>{post.data.title}</h2>
       {!minimal && <p>{post.data.excerpt}</p>}

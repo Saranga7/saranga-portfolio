@@ -4,7 +4,11 @@ import sourceLogo from "../assets/logo-moving.svg?raw";
 const animationStyles = `<style>
   #enJQCKbeONz5_tr {
     opacity: 1;
-    animation: ouroboros-rotation 1100ms cubic-bezier(.45,.05,.2,1) 1 both;
+  }
+  #loader-ring-reveal {
+    stroke-dasharray: 1;
+    stroke-dashoffset: -1;
+    animation: ouroboros-reveal 1050ms cubic-bezier(.5,.08,.2,1) 1 both;
   }
   #loader-s {
     fill: none;
@@ -21,9 +25,9 @@ const animationStyles = `<style>
     opacity: 0;
     animation: loader-s-finish 1100ms linear 1 both;
   }
-  @keyframes ouroboros-rotation {
-    from { transform: translate(810.230736px,728.251770px) rotate(360deg); }
-    to { transform: translate(810.230736px,728.251770px) rotate(0deg); }
+  @keyframes ouroboros-reveal {
+    from { stroke-dashoffset: -1; }
+    to { stroke-dashoffset: 0; }
   }
   @keyframes loader-s-draw {
     0% { stroke-dashoffset: 190; opacity: .25; }
@@ -35,16 +39,24 @@ const animationStyles = `<style>
     86%, 100% { opacity: 1; }
   }
   @media (prefers-reduced-motion: reduce) {
-    #enJQCKbeONz5_tr, #loader-s, #loader-s-final { animation: none; }
+    #loader-ring-reveal, #loader-s, #loader-s-final { animation: none; }
+    #loader-ring-reveal { stroke-dashoffset: 0; }
     #loader-s { display: none; }
     #loader-s-final { opacity: 1; }
   }
 </style>`;
 
+const ringMask = `<defs>
+  <mask id="loader-ring-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1530" height="1530">
+    <circle id="loader-ring-reveal" cx="810.23" cy="738.25" r="650"
+      fill="none" stroke="white" stroke-width="210" pathLength="1" />
+  </mask>
+</defs>`;
+
 const drawnS = `<path id="loader-s"
-  transform="translate(67.25 88) scale(.84) translate(-67.25 -88)"
+  transform="translate(13.25 -4) translate(67.25 88) scale(.84) translate(-67.25 -88)"
   d="M91 55 H47 L78 88 L47 121 H91" />
-  <text id="loader-s-final" x="67.25" y="92" text-anchor="middle" dominant-baseline="central"
+  <text id="loader-s-final" x="80.5" y="88" text-anchor="middle" dominant-baseline="central"
     font-family="'Times New Roman', Times, serif" font-size="82" font-weight="400">Σ</text>`;
 
 const animatedLogo = sourceLogo
@@ -54,6 +66,7 @@ const animatedLogo = sourceLogo
   .replace(/<path id="enJQCKbeONz4"[^>]*\/>/, "")
   .replace(/<path id="enJQCKbeONz7"[^>]*\/>/, "")
   .replace(/<g id="enJQCKbeONz6_ts"[\s\S]*?<\/g>/, "")
+  .replace('<g id="enJQCKbeONz2" ', `${ringMask}<g id="enJQCKbeONz2" mask="url(#loader-ring-mask)" `)
   .replaceAll("rgb(100,255,218)", "currentColor")
   .replace("</svg>", `${drawnS}</svg>`);
 ---
@@ -67,15 +80,46 @@ const animatedLogo = sourceLogo
     const loader = document.getElementById("site-loader");
     if (!loader) return;
     document.documentElement.classList.add("is-loading");
+    document.documentElement.classList.add("logo-handoff");
     const started = performance.now();
     const finish = () => {
       const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
       const minimumDuration = reduced ? 0 : 1100;
       const remaining = Math.max(0, minimumDuration - (performance.now() - started));
-      setTimeout(() => {
-        loader.classList.add("is-done");
-        document.documentElement.classList.remove("is-loading");
-        setTimeout(() => loader.remove(), reduced ? 0 : 350);
+      setTimeout(async () => {
+        const mark = loader.querySelector(".loader-mark");
+        const target = document.querySelector(".logo-trigger .static-logo");
+
+        if (
+          reduced ||
+          !(mark instanceof SVGElement) ||
+          !(target instanceof SVGElement) ||
+          typeof mark.animate !== "function"
+        ) {
+          document.documentElement.classList.remove("logo-handoff", "is-loading");
+          loader.classList.add("is-done");
+          setTimeout(() => loader.remove(), reduced ? 0 : 350);
+          return;
+        }
+
+        const from = mark.getBoundingClientRect();
+        const to = target.getBoundingClientRect();
+        const translateX = to.left + to.width / 2 - (from.left + from.width / 2);
+        const translateY = to.top + to.height / 2 - (from.top + from.height / 2);
+        const scale = to.width / from.width;
+
+        loader.classList.add("is-handoff");
+        const flight = mark.animate(
+          [
+            { transform: "translate3d(0, 0, 0) scale(1)" },
+            { transform: `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})` },
+          ],
+          { duration: 640, easing: "cubic-bezier(.22,.72,.16,1)", fill: "forwards" },
+        );
+        try { await flight.finished; } catch {}
+
+        document.documentElement.classList.remove("logo-handoff", "is-loading");
+        loader.remove();
       }, remaining);
     };
     if (document.readyState === "complete") finish();
@@ -87,9 +131,10 @@ const animatedLogo = sourceLogo
   .loader {
     position: fixed; inset: 0; z-index: 100; display: grid; place-content: center;
     justify-items: center; color: var(--accent); background: var(--loader-bg);
-    transition: opacity .35s ease, visibility .35s ease;
+    transition: opacity .35s ease, visibility .35s ease, background-color .38s ease;
   }
   .loader.is-done { opacity: 0; visibility: hidden; }
+  .loader.is-handoff { background: transparent; }
   .loader :global(.loader-mark) {
     display: block;
     width: 7rem;

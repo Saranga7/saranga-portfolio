@@ -49,6 +49,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 6rem; background: var(--bg); }
 html.is-loading { overflow: hidden; }
 body { min-width: 320px; margin: 0; color: var(--text); background: var(--bg); font: 400 1rem/1.7 var(--font-sans); text-rendering: optimizeLegibility; transition: background-color .25s, color .25s; }
+
 img, svg { display: block; max-width: 100%; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }

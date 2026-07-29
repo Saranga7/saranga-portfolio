@@ -1,0 +1,479 @@
+---
+interface Props {
+  defaultVisible?: boolean;
+  storageKey?: string;
+}
+
+const {
+  defaultVisible = true,
+  storageKey = "seventh-insight-pets",
+} = Astro.props;
+---
+
+<div
+  class="dali-stage"
+  data-dali-stage
+  data-default-visible={String(defaultVisible)}
+  data-storage-key={storageKey}
+  hidden={!defaultVisible}
+>
+  <aside class="speech" data-dali-speech aria-live="polite" aria-hidden="true">
+    <div>
+      <strong>Dali</strong> · <span data-dali-message>Bhao bhao!</span>
+    </div>
+    <div class="fact-meta" data-dali-fact-meta hidden>
+      <span data-dali-category></span>
+      <a data-dali-source href="" target="_blank" rel="noreferrer">Source ↗</a>
+    </div>
+  </aside>
+  <button class="dali" type="button" data-dali aria-label="Dali: reveal an easter egg hint">
+    <img
+      src="/assets/vscode-pets/akita_idle_8fps.gif"
+      alt=""
+      width="174"
+      height="115"
+      data-dali-sprite
+    />
+  </button>
+</div>
+
+<button
+  class="curiosity-toggle"
+  type="button"
+  data-curiosity-toggle
+  aria-label="Ask Dali something"
+  title="Ask Dali something"
+  hidden={!defaultVisible}
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M9 21h6M10 17h4M8.6 14.7A7 7 0 1 1 15.4 14.7C14.5 15.4 14 16.1 14 17h-4c0-.9-.5-1.6-1.4-2.3Z"/>
+  </svg>
+</button>
+
+<button
+  class="pets-toggle"
+  type="button"
+  data-pets-toggle
+  aria-label={defaultVisible ? "Hide Dali" : "Show Dali"}
+  aria-pressed={defaultVisible}
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M8.2 10.7c1.1-1.7 2.1-3.1 3.8-3.1s2.7 1.4 3.8 3.1c1.2 1.8 3.4 3.2 3.1 5.5-.2 1.7-1.8 2.8-3.6 2.8-1.3 0-2.1-.6-3.3-.6s-2 .6-3.3.6c-1.8 0-3.4-1.1-3.6-2.8-.3-2.3 1.9-3.7 3.1-5.5Z"/>
+    <ellipse cx="5.3" cy="8.2" rx="2.1" ry="2.8" transform="rotate(-28 5.3 8.2)"/>
+    <ellipse cx="9.6" cy="4.8" rx="2" ry="2.7" transform="rotate(-8 9.6 4.8)"/>
+    <ellipse cx="18.7" cy="8.2" rx="2.1" ry="2.8" transform="rotate(28 18.7 8.2)"/>
+    <ellipse cx="14.4" cy="4.8" rx="2" ry="2.7" transform="rotate(8 14.4 4.8)"/>
+  </svg>
+</button>
+
+<script>
+  const stage = document.querySelector<HTMLElement>("[data-dali-stage]");
+  const dali = stage?.querySelector<HTMLElement>("[data-dali]");
+  const sprite = stage?.querySelector<HTMLImageElement>("[data-dali-sprite]");
+  const speech = stage?.querySelector<HTMLElement>("[data-dali-speech]");
+  const message = stage?.querySelector<HTMLElement>("[data-dali-message]");
+  const factMeta = stage?.querySelector<HTMLElement>("[data-dali-fact-meta]");
+  const categoryLabel = stage?.querySelector<HTMLElement>("[data-dali-category]");
+  const sourceLink = stage?.querySelector<HTMLAnchorElement>("[data-dali-source]");
+  const curiosityButton = document.querySelector<HTMLButtonElement>("[data-curiosity-toggle]");
+  const toggle = document.querySelector<HTMLButtonElement>("[data-pets-toggle]");
+
+  if (
+    stage && dali && sprite && speech && message && factMeta && categoryLabel
+    && sourceLink && curiosityButton && toggle
+  ) {
+    type DaliState = "idle" | "lie" | "walk" | "run" | "swipe";
+    type FactCategory =
+      | "science-history-geography"
+      | "computer-science-ai"
+      | "flora-fauna"
+      | "greek-mythology"
+      | "sarcasm";
+    interface Factoid {
+      id: string;
+      category: FactCategory;
+      text: string;
+      sourceLabel?: string;
+      sourceUrl?: string;
+    }
+    const root = "/assets/vscode-pets/akita_";
+    const source: Record<DaliState, string> = {
+      idle: `${root}idle_8fps.gif`,
+      lie: `${root}lie_8fps.gif`,
+      walk: `${root}walk_8fps.gif`,
+      run: `${root}walk_fast_8fps.gif`,
+      swipe: `${root}swipe_8fps.gif`,
+    };
+    const categoryNames: Record<FactCategory, string> = {
+      "science-history-geography": "Science · History · Geography",
+      "computer-science-ai": "Computer Science · AI",
+      "flora-fauna": "Flora · Fauna",
+      "greek-mythology": "Greek Mythology",
+      sarcasm: "Dali’s observation",
+    };
+    const storageKey = stage.dataset.storageKey ?? "seventh-insight-pets";
+    const defaultVisible = stage.dataset.defaultVisible === "true";
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    let savedPreference: string | null = null;
+    try { savedPreference = localStorage.getItem(storageKey); } catch {}
+    let hidden = savedPreference === "hidden" || (savedPreference === null && !defaultVisible);
+
+    const showDali = (show: boolean) => {
+      hidden = !show;
+      stage.hidden = hidden;
+      curiosityButton.hidden = hidden;
+      toggle.setAttribute("aria-pressed", String(show));
+      toggle.setAttribute("aria-label", show ? "Hide Dali" : "Show Dali");
+      try { localStorage.setItem(storageKey, show ? "visible" : "hidden"); } catch {}
+    };
+    showDali(!hidden);
+
+    let state: DaliState = "idle";
+    let x = innerWidth * .2;
+    let direction = 1;
+    let stateUntil = performance.now() + 3200;
+    let pointerX = -1000;
+    let pointerY = -1000;
+    let lastReaction = 0;
+    let bubbleTimer = 0;
+    let hintIndex = 0;
+    let facts: Factoid[] | null = null;
+    let factQueue: string[] = [];
+    let factLoading = false;
+    let factUntil = 0;
+    let previous = performance.now();
+    let frame = 0;
+
+    const width = () => dali.getBoundingClientRect().width || 76;
+    const place = () => {
+      dali.style.transform = `translate3d(${x}px,0,0) scaleX(${direction})`;
+      const speechHalf = Math.min(176, Math.max(120, innerWidth / 2 - 16));
+      const center = Math.max(speechHalf, Math.min(innerWidth - speechHalf, x + width() / 2));
+      speech.style.left = `${center}px`;
+    };
+    const duration = (next: DaliState) => {
+      if (next === "idle") return 2600 + Math.random() * 2200;
+      if (next === "lie") return 6000 + Math.random() * 4000;
+      if (next === "swipe") return 1000;
+      return 9000 + Math.random() * 5000;
+    };
+    const setState = (next: DaliState, now = performance.now()) => {
+      state = next;
+      sprite.src = reduced.matches
+        ? "/assets/vscode-pets/icon_akita.png"
+        : source[next];
+      stateUntil = now + duration(next);
+    };
+    const chooseMovingState = (now: number) => {
+      setState(Math.random() < .58 ? "walk" : "run", now);
+    };
+    const chooseAfterRest = (now: number) => {
+      direction = Math.random() < .5 ? -1 : 1;
+      chooseMovingState(now);
+    };
+    const say = (text: string, duration = 1000, fact?: Factoid) => {
+      message.textContent = text;
+      factMeta.hidden = !fact;
+      if (fact) {
+        categoryLabel.textContent = categoryNames[fact.category];
+        sourceLink.hidden = !fact.sourceUrl;
+        sourceLink.textContent = fact.sourceLabel ? `${fact.sourceLabel} ↗` : "Source ↗";
+        sourceLink.href = fact.sourceUrl ?? "";
+      }
+      speech.classList.add("show");
+      speech.setAttribute("aria-hidden", "false");
+      clearTimeout(bubbleTimer);
+      bubbleTimer = window.setTimeout(() => {
+        speech.classList.remove("show");
+        speech.setAttribute("aria-hidden", "true");
+      }, duration);
+    };
+    const react = (now: number, text = "Bhao bhao!") => {
+      lastReaction = now;
+      setState("swipe", now);
+      say(text);
+    };
+    const pointerIsNear = () => {
+      const box = dali.getBoundingClientRect();
+      return Math.hypot(
+        pointerX - (box.left + box.width / 2),
+        pointerY - (box.top + box.height / 2),
+      ) < 92;
+    };
+    const fit = () => {
+      x = Math.max(5, Math.min(innerWidth - width() - 5, x));
+      place();
+    };
+    const nextNaturalState = (now: number) => {
+      if (state === "swipe") {
+        setState("run", now);
+      } else if (state === "idle" || state === "lie") {
+        chooseAfterRest(now);
+      } else if (Math.random() < .34) {
+        setState(Math.random() < .46 ? "idle" : "lie", now);
+      } else {
+        chooseMovingState(now);
+      }
+    };
+    const animate = (now: number) => {
+      const elapsed = Math.min((now - previous) / 1000, .05);
+      previous = now;
+      if (!hidden && !document.hidden && !reduced.matches) {
+        if (
+          now >= factUntil
+          && pointerIsNear()
+          && state !== "swipe"
+          && now - lastReaction > 2200
+        ) react(now);
+        if (now >= stateUntil) nextNaturalState(now);
+
+        if (state === "walk" || state === "run") {
+          const walkSpeed = innerWidth < 600 ? 40 : 56;
+          const speed =
+            state === "run" ? walkSpeed * 1.65 : walkSpeed;
+          x += direction * speed * elapsed;
+          const edge = innerWidth - width() - 5;
+          if (x >= edge) {
+            x = edge;
+            direction = -1;
+            chooseMovingState(now);
+          } else if (x <= 5) {
+            x = 5;
+            direction = 1;
+            chooseMovingState(now);
+          }
+          place();
+        }
+      }
+      frame = requestAnimationFrame(animate);
+    };
+    const trackPointer = (event: PointerEvent) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+    };
+    const applyMotionPreference = () => {
+      if (reduced.matches) sprite.src = "/assets/vscode-pets/icon_akita.png";
+      else sprite.src = source[state];
+      curiosityButton.hidden = hidden;
+    };
+
+    const shuffle = (items: string[]) => {
+      const shuffled = [...items];
+      for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const swap = Math.floor(Math.random() * (index + 1));
+        [shuffled[index], shuffled[swap]] = [shuffled[swap], shuffled[index]];
+      }
+      return shuffled;
+    };
+    const restoreQueue = (items: Factoid[]) => {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem("dali-factoid-queue") ?? "[]");
+        const validIds = new Set(items.map(({ id }) => id));
+        if (
+          Array.isArray(saved)
+          && saved.length > 0
+          && saved.every((id) => typeof id === "string" && validIds.has(id))
+          && new Set(saved).size === saved.length
+        ) {
+          factQueue = saved;
+          return;
+        }
+      } catch {}
+      factQueue = shuffle(items.map(({ id }) => id));
+    };
+    const saveQueue = () => {
+      try { sessionStorage.setItem("dali-factoid-queue", JSON.stringify(factQueue)); } catch {}
+    };
+    const loadFacts = async () => {
+      if (facts) return facts;
+      const response = await fetch("/assets/data/dali-factoids.json");
+      if (!response.ok) throw new Error("Fact library unavailable");
+      const loaded = await response.json();
+      if (!Array.isArray(loaded) || loaded.length < 1000) throw new Error("Invalid fact library");
+      facts = loaded as Factoid[];
+      restoreQueue(facts);
+      return facts;
+    };
+
+    toggle.addEventListener("click", () => showDali(hidden));
+    dali.addEventListener("click", () => {
+      const hints = [
+        "Click on the logo 3 times",
+        "The portrait has another side",
+      ];
+      react(performance.now(), hints[hintIndex]);
+      hintIndex = (hintIndex + 1) % hints.length;
+    });
+    curiosityButton.addEventListener("click", async () => {
+      if (factLoading) return;
+      factLoading = true;
+      curiosityButton.disabled = true;
+      try {
+        const library = await loadFacts();
+        if (factQueue.length === 0) factQueue = shuffle(library.map(({ id }) => id));
+        const id = factQueue.pop();
+        const fact = library.find((entry) => entry.id === id);
+        if (!fact) throw new Error("Fact not found");
+        saveQueue();
+        setState("idle");
+        factUntil = performance.now() + 12000;
+        stateUntil = factUntil;
+        say(fact.text, 11000, fact);
+      } catch {
+        setState("idle");
+        say("My library is having a nap. Ask me again shortly.", 3500);
+      } finally {
+        factLoading = false;
+        curiosityButton.disabled = false;
+      }
+    });
+    addEventListener("pointermove", trackPointer, { passive: true });
+    addEventListener("pointerdown", trackPointer, { passive: true });
+    addEventListener("resize", fit, { passive: true });
+    reduced.addEventListener("change", applyMotionPreference);
+    document.addEventListener("visibilitychange", () => { previous = performance.now(); });
+
+    fit();
+    applyMotionPreference();
+    if (!hidden) {
+      let greeted = false;
+      try { greeted = sessionStorage.getItem("dali-greeted") === "yes"; } catch {}
+      if (!greeted) {
+        setTimeout(() => say("Namaste! Bhao bhao!", 1400), 650);
+        try { sessionStorage.setItem("dali-greeted", "yes"); } catch {}
+      }
+    }
+    frame = requestAnimationFrame(animate);
+    addEventListener("pagehide", () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(bubbleTimer);
+    }, { once: true });
+  }
+</script>
+
+<style>
+  .dali-stage {
+    position: fixed;
+    right: 0;
+    bottom: max(0px, env(safe-area-inset-bottom));
+    left: 0;
+    z-index: 38;
+    height: 15rem;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .dali-stage[hidden] { display: none; }
+  .dali {
+    position: absolute;
+    bottom: -.1rem;
+    left: 0;
+    width: 5rem;
+    height: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+    transform-origin: center bottom;
+    will-change: transform;
+  }
+  .dali img { width: 100%; height: auto; image-rendering: pixelated; }
+  .speech {
+    position: absolute;
+    bottom: 5.2rem;
+    z-index: 1;
+    width: max-content;
+    max-width: min(22rem, calc(100vw - 2rem));
+    padding: .65rem .75rem;
+    border: 1px solid var(--text);
+    border-radius: .65rem;
+    color: var(--text);
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+    font: .65rem/1.5 var(--font-mono);
+    opacity: 0;
+    transform: translateX(-50%) translateY(.25rem);
+    transition: opacity .16s ease, transform .16s ease;
+    pointer-events: none;
+  }
+  .speech.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .fact-meta {
+    display: flex;
+    gap: .75rem;
+    justify-content: space-between;
+    margin-top: .55rem;
+    padding-top: .45rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .5rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .fact-meta[hidden] { display: none; }
+  .fact-meta a {
+    color: var(--accent);
+    pointer-events: auto;
+    text-underline-offset: .18em;
+  }
+  .pets-toggle {
+    position: fixed;
+    right: 1.25rem;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    z-index: 52;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: .78rem;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+  }
+  .pets-toggle:hover { border-color: var(--accent); }
+  .pets-toggle[aria-pressed="false"] { opacity: .58; }
+  .pets-toggle svg { width: 100%; fill: currentColor; }
+  .curiosity-toggle {
+    position: fixed;
+    right: 1.25rem;
+    bottom: calc(4.55rem + env(safe-area-inset-bottom));
+    z-index: 52;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    display: grid;
+    padding: .58rem;
+    place-items: center;
+    color: var(--accent);
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+  }
+  .curiosity-toggle svg {
+    width: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+  .curiosity-toggle[hidden] { display: none; }
+  .curiosity-toggle:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .curiosity-toggle:disabled { cursor: wait; opacity: .55; }
+  @media (max-width: 600px) {
+    .dali-stage { height: 14rem; }
+    .dali { width: 4.25rem; }
+    .speech { bottom: 4.55rem; font-size: .6rem; }
+    .pets-toggle { right: .85rem; bottom: calc(.85rem + env(safe-area-inset-bottom)); }
+    .curiosity-toggle { right: .98rem; bottom: calc(4.05rem + env(safe-area-inset-bottom)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dali { will-change: auto; }
+  }
+</style>
