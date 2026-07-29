@@ -38,4 +38,22 @@ const publications = defineCollection({
   }),
 });
 
-export const collections = { projects, publications };
+const blog = defineCollection({
+  loader: glob({
+    pattern: ["**/*.md", "!**/more_haiku.md"],
+    base: "./src/content/blog",
+  }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    date: z.coerce.date(),
+    category: z.enum(["poems", "haiku", "write-ups", "random-bs", "travelogues"]),
+    excerpt: z.string(),
+    kind: z.enum(["prose", "poem", "haiku", "travel", "review", "reflection"]),
+    coverImage: z.string().optional(),
+    originalUrl: z.url().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projects, publications, blog };

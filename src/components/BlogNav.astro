@@ -1,0 +1,32 @@
+---
+import { blogCategories } from "../data/blog";
+
+interface Props { active?: string; }
+const { active = "home" } = Astro.props;
+---
+
+<nav class="blog-nav" aria-label="Seventh Insight">
+  <a class:list={{ active: active === "home" }} href="/blog">Home</a>
+  {blogCategories.map((category) => (
+    <a
+      class:list={{ active: active === category.slug }}
+      href={
+        category.slug === "haiku"
+          ? "/blog/haiku"
+          : category.slug === "random-bs"
+            ? "/blog/random-bullshit"
+            : `/blog/category/${category.slug}`
+      }
+    >
+      {category.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .blog-nav { display: flex; gap: .4rem; padding: .45rem; overflow-x: auto; border: 1px solid var(--border); border-radius: 999px; background: color-mix(in srgb, var(--surface) 86%, transparent); scrollbar-width: none; }
+  .blog-nav::-webkit-scrollbar { display: none; }
+  .blog-nav a { flex: 0 0 auto; padding: .55rem .85rem; border-radius: 999px; color: var(--muted); font: 600 .62rem var(--font-mono); text-decoration: none; }
+  .blog-nav a:hover { color: var(--text); }
+  .blog-nav a.active { color: var(--surface); background: var(--text); }
+</style>

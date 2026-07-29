@@ -1,0 +1,189 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import { blogDate, categoryLabel } from "../../data/blog";
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("blog", ({ data }) => !data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return posts.map((post) => {
+    const categoryPosts = posts.filter((item) =>
+      item.data.category === post.data.category
+        && item.data.slug !== "thoughts"
+    );
+    const index = categoryPosts.findIndex((item) => item.id === post.id);
+    return {
+      params: { slug: post.data.slug },
+      props: {
+        post,
+        previous: index >= 0 ? categoryPosts[index + 1] ?? null : null,
+        next: index >= 0 ? categoryPosts[index - 1] ?? null : null,
+      },
+    };
+  });
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  previous: CollectionEntry<"blog"> | null;
+  next: CollectionEntry<"blog"> | null;
+}
+const { post, previous, next } = Astro.props;
+const { Content } = await render(post);
+const plainText = (post.body ?? "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+const readingMinutes = Math.max(1, Math.ceil(plainText.split(" ").length / 220));
+const showReadingTime = !["poem", "haiku"].includes(post.data.kind);
+---
+
+<BlogLayout
+  title={`${post.data.title} · Seventh Insight`}
+  description={post.data.excerpt}
+  active={post.data.category === "travelogues" ? "write-ups" : post.data.category}
+>
+  <article class:list={["blog-article", `kind-${post.data.kind}`]}>
+    <header class="article-header container">
+      <a class="back" href="/blog">← The anthology</a>
+      <div class="article-meta">
+        <a href={
+          post.data.category === "haiku"
+            ? "/blog/haiku"
+            : post.data.category === "travelogues"
+              ? "/blog/travelogues"
+            : post.data.category === "random-bs"
+              ? "/blog/random-bullshit"
+              : `/blog/category/${post.data.category}`
+        }>
+          {categoryLabel(post.data.category)}
+        </a>
+        <time datetime={post.data.date.toISOString()}>{blogDate(post.data.date)}</time>
+        {showReadingTime && <span>{readingMinutes} min read</span>}
+      </div>
+      <h1>{post.data.title}</h1>
+      {!["haiku", "thoughts", "random-bullshit"].includes(post.data.slug) && <p>{post.data.excerpt}</p>}
+    </header>
+
+    <div class="article-grid container">
+      <aside>
+        <span class="eyebrow">Share</span>
+        <div class="share-actions">
+          <button type="button" data-copy-link>Copy link</button>
+          <a
+            data-email-share
+            href={`mailto:?subject=${encodeURIComponent(post.data.title)}&body=${encodeURIComponent(`${post.data.excerpt}\n\n/blog/${post.data.slug}`)}`}
+          >Email</a>
+        </div>
+      </aside>
+      <div class="article-prose"><Content /></div>
+    </div>
+
+    <footer class="article-footer container">
+      <div class="source">
+        <p>First published on Seventh Insight.</p>
+        {post.data.originalUrl && <a href={post.data.originalUrl}>View the original archive entry ↗</a>}
+      </div>
+      <nav aria-label="Article navigation">
+        {previous ? (
+          <a class="previous" href={`/blog/${previous.data.slug}`}>
+            <span>Older</span><strong>{previous.data.title}</strong>
+          </a>
+        ) : <span></span>}
+        {next ? (
+          <a class="next" href={`/blog/${next.data.slug}`}>
+            <span>Newer</span><strong>{next.data.title}</strong>
+          </a>
+        ) : <span></span>}
+      </nav>
+    </footer>
+  </article>
+
+  <script>
+    const copyButton = document.querySelector<HTMLButtonElement>("[data-copy-link]");
+    const emailShare = document.querySelector<HTMLAnchorElement>("[data-email-share]");
+    if (emailShare) {
+      const subject = document.title.replace(" · Seventh Insight", "");
+      emailShare.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(window.location.href)}`;
+    }
+    copyButton?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        copyButton.textContent = "Copied";
+        window.setTimeout(() => { copyButton.textContent = "Copy link"; }, 1600);
+      } catch {
+        copyButton.textContent = "Copy unavailable";
+      }
+    });
+  </script>
+</BlogLayout>
+
+<style>
+  .article-header { padding: clamp(4rem, 9vw, 8rem) 0 clamp(3rem, 7vw, 6rem); }
+  .back { display: inline-block; margin-bottom: clamp(4rem, 9vw, 8rem); color: var(--muted); font: 600 .62rem var(--font-mono); text-decoration: none; }
+  .article-meta { display: flex; flex-wrap: wrap; gap: .7rem 1.3rem; color: var(--muted); font: 600 .6rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+  .article-meta a { color: var(--accent); text-decoration: none; }
+  h1 { max-width: 13ch; margin: 1rem 0 1.5rem; font: 500 clamp(3.8rem, 9vw, 8.2rem)/.84 var(--font-serif); letter-spacing: -.065em; }
+  .article-header > p { max-width: 43rem; margin: 0; color: var(--muted); font-size: clamp(1rem, 1.7vw, 1.25rem); }
+  .article-grid { display: grid; grid-template-columns: .35fr 1fr .2fr; gap: clamp(2rem, 7vw, 7rem); padding: clamp(4rem, 9vw, 8rem) 0; }
+  aside { grid-column: 1; }
+  .share-actions { display: grid; gap: .6rem; margin-top: 1rem; }
+  .share-actions button, .share-actions a { width: max-content; padding: 0; border: 0; color: var(--muted); background: none; font: 600 .65rem var(--font-sans); text-decoration: none; cursor: pointer; }
+  .share-actions button:hover, .share-actions a:hover { color: var(--accent); }
+  .article-prose { grid-column: 2; min-width: 0; color: var(--text); font: 400 clamp(1.05rem, 1.4vw, 1.18rem)/1.85 var(--font-serif); }
+  .article-prose :global(p) { margin: 0 0 1.55em; }
+  .article-prose :global(p:empty) { display: none; }
+  .article-prose :global(strong) { font-weight: 600; }
+  .article-prose :global(a) { text-decoration-color: var(--accent); text-underline-offset: .2em; }
+  .article-prose :global(blockquote) { margin: 2.5rem 0; padding: .5rem 0 .5rem 1.5rem; border-left: 2px solid var(--accent); color: var(--muted); font-style: italic; }
+  .article-prose :global(h2), .article-prose :global(h3) { margin: 2.2em 0 .7em; font-family: var(--font-serif); line-height: 1.1; }
+  .article-prose :global(ol) { margin: 2rem 0; padding-left: 2.2rem; list-style: decimal; }
+  .article-prose :global(ol li) { padding-left: .55rem; }
+  .article-prose :global(ol li::marker) { color: var(--accent); font: 600 .7rem var(--font-mono); }
+  .article-prose :global(figure) { margin: 2.8rem 0; }
+  .article-prose :global(img) { width: 100%; height: auto; border-radius: .8rem; }
+  .article-prose :global(iframe) { display: block; width: 100%; max-width: 100%; margin: 2.5rem 0; border: 0; }
+  .article-prose :global(figcaption) { margin-top: .6rem; color: var(--muted); font: .65rem var(--font-sans); text-align: center; }
+  .kind-poem .article-prose, .kind-haiku .article-prose { max-width: 42rem; font-size: clamp(1.25rem, 2.25vw, 1.75rem); line-height: 1.9; }
+  .kind-haiku .article-prose { grid-column: 2 / 4; width: 100%; max-width: none; font-style: italic; }
+  .kind-haiku .article-prose :global(blockquote) { margin: 3.5rem 0; padding: 0; border: 0; color: var(--text); text-align: center; }
+  .kind-haiku .article-prose :global(blockquote p) { margin: 0; }
+  .kind-haiku .article-prose :global(cite) { display: block; margin-top: 1rem; color: var(--accent); font: 600 .58rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+  .kind-haiku .article-prose :global(hr) { width: 2.5rem; margin: 2.5rem auto; border: 0; border-top: 1px solid var(--border); }
+  .kind-haiku .article-prose :global(.haiku-keywords) { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-bottom: 5rem; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .kind-haiku .article-prose :global(.keyword-group) { min-height: 9rem; padding: 1rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .kind-haiku .article-prose :global(.keyword-group > span) { display: block; margin-bottom: 1.5rem; color: var(--accent); font: 500 2.2rem/1 var(--font-serif); }
+  .kind-haiku .article-prose :global(.keyword-group > div) { display: flex; flex-wrap: wrap; gap: .4rem .8rem; }
+  .kind-haiku .article-prose :global(.haiku-keywords a) { color: var(--muted); font: 600 .58rem var(--font-mono); letter-spacing: .06em; text-decoration: none; text-transform: uppercase; }
+  .kind-haiku .article-prose :global(.haiku-keywords a:hover) { color: var(--accent); }
+  .kind-haiku .article-prose :global(.haiku-collection) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .kind-haiku .article-prose :global(.haiku-entry) { display: flex; scroll-margin-top: 8rem; min-height: 22rem; padding: clamp(2.5rem, 5vw, 4.5rem) 1.25rem; flex-direction: column; justify-content: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; }
+  .kind-haiku .article-prose :global(.haiku-keyword) { display: inline-block; color: var(--accent); font: 600 .62rem var(--font-mono); letter-spacing: .14em; text-decoration: none; text-transform: uppercase; }
+  .kind-haiku .article-prose :global(.haiku-entry blockquote) { margin: 2rem 0 1.5rem; }
+  .kind-haiku .article-prose :global(.haiku-entry blockquote p) { white-space: nowrap; font-size: clamp(.95rem, 1.35vw, 1.25rem); line-height: 1.9; }
+  .article-footer { padding-bottom: clamp(6rem, 12vw, 11rem); }
+  .source { padding: 1.3rem 0 3rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .65rem; }
+  .source p { margin: 0 0 .25rem; }
+  .source a { color: var(--muted); }
+  .article-footer nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .article-footer nav a { display: grid; align-content: space-between; min-height: 11rem; padding: 1.4rem; border: 1px solid var(--border); border-radius: 1rem; color: inherit; text-decoration: none; }
+  .article-footer nav span { color: var(--accent); font: 600 .58rem var(--font-mono); text-transform: uppercase; }
+  .article-footer nav strong { font: 500 clamp(1.35rem, 2.5vw, 2rem)/1.05 var(--font-serif); }
+  .article-footer nav .next { text-align: right; }
+  .article-footer nav a:hover { background: var(--surface); }
+  @media (max-width: 1100px) {
+    .kind-haiku .article-prose :global(.haiku-collection) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 760px) {
+    .article-grid { grid-template-columns: 1fr; }
+    aside, .article-prose { grid-column: 1; }
+    .kind-haiku .article-prose { grid-column: 1; }
+    aside { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .share-actions { display: flex; margin: 0; }
+    .kind-haiku .article-prose :global(.haiku-keywords) { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 620px) {
+    .article-footer nav { grid-template-columns: 1fr; }
+    .article-footer nav .next { text-align: left; }
+    .kind-haiku .article-prose :global(.haiku-keywords) { grid-template-columns: 1fr; }
+    .kind-haiku .article-prose :global(.haiku-collection) { grid-template-columns: 1fr; }
+    .kind-haiku .article-prose :global(.haiku-entry) { min-height: 21rem; }
+  }
+</style>
