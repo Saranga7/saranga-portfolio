@@ -7,8 +7,12 @@ const animationStyles = `<style>
   }
   #loader-ring-reveal {
     stroke-dasharray: 1;
-    stroke-dashoffset: -1;
-    animation: ouroboros-reveal 1050ms cubic-bezier(.5,.08,.2,1) 1 both;
+    stroke-dashoffset: 1;
+    animation: ouroboros-trail 1050ms linear 1 both;
+  }
+  #loader-snake-head {
+    opacity: 0;
+    animation: loader-head-presence 1050ms linear 1 both;
   }
   #loader-s {
     fill: none;
@@ -25,9 +29,14 @@ const animationStyles = `<style>
     opacity: 0;
     animation: loader-s-finish 1100ms linear 1 both;
   }
-  @keyframes ouroboros-reveal {
-    from { stroke-dashoffset: -1; }
+  @keyframes ouroboros-trail {
+    from { stroke-dashoffset: 1; }
     to { stroke-dashoffset: 0; }
+  }
+  @keyframes loader-head-presence {
+    0% { opacity: 0; }
+    3%, 91% { opacity: 1; }
+    100% { opacity: 0; }
   }
   @keyframes loader-s-draw {
     0% { stroke-dashoffset: 190; opacity: .25; }
@@ -39,8 +48,9 @@ const animationStyles = `<style>
     86%, 100% { opacity: 1; }
   }
   @media (prefers-reduced-motion: reduce) {
-    #loader-ring-reveal, #loader-s, #loader-s-final { animation: none; }
+    #loader-ring-reveal, #loader-snake-head, #loader-s, #loader-s-final { animation: none; }
     #loader-ring-reveal { stroke-dashoffset: 0; }
+    #loader-snake-head { display: none; }
     #loader-s { display: none; }
     #loader-s-final { opacity: 1; }
   }
@@ -49,9 +59,23 @@ const animationStyles = `<style>
 const ringMask = `<defs>
   <mask id="loader-ring-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1530" height="1530">
     <circle id="loader-ring-reveal" cx="810.23" cy="738.25" r="650"
-      fill="none" stroke="white" stroke-width="210" pathLength="1" />
+      fill="none" stroke="white" stroke-width="210" pathLength="1"
+      transform="translate(0 1476.5) scale(1 -1)" />
   </mask>
 </defs>`;
+
+const travellingHead = `<g id="loader-snake-head">
+  <animateMotion
+    dur="1050ms"
+    begin="0s"
+    fill="freeze"
+    rotate="auto"
+    path="M141 73.8 A60 60 0 1 1 21 73.8 A60 60 0 1 1 141 73.8"
+  />
+  <path d="M-2-4.8C2.6-5.4 7.8-3.2 10 0 7.8 3.2 2.6 5.4-2 4.8-4.2 2.1-4.2-2.1-2-4.8Z"
+    fill="currentColor" />
+  <circle cx="4.5" cy="-1.7" r=".75" fill="var(--loader-bg)" />
+</g>`;
 
 const drawnS = `<path id="loader-s"
   transform="translate(13.25 -4) translate(67.25 88) scale(.84) translate(-67.25 -88)"
@@ -68,7 +92,7 @@ const animatedLogo = sourceLogo
   .replace(/<g id="enJQCKbeONz6_ts"[\s\S]*?<\/g>/, "")
   .replace('<g id="enJQCKbeONz2" ', `${ringMask}<g id="enJQCKbeONz2" mask="url(#loader-ring-mask)" `)
   .replaceAll("rgb(100,255,218)", "currentColor")
-  .replace("</svg>", `${drawnS}</svg>`);
+  .replace("</svg>", `${travellingHead}${drawnS}</svg>`);
 ---
 
 <div id="site-loader" class="loader" aria-hidden="true">
