@@ -23,7 +23,10 @@ const {
     </div>
     <div class="fact-meta" data-dali-fact-meta hidden>
       <span data-dali-category></span>
-      <a data-dali-source href="" target="_blank" rel="noreferrer">Source ↗</a>
+      <span class="fact-actions">
+        <a data-dali-source href="" target="_blank" rel="noopener noreferrer">Check source ↗</a>
+        <button type="button" data-dali-another>Another one</button>
+      </span>
     </div>
   </aside>
   <button class="dali" type="button" data-dali aria-label="Dali: reveal an easter egg hint">
@@ -75,26 +78,30 @@ const {
   const factMeta = stage?.querySelector<HTMLElement>("[data-dali-fact-meta]");
   const categoryLabel = stage?.querySelector<HTMLElement>("[data-dali-category]");
   const sourceLink = stage?.querySelector<HTMLAnchorElement>("[data-dali-source]");
+  const anotherButton = stage?.querySelector<HTMLButtonElement>("[data-dali-another]");
   const curiosityButton = document.querySelector<HTMLButtonElement>("[data-curiosity-toggle]");
   const toggle = document.querySelector<HTMLButtonElement>("[data-pets-toggle]");
 
   if (
     stage && dali && sprite && speech && message && factMeta && categoryLabel
-    && sourceLink && curiosityButton && toggle
+    && sourceLink && anotherButton && curiosityButton && toggle
   ) {
     type DaliState = "idle" | "lie" | "walk" | "run" | "swipe";
     type FactCategory =
-      | "science-history-geography"
-      | "computer-science-ai"
-      | "flora-fauna"
-      | "greek-mythology"
-      | "sarcasm";
+      | "science_history_geography"
+      | "world_mythology"
+      | "computer_science_ai"
+      | "wildlife"
+      | "cinema"
+      | "travel"
+      | "sarcastic_jokes";
     interface Factoid {
       id: string;
       category: FactCategory;
+      subcategory: string;
       text: string;
-      sourceLabel?: string;
-      sourceUrl?: string;
+      source_title: string;
+      source_url: string;
     }
     const root = "/assets/vscode-pets/akita_";
     const source: Record<DaliState, string> = {
@@ -105,11 +112,13 @@ const {
       swipe: `${root}swipe_8fps.gif`,
     };
     const categoryNames: Record<FactCategory, string> = {
-      "science-history-geography": "Science · History · Geography",
-      "computer-science-ai": "Computer Science · AI",
-      "flora-fauna": "Flora · Fauna",
-      "greek-mythology": "Greek Mythology",
-      sarcasm: "Dali’s observation",
+      science_history_geography: "Science · History · Geography",
+      world_mythology: "World Mythology",
+      computer_science_ai: "Computer Science · AI",
+      wildlife: "Wildlife",
+      cinema: "Cinema",
+      travel: "Travel",
+      sarcastic_jokes: "Dali’s observation",
     };
     const storageKey = stage.dataset.storageKey ?? "seventh-insight-pets";
     const defaultVisible = stage.dataset.defaultVisible === "true";
@@ -176,9 +185,10 @@ const {
       factMeta.hidden = !fact;
       if (fact) {
         categoryLabel.textContent = categoryNames[fact.category];
-        sourceLink.hidden = !fact.sourceUrl;
-        sourceLink.textContent = fact.sourceLabel ? `${fact.sourceLabel} ↗` : "Source ↗";
-        sourceLink.href = fact.sourceUrl ?? "";
+        sourceLink.hidden = false;
+        sourceLink.textContent = "Check source ↗";
+        sourceLink.setAttribute("aria-label", `Check source: ${fact.source_title}`);
+        sourceLink.href = fact.source_url;
       }
       speech.classList.add("show");
       speech.setAttribute("aria-hidden", "false");
@@ -289,25 +299,26 @@ const {
       const response = await fetch("/assets/data/dali-factoids.json");
       if (!response.ok) throw new Error("Fact library unavailable");
       const loaded = await response.json();
-      if (!Array.isArray(loaded) || loaded.length < 1000) throw new Error("Invalid fact library");
-      facts = loaded as Factoid[];
+      if (!Array.isArray(loaded) || loaded.length !== 5000) throw new Error("Invalid fact library");
+      const mechanicalComputingSubcategories = new Set([
+        "programming-languages",
+        "developer-tools",
+        "networks",
+        "web",
+        "python",
+      ]);
+      facts = (loaded as Factoid[]).filter((fact) =>
+        fact.category !== "computer_science_ai"
+        || !mechanicalComputingSubcategories.has(fact.subcategory)
+      );
       restoreQueue(facts);
       return facts;
     };
-
-    toggle.addEventListener("click", () => showDali(hidden));
-    dali.addEventListener("click", () => {
-      const hints = [
-        "Click on the logo 3 times",
-        "The portrait has another side",
-      ];
-      react(performance.now(), hints[hintIndex]);
-      hintIndex = (hintIndex + 1) % hints.length;
-    });
-    curiosityButton.addEventListener("click", async () => {
+    const showRandomFact = async () => {
       if (factLoading) return;
       factLoading = true;
       curiosityButton.disabled = true;
+      anotherButton.disabled = true;
       try {
         const library = await loadFacts();
         if (factQueue.length === 0) factQueue = shuffle(library.map(({ id }) => id));
@@ -325,7 +336,27 @@ const {
       } finally {
         factLoading = false;
         curiosityButton.disabled = false;
+        anotherButton.disabled = false;
       }
+    };
+
+    toggle.addEventListener("click", () => showDali(hidden));
+    dali.addEventListener("click", () => {
+      const hints = [
+        "Click on the logo 3 times",
+        "The portrait has another side",
+      ];
+      react(performance.now(), hints[hintIndex]);
+      hintIndex = (hintIndex + 1) % hints.length;
+    });
+    curiosityButton.addEventListener("click", showRandomFact);
+    anotherButton.addEventListener("click", showRandomFact);
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || !speech.classList.contains("show")) return;
+      clearTimeout(bubbleTimer);
+      speech.classList.remove("show");
+      speech.setAttribute("aria-hidden", "true");
+      curiosityButton.focus();
     });
     addEventListener("pointermove", trackPointer, { passive: true });
     addEventListener("pointerdown", trackPointer, { passive: true });
@@ -339,7 +370,7 @@ const {
       let greeted = false;
       try { greeted = sessionStorage.getItem("dali-greeted") === "yes"; } catch {}
       if (!greeted) {
-        setTimeout(() => say("Namaste! Bhao bhao!", 1400), 650);
+        setTimeout(() => say("Bhao bhao!", 1400), 650);
         try { sessionStorage.setItem("dali-greeted", "yes"); } catch {}
       }
     }
@@ -413,11 +444,17 @@ const {
     text-transform: uppercase;
   }
   .fact-meta[hidden] { display: none; }
-  .fact-meta a {
+  .fact-actions { display: inline-flex; gap: .65rem; align-items: center; }
+  .fact-meta a, .fact-meta button {
+    padding: 0;
+    border: 0;
     color: var(--accent);
+    background: none;
+    font: inherit;
     pointer-events: auto;
     text-underline-offset: .18em;
   }
+  .fact-meta button { cursor: pointer; text-decoration: underline; }
   .pets-toggle {
     position: fixed;
     right: 1.25rem;

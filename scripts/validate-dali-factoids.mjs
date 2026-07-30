@@ -1,17 +1,19 @@
 import { readFile } from "node:fs/promises";
 
 const expected = {
-  "science-history-geography": 500,
-  "computer-science-ai": 200,
-  "flora-fauna": 150,
-  "greek-mythology": 100,
-  sarcasm: 50,
+  science_history_geography: 1500,
+  world_mythology: 500,
+  computer_science_ai: 1000,
+  wildlife: 750,
+  cinema: 500,
+  travel: 500,
+  sarcastic_jokes: 250,
 };
 const path = new URL("../public/assets/data/dali-factoids.json", import.meta.url);
 const entries = JSON.parse(await readFile(path, "utf8"));
 
-if (!Array.isArray(entries) || entries.length !== 1000) {
-  throw new Error(`Dali corpus must contain exactly 1000 entries; found ${entries.length}.`);
+if (!Array.isArray(entries) || entries.length !== 5000) {
+  throw new Error(`Dali corpus must contain exactly 5000 entries; found ${entries.length}.`);
 }
 
 const ids = new Set();
@@ -25,20 +27,17 @@ for (const entry of entries) {
 
   const normalized = entry.text?.toLowerCase().replace(/\s+/g, " ").trim();
   if (!normalized || texts.has(normalized)) throw new Error(`Duplicate or missing text: ${entry.id}`);
-  if (/^q\d+\s+—/i.test(normalized)) throw new Error(`Unlabelled source entity: ${entry.id}`);
-  if (entry.text.length > 220) throw new Error(`Fact exceeds 220 characters: ${entry.id}`);
+  if (entry.text.length < 20) throw new Error(`Fact is too short: ${entry.id}`);
   texts.add(normalized);
   counts[entry.category] += 1;
 
-  if (entry.category !== "sarcasm") {
-    if (!entry.sourceLabel) throw new Error(`Missing source label: ${entry.id}`);
-    try {
-      const url = new URL(entry.sourceUrl);
-      if (url.protocol !== "https:") throw new Error();
-      if (!["www.wikidata.org", "www.inaturalist.org"].includes(url.hostname)) throw new Error();
-    } catch {
-      throw new Error(`Invalid HTTPS source: ${entry.id}`);
-    }
+  if (!entry.subcategory) throw new Error(`Missing subcategory: ${entry.id}`);
+  if (!entry.source_title) throw new Error(`Missing source title: ${entry.id}`);
+  try {
+    const url = new URL(entry.source_url);
+    if (url.protocol !== "https:") throw new Error();
+  } catch {
+    throw new Error(`Invalid HTTPS source: ${entry.id}`);
   }
 }
 

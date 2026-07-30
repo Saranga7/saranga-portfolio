@@ -13,11 +13,7 @@ included with the locally bundled assets at
 
 ## Dali curiosity library
 
-The structured descriptions used for Dali's science, history, geography,
-computing, AI, and Greek-mythology entries are derived from
-[Wikidata](https://www.wikidata.org/), whose structured data is available
-under CC0. Each entry links to its individual Wikidata entity.
-
-Flora and fauna taxonomy is derived from the
-[iNaturalist API](https://www.inaturalist.org/pages/api+reference). Each entry
-links to its individual iNaturalist taxon record.
+The locally bundled `saranga-factoids-5000` collection supplies Dali's
+science, history, geography, mythology, computing, AI, wildlife, cinema,
+travel, and humorous entries. Every record retains the source title and URL
+provided by the collection.
