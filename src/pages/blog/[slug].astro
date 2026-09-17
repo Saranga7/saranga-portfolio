@@ -171,10 +171,10 @@ const showReadingFeatures = !["poem", "haiku"].includes(post.data.kind)
     will-change: transform;
   }
   .article-header { padding: clamp(4rem, 9vw, 8rem) 0 clamp(3rem, 7vw, 6rem); }
-  .back { display: inline-block; margin-bottom: clamp(4rem, 9vw, 8rem); color: var(--muted); font: 600 .62rem var(--font-mono); text-decoration: none; }
+  .back { display: inline-block; margin-bottom: clamp(4rem, 9vw, 8rem); color: var(--muted); font: 600 .8rem var(--font-sans); text-decoration: none; }
   .article-meta { display: flex; flex-wrap: wrap; gap: .7rem 1.3rem; color: var(--muted); font: 600 .6rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
   .article-meta a { color: var(--accent); text-decoration: none; }
-  h1 { max-width: 13ch; margin: 1rem 0 1.5rem; font: 500 clamp(3.8rem, 9vw, 8.2rem)/.84 var(--font-serif); letter-spacing: -.065em; }
+  h1 { max-width: 22ch; margin: 1rem 0 1.5rem; font: 600 clamp(2.5rem, 5.5vw, 5rem)/1.15 var(--font-heading); letter-spacing: -.025em; }
   .article-header > p { max-width: 43rem; margin: 0; color: var(--muted); font-size: clamp(1rem, 1.7vw, 1.25rem); }
   .article-grid { display: grid; grid-template-columns: .35fr 1fr .2fr; gap: clamp(2rem, 7vw, 7rem); padding: clamp(4rem, 9vw, 8rem) 0; }
   aside { grid-column: 1; }
@@ -187,7 +187,7 @@ const showReadingFeatures = !["poem", "haiku"].includes(post.data.kind)
   .article-prose :global(strong) { font-weight: 600; }
   .article-prose :global(a) { text-decoration-color: var(--accent); text-underline-offset: .2em; }
   .article-prose :global(blockquote) { margin: 2.5rem 0; padding: .5rem 0 .5rem 1.5rem; border-left: 2px solid var(--accent); color: var(--muted); font-style: italic; }
-  .article-prose :global(h2), .article-prose :global(h3) { margin: 2.2em 0 .7em; font-family: var(--font-serif); line-height: 1.1; }
+  .article-prose :global(h2), .article-prose :global(h3) { margin: 2.2em 0 .7em; font-family: var(--font-heading); line-height: 1.1; }
   .article-prose :global(ol) { margin: 2rem 0; padding-left: 2.2rem; list-style: decimal; }
   .article-prose :global(ol li) { padding-left: .55rem; }
   .article-prose :global(ol li::marker) { color: var(--accent); font: 600 .7rem var(--font-mono); }
@@ -211,7 +211,8 @@ const showReadingFeatures = !["poem", "haiku"].includes(post.data.kind)
   .kind-haiku .article-prose :global(.haiku-entry) { display: flex; scroll-margin-top: 8rem; min-height: 22rem; padding: clamp(2.5rem, 5vw, 4.5rem) 1.25rem; flex-direction: column; justify-content: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; }
   .kind-haiku .article-prose :global(.haiku-keyword) { display: inline-block; color: var(--accent); font: 600 .62rem var(--font-mono); letter-spacing: .14em; text-decoration: none; text-transform: uppercase; }
   .kind-haiku .article-prose :global(.haiku-entry blockquote) { margin: 2rem 0 1.5rem; }
-  .kind-haiku .article-prose :global(.haiku-entry blockquote p) { white-space: nowrap; font-size: clamp(.95rem, 1.35vw, 1.25rem); line-height: 1.9; }
+  .kind-haiku .article-prose :global(.haiku-entry) { container-type: inline-size; }
+  .kind-haiku .article-prose :global(.haiku-entry blockquote p) { white-space: nowrap; font-size: clamp(.65rem, 5.5cqi, 1.15rem); line-height: 1.9; }
   .article-footer { padding-bottom: clamp(6rem, 12vw, 11rem); }
   .source { padding: 1.3rem 0 3rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .65rem; }
   .source p { margin: 0 0 .25rem; }

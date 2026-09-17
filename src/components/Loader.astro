@@ -154,7 +154,7 @@ const animatedLogo = sourceLogo
 <style>
   .loader {
     position: fixed; inset: 0; z-index: 100; display: grid; place-content: center;
-    justify-items: center; color: var(--accent); background: var(--loader-bg);
+    justify-items: center; color: var(--logo-accent); background: var(--loader-bg);
     transition: opacity .35s ease, visibility .35s ease, background-color .38s ease;
   }
   .loader.is-done { opacity: 0; visibility: hidden; }
@@ -164,7 +164,7 @@ const animatedLogo = sourceLogo
     width: 7rem;
     height: 7rem;
     overflow: visible;
-    color: var(--accent);
+    color: var(--logo-accent);
     opacity: 1;
   }
   @media (prefers-reduced-motion: reduce) { .loader { transition: none; } }

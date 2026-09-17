@@ -1,5 +1,16 @@
 # Third-party notices
 
+## Source fonts
+
+Cormorant Garamond by Christian Thalmann and contributors is used for headings.
+Its SIL Open Font License accompanies the local font in
+`public/assets/fonts/cormorant-garamond/OFL.txt`.
+
+Source Serif 4 and Source Sans 3 are by Adobe and contributors, distributed
+under the SIL Open Font License 1.1. Fonts are served locally; their copyright
+notices and licences accompany them in `public/assets/fonts/source-serif-4/OFL.txt`
+and `public/assets/fonts/source-sans-3/OFL.txt`.
+
 ## VS Code Pets
 
 The Akita Inu animation assets used for Dali are from

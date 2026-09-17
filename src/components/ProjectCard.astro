@@ -28,11 +28,11 @@ const { project, index } = Astro.props;
   .art-link { position: relative; display: block; height: 100%; min-height: 30rem; overflow: hidden; }
   .art-link :global(.project-art) { position: absolute; inset: 0; width: 100%; height: 100%; }
   .project-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(2rem, 5vw, 4.5rem); }
-  h3 { margin: .65rem 0 1rem; font: 500 clamp(2.2rem, 5vw, 4.25rem)/.92 var(--font-serif); letter-spacing: -.04em; }
+  h3 { margin: .65rem 0 1rem; font: 600 clamp(1.9rem, 3.6vw, 3.2rem)/1.15 var(--font-heading); letter-spacing: -.02em; }
   h3 a { color: var(--text); text-decoration: none; }
   p { max-width: 34rem; margin: 0; color: var(--muted); }
   ul { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1.5rem 0; padding: 0; list-style: none; }
-  li { padding: .36rem .58rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 500 .65rem/1 var(--font-mono); }
+  li { padding: .36rem .58rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font: 500 .78rem/1.2 var(--font-sans); }
   @media (max-width: 760px) {
     .project-card, .project-card:nth-child(even) { grid-template-columns: 1fr; }
     .project-card:nth-child(even) .art-link { order: initial; }

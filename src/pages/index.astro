@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SocialIcon from "../components/SocialIcon.astro";
+import SignatureDetail from "../components/SignatureDetail.astro";
 import { awards, education, experience, moreWork, site } from "../data/site";
 
 const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
@@ -16,7 +17,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   <section class="hero container" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="eyebrow">ML Research · Paris</p>
-      <h1 id="hero-title">Learning<br /><em>across domains.</em></h1>
+      <div class="stellar-signature"><SignatureDetail kind="orbit" /></div>
+      <h1 id="hero-title">Learning <span class="heading-accent">across domains.</span></h1>
       <p class="intro">
         I’m Saranga, a machine-learning researcher interested in computer vision, multimodal learning, generative modeling, and representation learning. My work so far has involved projects across healthcare, scientific machine learning, cultural heritage, text, and audio.
       </p>
@@ -41,17 +43,21 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
         </div>
         <figcaption><span>Currently</span> Doctoral Researcher<br />Sorbonne Université</figcaption>
       </figure>
-     
-      <div class="portrait-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <svg class="portrait-orbit" viewBox="0 0 480 560" fill="none" aria-hidden="true">
+        <path d="M38 323C-2 180 97 31 257 22s249 159 196 306" />
+        <path d="m91 89-8-8m61-33-5-11m65-13-1-12m65 10 2-12m61 29 5-11m48 50 9-8m26 68 11-5" />
+        <circle cx="38" cy="323" r="3" />
+      </svg>
     </div>
-   
+
   </section>
 
   <section class="section featured container" id="work" aria-labelledby="work-title">
     <div class="section-heading">
-      <p class="eyebrow">Selected work · 01—04</p>
+
       <div>
-        <h2 id="work-title">Selected<br /><em>research.</em></h2>
+        <h2 id="work-title">Selected <span class="heading-accent">research.</span></h2>
         <p>From ancient seal impressions and blood-smear microscopy to the hidden structure of the cosmos and the acoustics of musical instruments.</p>
       </div>
     </div>
@@ -63,8 +69,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   <section class="section publications" id="publications" aria-labelledby="publications-title">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Publications · Selected</p>
-        <div><h2 id="publications-title">Research<br /><em>publications.</em></h2><p>* Equal contribution where indicated in the author list.</p></div>
+
+        <div><h2 id="publications-title">Research <span class="heading-accent">publications.</span></h2><p>* Equal contribution where indicated in the author list.</p></div>
       </div>
       <div class="filters" aria-label="Filter publications by domain">
         <button class="active" type="button" data-filter="all" aria-pressed="true">All</button>
@@ -99,8 +105,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
 
   <section class="section container" id="experience" aria-labelledby="experience-title">
     <div class="section-heading">
-      <p class="eyebrow">Experience · 2021—Now</p>
-      <h2 id="experience-title">A path through<br /><em>many domains.</em></h2>
+
+      <h2 id="experience-title">A path through <span class="heading-accent">many domains.</span></h2>
     </div>
     <div class="timeline">
       {experience.map((item, index) => (
@@ -116,8 +122,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   <section class="section education-section" id="education" aria-labelledby="education-title">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Education · 2018—Present</p>
-        <h2 id="education-title">Academic<br /><em>record.</em></h2>
+
+        <h2 id="education-title">Academic <span class="heading-accent">record.</span></h2>
       </div>
       <div class="education">
         {education.map((item, index) => (
@@ -134,8 +140,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
 
   <section class="section container" aria-labelledby="more-title">
     <div class="section-heading">
-      <p class="eyebrow">More work · Field notes</p>
-      <h2 id="more-title">Additional<br /><em>projects.</em></h2>
+
+      <h2 id="more-title">Additional <span class="heading-accent">projects.</span></h2>
     </div>
     <div class="bento">
       {moreWork.map((work, index) => (
@@ -149,7 +155,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
 
   <section class="section awards-section">
     <div class="container awards-grid">
-      <div><p class="eyebrow">Recognition</p><h2>A few markers<br /><em>along the way.</em></h2></div>
+      <div><div class="section-heading"><h2>A few markers <span class="heading-accent">along the way.</span></h2></div></div>
       <div>
         {awards.map((award) => (
           <article><span>{award.year}</span><div><h3>{award.title}</h3><p>{award.detail}</p></div></article>
@@ -189,8 +195,9 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
         </svg>
       </div>
       <div>
-        <p class="eyebrow">Beyond research · Personal</p>
-        <h2 id="personal-title">There’s more to a man than his papers.</h2>
+        <SignatureDetail kind="tree" />
+        <p class="eyebrow"><SignatureDetail kind="leaf" />Beyond research · Personal</p>
+        <h2 id="personal-title">There’s more to a man <span class="heading-accent">than his papers.</span></h2>
         <p>I often travel and seldom write...</p>
         <div class="personal-links">
           <a class="button" href="/blog"><SocialIcon name="blog" /> Read my writing</a>
@@ -201,8 +208,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   </section>
 
   <section class="section contact container" id="contact" aria-labelledby="contact-title">
-    <p class="eyebrow">Contact · Say hello</p>
-    <h2 id="contact-title">Have a question worth<br /><em>exploring together?</em></h2>
+
+    <div class="section-heading"><h2 id="contact-title">Have a question worth <span class="heading-accent">exploring together?</span></h2></div>
     <a class="email" href={`mailto:${site.email}`}>{site.email} <span aria-hidden="true">↗</span></a>
     <div class="contact-links">
       <a href={site.social.linkedin} aria-label="LinkedIn" title="LinkedIn"><SocialIcon name="linkedin" /></a>
@@ -256,7 +263,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
 
 <style>
   .hero { position: relative; display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(2rem, 7vw, 7rem); align-items: center; min-height: calc(100svh - 4.5rem); padding: 4rem 0 5rem; }
-  .hero h1 { margin: .75rem 0 1.5rem; font: 500 clamp(4rem, 8.7vw, 8rem)/.82 var(--font-serif); letter-spacing: -.065em; }
+  .hero h1 { margin: .75rem 0 1.5rem; font: 600 clamp(3.2rem, 6.5vw, 6rem)/1.05 var(--font-heading); letter-spacing: -.03em; }
   em { color: var(--accent); font-weight: inherit; }
   .intro { max-width: 38rem; margin: 0; color: var(--muted); font-size: clamp(1.05rem, 1.6vw, 1.28rem); }
   .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 2rem; }
@@ -264,7 +271,6 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   .social-row a, .contact-links a { display: grid; width: 2.45rem; height: 2.45rem; place-items: center; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); text-decoration: none; transition: color .2s, border-color .2s, transform .2s; }
   .social-row a:hover, .contact-links a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
   .portrait-wrap { position: relative; justify-self: end; width: min(100%, 30rem); padding: 1.5rem 1rem 2rem 2rem; isolation: isolate; }
-  .portrait-wrap::before { position: absolute; z-index: -2; top: -1rem; right: -1.5rem; width: 76%; aspect-ratio: 1; border: 1px solid var(--border); border-radius: 50%; content: ""; }
   .portrait-wrap::after { position: absolute; z-index: -1; right: -.35rem; bottom: .65rem; width: calc(100% - 2.4rem); height: calc(100% - 2.4rem); border: 1px solid var(--accent); content: ""; clip-path: polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); opacity: .55; transform: translate(.65rem, .65rem); }
   figure { position: relative; z-index: 2; margin: 0; }
   .portrait-frame { overflow: hidden; background: var(--surface-2); clip-path: polygon(8% 0,100% 0,100% 92%,92% 100%,0 100%,0 8%); }
@@ -276,22 +282,18 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   .portrait-switch[aria-pressed="true"] .portrait-photo { opacity: 0; transform: scale(1.08); }
   .portrait-switch[aria-pressed="true"] .portrait-monogram { opacity: 1; clip-path: circle(76% at 50% 50%); transform: rotate(0) scale(1); }
   figcaption { position: absolute; right: -1rem; bottom: -1.25rem; padding: .85rem 1.05rem; border: 1px solid var(--border); color: var(--muted); background: var(--surface); box-shadow: var(--shadow-soft); font-size: .68rem; line-height: 1.4; }
-  figcaption span { display: block; color: var(--accent); font: 600 .55rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+  figcaption span { display: block; color: var(--accent); font: 600 .7rem var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
   .portrait-index { position: absolute; z-index: 3; top: 18%; left: -.6rem; color: var(--accent); font: 600 .57rem var(--font-mono); letter-spacing: .16em; writing-mode: vertical-rl; transform: rotate(180deg); }
-  .portrait-lines { position: absolute; z-index: 3; top: 2.25rem; right: -1rem; display: grid; gap: .38rem; width: 4.5rem; }
-  .portrait-lines span { height: 1px; background: var(--accent); transform-origin: right; }
-  .portrait-lines span:nth-child(2) { transform: scaleX(.7); }
-  .portrait-lines span:nth-child(3) { transform: scaleX(.4); }
   .scroll-cue { position: absolute; bottom: 1.4rem; left: 0; color: var(--muted); font: 500 .57rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
   .scroll-cue span { color: var(--accent); }
   .featured { padding-top: 7rem; }
   .section-heading > div { display: grid; gap: 1rem; }
   .project-list { display: grid; gap: 2rem; }
-  .awards-grid h2 { margin: .8rem 0 0; font: 500 clamp(3rem, 6.5vw, 6rem)/.93 var(--font-serif); letter-spacing: -.05em; }
+  .awards-grid h2 { margin: .8rem 0 0; font: 600 clamp(2.5rem, 5vw, 4.8rem)/1.08 var(--font-heading); letter-spacing: -.025em; }
   .timeline { border-top: 1px solid var(--border); }
   .timeline article { display: grid; grid-template-columns: 3rem minmax(15rem, .8fr) 1.2fr; gap: clamp(1rem, 4vw, 4rem); padding: 2rem 0; border-bottom: 1px solid var(--border); }
   .timeline-index { color: var(--accent); font: 500 .63rem var(--font-mono); }
-  .timeline h3 { margin: .45rem 0 0; font: 500 1.5rem/1.1 var(--font-serif); }
+  .timeline h3 { margin: .45rem 0 0; font: 600 1.5rem/1.1 var(--font-heading); }
   .institution { margin: .35rem 0 0; color: var(--text) !important; font-size: .75rem; }
   .timeline article > div:last-child p { max-width: 35rem; margin: 0 0 .8rem; color: var(--muted); font-size: .85rem; }
   .location { color: var(--muted); font: 500 .58rem var(--font-mono); }
@@ -299,17 +301,17 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   .education article { display: grid; grid-template-columns: 3rem 10rem minmax(18rem, 1fr) minmax(12rem, .55fr); gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: 2.25rem 0; border-bottom: 1px solid var(--border); }
   .education-index { color: var(--accent); font: 600 .62rem var(--font-mono); }
   .education article p { margin: 0; color: var(--muted); font: .62rem/1.5 var(--font-mono); }
-  .education h3 { margin: 0; font: 500 clamp(1.45rem, 2.5vw, 2.15rem)/1.08 var(--font-serif); }
+  .education h3 { margin: 0; font: 600 clamp(1.45rem, 2.5vw, 2.15rem)/1.08 var(--font-heading); }
   .education article strong { color: var(--muted); font-size: .78rem; font-weight: 500; line-height: 1.5; }
   .publications { background: var(--surface-2); }
   .filters { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 2rem; }
-  .filters button { padding: .45rem .7rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: transparent; font: 600 .62rem var(--font-mono); cursor: pointer; }
+  .filters button { padding: .45rem .7rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); background: transparent; font: 600 .78rem var(--font-sans); cursor: pointer; }
   .filters button.active { color: var(--surface); background: var(--text); border-color: var(--text); }
   .publication-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
   .publication-list li { display: grid; grid-template-columns: 4rem 1fr auto; gap: 2rem; padding: 1.65rem 0; border-bottom: 1px solid var(--border); }
   .publication-list li[hidden] { display: none; }
   .pub-year { color: var(--accent); font: 600 .63rem var(--font-mono); }
-  .publication-list h3 { max-width: 55rem; margin: 0 0 .5rem; font: 500 clamp(1.25rem, 2vw, 1.65rem)/1.15 var(--font-serif); }
+  .publication-list h3 { max-width: 55rem; margin: 0 0 .5rem; font: 600 clamp(1.25rem, 2vw, 1.65rem)/1.15 var(--font-heading); }
   .publication-list p { margin: 0 0 .4rem; color: var(--muted); font-size: .73rem; }
   .publication-list div > span { color: var(--muted); font: 500 .61rem var(--font-mono); }
   .pub-actions { display: flex; flex-direction: column; gap: .5rem; align-items: flex-end; }
@@ -327,16 +329,16 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   .bento article:nth-child(1), .bento article:nth-child(6), .bento article:nth-child(9) { grid-column: span 7; }
   .bento article:nth-child(2), .bento article:nth-child(5), .bento article:nth-child(10) { grid-column: span 5; }
   .bento article:last-child:nth-child(odd) { grid-column: span 12; }
-  .bento h3 { margin: auto 0 .5rem; font: 500 clamp(1.7rem, 3vw, 2.6rem)/1 var(--font-serif); }
+  .bento h3 { margin: auto 0 .5rem; font: 600 clamp(1.6rem, 2.6vw, 2.3rem)/1.18 var(--font-heading); }
   .bento p { max-width: 34rem; margin: 0 0 1.2rem; color: var(--muted); font-size: .8rem; }
   .todo { color: var(--muted); font: 500 .58rem var(--font-mono); }
   .awards-section { background: var(--text); color: var(--surface); }
-  [data-theme="dark"] .awards-section { background: #16231b; color: var(--text); }
+  :global([data-theme="dark"]) .awards-section { background: #16231b; color: var(--text); }
   .awards-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 8rem); }
   .awards-grid > div:last-child { border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
   .awards-grid article { display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; padding: 1.35rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent); }
   .awards-grid article > span { color: var(--accent-bright); font: 600 .65rem var(--font-mono); }
-  .awards-grid h3 { margin: 0 0 .25rem; font: 500 1.2rem var(--font-serif); }
+  .awards-grid h3 { margin: 0 0 .25rem; font: 600 1.2rem var(--font-heading); }
   .awards-grid article p { margin: 0; opacity: .68; font-size: .75rem; }
   .personal-card { display: grid; grid-template-columns: .8fr 1.2fr; overflow: hidden; border: 1px solid var(--border); border-radius: 1.5rem; background: var(--surface); }
   .personal-art { position: relative; min-height: 26rem; overflow: hidden; color: var(--muted); background: #eadfd2; }
@@ -350,22 +352,22 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   .postcard path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .camera { fill: var(--surface); stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
   .camera circle { fill: none; }
-  :global([data-theme="dark"]) .personal-art { color: var(--muted); background: #171512; }
-  :global([data-theme="dark"]) .postcard rect:nth-child(2) { fill: #1d1a17; }
+  :global([data-theme="dark"]) .personal-art { color: var(--muted); background: var(--surface-2); }
+  :global([data-theme="dark"]) .postcard rect:nth-child(2) { fill: var(--surface-2); }
   .personal-card > div:last-child { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 6vw, 5rem); }
-  .personal h2 { margin: .7rem 0 1rem; font: 500 clamp(2.5rem, 5vw, 4.5rem)/.96 var(--font-serif); letter-spacing: -.04em; }
+  .personal h2 { margin: .7rem 0 1rem; font: 600 clamp(2rem, 3.5vw, 3.25rem)/1.18 var(--font-heading); letter-spacing: -.04em; }
   .personal p { max-width: 35rem; color: var(--muted); }
   .personal-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.2rem; }
   .contact { text-align: center; }
-  .contact h2 { margin: 1rem auto 2.5rem; font: 500 clamp(3.3rem, 8vw, 7.5rem)/.87 var(--font-serif); letter-spacing: -.055em; }
-  .email { display: inline-flex; gap: 1rem; align-items: center; padding-bottom: .35rem; border-bottom: 1px solid var(--accent); font: 500 clamp(1rem, 2.4vw, 1.7rem) var(--font-mono); text-decoration: none; }
+  .contact h2 { max-width: 23ch; margin: 1rem auto 2.5rem; font: 600 clamp(2.5rem, 5vw, 4.8rem)/1.08 var(--font-heading); letter-spacing: -.025em; }
+  .email { display: inline-flex; gap: 1rem; align-items: center; padding-bottom: .35rem; border-bottom: 1px solid var(--accent); font: 500 clamp(1rem, 2.4vw, 1.7rem) var(--font-sans); text-decoration: none; }
   .email span { color: var(--accent); }
   .contact-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
   .closing-quote { padding: clamp(5rem, 10vw, 9rem) 1rem; color: var(--surface); background: var(--text); text-align: center; }
-  [data-theme="dark"] .closing-quote { color: var(--text); background: #16231b; }
+  :global([data-theme="dark"]) .closing-quote { color: var(--text); background: #16231b; }
   .closing-quote blockquote { max-width: 66rem; margin: 0 auto; }
   .closing-quote blockquote > span { display: block; height: 3.5rem; color: inherit; font: 500 6rem/1 var(--font-serif); opacity: .38; }
-  .closing-quote p { margin: 0 auto 1.5rem; font: 500 clamp(2.3rem, 5.5vw, 5rem)/1.05 var(--font-serif); letter-spacing: -.035em; }
+  .closing-quote p { margin: 0 auto 1.5rem; font: 500 clamp(2rem, 4vw, 3.8rem)/1.22 var(--font-serif); letter-spacing: -.035em; }
   .closing-quote cite { opacity: .65; font: 500 .62rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
   @media (max-width: 800px) {
     .hero { grid-template-columns: 1fr; padding-top: 2.5rem; }
@@ -382,10 +384,18 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
     .pub-actions { grid-column: 2; flex-direction: row; align-items: center; }
   }
   @media (max-width: 600px) {
-    .hero h1 { font-size: clamp(3.7rem, 19vw, 5.8rem); }
+    .hero h1 { font-size: clamp(2.8rem, 12vw, 4.5rem); }
     .bento article:nth-child(n) { grid-column: span 12; min-height: 14rem; }
     .personal-art { min-height: 20rem; }
     .contact-links { flex-wrap: wrap; gap: 1rem; }
     .email { font-size: .82rem; }
   }
+  .portrait-orbit { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; stroke: var(--accent); stroke-width: .8; opacity: .3; pointer-events: none; }
+  .hero-copy { min-width: 0; }
+  .stellar-signature { margin: .6rem 0; }
+  .awards-grid .section-heading, .contact .section-heading { display: block; }
+  .awards-grid .section-heading::before { background: currentColor; opacity: .3; }
+  .awards-grid .section-heading::after { border-color: var(--accent-bright); }
+  .contact .section-heading::before { left: calc(50% - 2.25rem); }
+  .contact .section-heading::after { left: calc(50% + 2.25rem); }
 </style>

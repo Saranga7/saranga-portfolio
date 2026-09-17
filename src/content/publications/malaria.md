@@ -4,7 +4,7 @@ title: "Detection of Malaria Infection from parasite-free blood smears"
 authors: "Nicolas Bourriez*, Saranga Kingkor Mahanta*, Ivan Svatko, Eleanor Lacassagne, et al."
 venueOrStatus: "medRxiv (preprint)"
 domains: ["Healthcare", "Computer Vision"]
-paperUrl: "https://www.medrxiv.org/content/10.64898/2025.12.29.25343125v1"
+paperUrl: "https://link.springer.com/article/10.1186/s12936-026-06047-z"
 bibtex: |
   @article{bourriez2025malaria,
     title={Detection of Malaria Infection from parasite-free blood smears},
