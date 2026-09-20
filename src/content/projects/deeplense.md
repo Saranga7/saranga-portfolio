@@ -16,6 +16,6 @@ articles:
     url: "https://medium.com/@saranga.boo/updating-the-deeplense-pipeline-part-2-gsoc-2023-with-ml4sci-299a48d0dd23"
 ---
 
-Across Google Summer of Code 2022 and 2023, Saranga contributed to ML4SCI’s DeepLense project.
+During Google Summer of Code 2022 and 2023, I contributed to ML4SCI’s DeepLense project.
 
 The work included regression, classification, and anomaly-detection tasks on strong gravitational-lensing datasets, along with analysis of dark-matter substructures and model benchmarking.

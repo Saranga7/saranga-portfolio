@@ -1,0 +1,154 @@
+[
+  {
+    "id": "moon",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Moon",
+    "source_url": "https://science.nasa.gov/moon/facts/",
+    "facts": [
+      "The Moon's far side gets sunlight too; far side does not mean permanently dark.",
+      "The Moon spins once per orbit, which is why the same face stays pointed toward Earth.",
+      "Humans first saw photographs of the Moon's far side from a Soviet probe in 1959.",
+      "Apollo astronauts brought back about 382 kilograms of lunar rocks and soil.",
+      "The Moon's dark seas are ancient lava-filled basins, not bodies of water.",
+      "The Moon's crust is thicker on its far side than on its near side.",
+      "Water ice survives inside permanently shadowed craters near the Moon's poles.",
+      "Your weight on the Moon would be about one-sixth of your weight on Earth.",
+      "The Moon once had a global ocean of molten rock.",
+      "Tiny meteorite impacts can release water trapped in the Moon's surface material."
+    ]
+  },
+  {
+    "id": "sun",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Sun",
+    "source_url": "https://science.nasa.gov/sun/facts/",
+    "facts": [
+      "The Sun contains about 99.8% of all the mass in our solar system.",
+      "The Sun's outer atmosphere is far hotter than its visible surface.",
+      "The Sun spins faster at its equator than near its poles.",
+      "Our whole solar system travels around the Milky Way, taking about 230 million years per circuit.",
+      "The Sun shines by fusing hydrogen into helium, not by burning like a campfire.",
+      "About 1.3 million Earth-sized volumes would fit inside the Sun.",
+      "The Sun's core reaches roughly fifteen million degrees Celsius.",
+      "Energy takes many thousands of years to work its way outward through the Sun's interior.",
+      "The Sun formed from a collapsing cloud of gas and dust about 4.6 billion years ago.",
+      "The Sun will eventually swell into a red giant, then leave behind a white dwarf."
+    ]
+  },
+  {
+    "id": "pluto",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Pluto",
+    "source_url": "https://science.nasa.gov/dwarf-planets/pluto/facts/",
+    "facts": [
+      "Pluto has mountains built from water ice rather than ordinary rock.",
+      "Pluto's smooth plains include frozen nitrogen slowly churning like a very sluggish pot.",
+      "Seen from one side of Pluto, its moon Charon would stay in the same place in the sky.",
+      "Charon is about half Pluto's width, unusually large for a moon relative to its parent.",
+      "New Horizons gave us our first close-up look at Pluto in 2015.",
+      "Pluto was closer to the Sun than Neptune between 1979 and 1999.",
+      "Pluto's orbit takes about 248 Earth years to complete.",
+      "Pluto is smaller in diameter than Earth's Moon.",
+      "Pluto's four small outer moons tumble instead of always showing it the same face.",
+      "The moon Kerberos takes its name from the three-headed underworld dog of Greek mythology."
+    ]
+  },
+  {
+    "id": "comets",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Comets",
+    "source_url": "https://science.nasa.gov/solar-system/comets/facts/",
+    "facts": [
+      "A comet can grow two different tails: one of dust and one of electrically charged gas.",
+      "A comet's tail is pushed away from the Sun rather than simply trailing behind its motion.",
+      "A comet's bright surrounding cloud can be vastly larger than its tiny frozen nucleus.",
+      "A warming comet's ice changes directly into gas, carrying dust with it.",
+      "Some sun-grazing comets break apart or evaporate during their close encounters.",
+      "Ancient Chinese records of comets still help astronomers study their appearances.",
+      "Comets preserve material left over from the formation of the solar system.",
+      "NASA's Stardust mission brought comet particles back to Earth in 2006.",
+      "NASA deliberately crashed an impactor into comet Tempel 1 to study material beneath its surface.",
+      "Some long-period comets take millions of years to complete a single orbit."
+    ]
+  },
+  {
+    "id": "asteroids",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Asteroids",
+    "source_url": "https://science.nasa.gov/solar-system/asteroids/facts/",
+    "facts": [
+      "All the asteroids together have less mass than Earth's Moon.",
+      "Some asteroids have moons of their own.",
+      "Double asteroids can consist of two similarly sized rocks orbiting each other.",
+      "Some asteroids tumble through space instead of spinning neatly around one axis.",
+      "Being labelled a potentially hazardous asteroid does not mean a collision is predicted.",
+      "In 2022, NASA's DART impact changed the orbit of the asteroid moon Dimorphos.",
+      "The Chicxulub impact crater lies partly beneath the Yucatán region and nearby sea.",
+      "The 1908 Tunguska airburst flattened a vast area of Siberian forest.",
+      "A planet's gravity can nudge an asteroid into a very different orbit.",
+      "Infrared telescopes help astronomers find dark asteroids that reflect little visible sunlight."
+    ]
+  },
+  {
+    "id": "meteorites",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Meteorites",
+    "source_url": "https://science.nasa.gov/solar-system/meteors-meteorites/facts/",
+    "facts": [
+      "A shooting star is a piece of space debris lighting up the atmosphere, not a falling star.",
+      "Some rocks found on Earth were blasted off the Moon or Mars by impacts.",
+      "Meteor showers recur when Earth crosses trails of debris left in space.",
+      "The Perseid meteors come from debris shed by comet Swift-Tuttle.",
+      "Most meteor-shower particles are only sand-grain to pea-sized.",
+      "Dark meteorites are easier to spot against Antarctica's ice than against ordinary rocky ground.",
+      "A meteorite's melted outer coating can form a thin, dark fusion crust.",
+      "Trapped gases can help identify a meteorite as a piece of Mars.",
+      "Most meteorites come from asteroids, not comets.",
+      "Iron meteorites are easier to recognise than stony ones, even though stony meteorites fall more often."
+    ]
+  },
+  {
+    "id": "black-holes",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Black holes",
+    "source_url": "https://science.nasa.gov/universe/black-holes/",
+    "facts": [
+      "A black hole's event horizon is a boundary of no return, not a solid surface.",
+      "Black holes are not cosmic vacuum cleaners; at a distance, their gravity behaves normally.",
+      "A black hole replacing the Sun with the same mass would leave planetary orbits essentially unchanged.",
+      "Gas swirling around a black hole can shine brilliantly even though the hole itself does not.",
+      "A black hole can bend the light of a more distant star like a gravitational lens.",
+      "Astronomers traced stellar orbits to demonstrate a massive black hole at our galaxy's centre.",
+      "Spaghettification describes the stretching caused by strongly unequal gravity near a black hole.",
+      "Colliding black holes send out ripples in space-time called gravitational waves.",
+      "Some black holes form when massive stars collapse at the end of their lives.",
+      "The Milky Way's central black hole has about four million times the Sun's mass."
+    ]
+  },
+  {
+    "id": "stars",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Stars",
+    "source_url": "https://science.nasa.gov/universe/stars/",
+    "facts": [
+      "More massive stars generally die younger because they use their fuel much faster.",
+      "Some small stars can keep shining for trillions of years.",
+      "Stars begin inside cold clouds of gas and dust that collapse under gravity.",
+      "Young stars often form in groups called stellar clusters.",
+      "A newborn star can glow from the heat of collapse before nuclear fusion begins.",
+      "A star stays stable when outward pressure balances gravity pulling inward.",
+      "A white dwarf is a stellar remnant roughly the size of Earth.",
+      "Planetary nebulae are shed stellar material, despite having planets in their name.",
+      "Massive stars manufacture progressively heavier elements inside themselves.",
+      "A giant star's outer layers can expand while its core contracts."
+    ]
+  }
+]

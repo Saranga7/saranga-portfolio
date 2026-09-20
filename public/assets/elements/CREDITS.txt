@@ -1,0 +1,24 @@
+Four-nation artwork and emblems
+
+The elemental_symbols.jpg sheet and air_nomads.png, water_tribe.png,
+earth_kingdom.png, and fire_nation.png landscapes were supplied by the
+site owner in the atla directory. Their original creator and licence
+were not provided; no ownership or open-licence claim is made here.
+
+The symbol sheet is unchanged. SVG clipping and luminance-to-alpha filters
+isolate its four symbols and display them in the selected theme colour.
+The landscapes are delivered as locally generated responsive WebP copies;
+the source PNG files remain unchanged.
+
+Combined toggle symbol — atla.png
+Supplied by Saranga Mahanta, identified by him as AI-generated.
+The supplied file is unchanged; CSS applies monochrome contrast and
+blending to suppress its paper background, plus inversion in dark mode.
+
+These assets replace the previously sourced Commons emblems and
+hand-drawn SVG landscapes. The combined toggle replaces the earlier
+DeviantArt artwork.
+
+Unofficial fan tribute. Avatar: The Last Airbender and its nation designs
+belong to their respective rights holders, including Nickelodeon.
+No affiliation or endorsement is implied.

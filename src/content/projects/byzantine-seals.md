@@ -10,7 +10,7 @@ role: "Doctoral Researcher at Sorbonne Université"
 coverVariant: "seals"
 ---
 
-Saranga applies computer vision and multimodal methods to the interpretation and restoration of Byzantine seals.
+Applying computer vision and multimodal methods for the interpretation and restoration of Byzantine seals.
 
 The research is conducted at Sorbonne Université in collaboration with historians, with the aim of designing machine-learning tools for automatic sigillographic analysis.
 

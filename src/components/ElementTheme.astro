@@ -1,0 +1,82 @@
+---
+import ElementIcon from "./ElementIcon.astro";
+import { elements } from "../data/elements";
+---
+<div class="element-control" data-element-control hidden>
+  <button class="element-toggle" type="button" aria-label="Choose your element" aria-expanded="false" aria-controls="element-panel" data-element-toggle title="Choose your element">
+    <span class="toggle-symbol"><ElementIcon element="original" /></span>
+  </button>
+  <div class="element-panel" id="element-panel" hidden>
+    <fieldset>
+      <legend>Choose your element</legend>
+      {elements.map(({ id, label }) => <label class="element-option">
+        <input type="radio" name="blog-element" value={id} checked={id === "original"} />
+        <span class="option-icon"><ElementIcon element={id} /></span>
+        <strong>{label}</strong>
+      </label>)}
+    </fieldset>
+    <label class="effects-option"><input type="checkbox" data-element-effects checked /> Cursor effects</label>
+    <p><a href="/assets/elements/CREDITS.txt" target="_blank" rel="noopener">Symbol credits ↗</a></p>
+  </div>
+</div>
+<script>
+  import { elements } from "../data/elements";
+  const control = document.querySelector<HTMLElement>("[data-element-control]");
+  const toggle = control?.querySelector<HTMLButtonElement>("[data-element-toggle]");
+  const panel = control?.querySelector<HTMLElement>("#element-panel");
+  if (control && toggle && panel) {
+    const radios = Array.from(control.querySelectorAll<HTMLInputElement>('input[type="radio"]'));
+    const sync = () => {
+      const current = document.documentElement.dataset.blogElement ?? "original";
+      radios.forEach((radio) => { radio.checked = radio.value === current; });
+      toggle.setAttribute("aria-label", `Choose your element (current: ${elements.find(e => e.id === current)?.label ?? "Original"})`);
+    };
+    const close = (restoreFocus: boolean) => {
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      if (restoreFocus) toggle.focus();
+    };
+    control.hidden = false;
+    sync();
+    toggle.addEventListener("click", () => {
+      if (!panel.hidden) { close(true); return; }
+      panel.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+      radios.find(radio => radio.checked)?.focus();
+    });
+    radios.forEach((radio) => radio.addEventListener("change", () => {
+      if (!radio.checked) return;
+      document.documentElement.dataset.blogElement = radio.value;
+      document.dispatchEvent(new Event("blog-element-change"));
+      try { localStorage.setItem("blog-element", radio.value); } catch {}
+      sync();
+    }));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) { event.stopPropagation(); close(true); }
+    }, true);
+    document.addEventListener("pointerdown", (event) => {
+      if (!panel.hidden && event.target instanceof Node && !control.contains(event.target)) close(false);
+    });
+    control.addEventListener("focusout", (event) => {
+      if (!panel.hidden && event.relatedTarget instanceof Node && !control.contains(event.relatedTarget)) close(false);
+    });
+  }
+</script>
+<style>
+  .element-control { position: fixed; left: max(1.25rem, env(safe-area-inset-left)); bottom: calc(4.55rem + env(safe-area-inset-bottom)); z-index: 55; }
+  .element-control[hidden], .element-panel[hidden] { display: none; }
+  .element-toggle { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); box-shadow: var(--shadow-soft); cursor: pointer; }
+  .element-icon { width: 1.7rem; }
+  .toggle-symbol { display: block; width: 1.8rem; }
+  .element-panel { position: absolute; bottom: 3.4rem; left: 0; width: min(18rem, calc(100vw - 2.5rem)); max-height: calc(100dvh - 10rem - env(safe-area-inset-bottom)); overflow-y: auto; padding: 1rem; border: 1px solid var(--accent); border-radius: .8rem; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+  fieldset { margin: 0; padding: 0; border: 0; }
+  legend { padding: 0 0 .75rem; font: 600 1.1rem var(--font-sans); }
+  .element-option { display: flex; align-items: center; gap: .8rem; padding: .65rem; border: 1px solid transparent; border-radius: .35rem; cursor: pointer; }
+  .element-option:has(input:checked) { background: var(--surface-2); border-color: var(--accent); }
+  input { accent-color: var(--accent); width: 1rem; height: 1rem; flex-shrink: 0; }
+  .option-icon { width: 2rem; color: var(--accent); flex-shrink: 0; }
+  strong { display: block; }
+  strong { font: 600 .9rem var(--font-sans); }
+  .effects-option { display: flex; align-items: center; gap: .8rem; margin-top: .8rem; padding: .75rem .65rem 0; border-top: 1px solid var(--border); font: .8rem var(--font-sans); cursor: pointer; }
+  p { margin: .8rem .6rem 0; font-size: .72rem; color: var(--muted); }
+</style>

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "giraffe",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — giraffe",
+    "source_url": "https://animals.sandiegozoo.org/animals/giraffe",
+    "facts": [
+      "Giraffes have seven neck bones, the same number as humans.",
+      "A giraffe's spotted coat is individually distinctive, rather like a fingerprint.",
+      "Giraffe horns are skin-covered structures called ossicones, and both sexes have them.",
+      "Giraffes can move both legs on one side forward together when walking.",
+      "A giraffe's tongue can reach around acacia thorns to gather leaves.",
+      "Giraffes chew cud and have four stomach compartments.",
+      "A newborn giraffe drops to the ground because its mother gives birth standing up.",
+      "Giraffe calves can stand and walk within about an hour of birth.",
+      "Giraffe mothers sometimes form nurseries, with one adult watching while others feed.",
+      "Giraffes are not silent: they can snort, grunt, hiss, and make other sounds."
+    ]
+  },
+  {
+    "id": "elephant",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — elephant",
+    "source_url": "https://animals.sandiegozoo.org/animals/elephant",
+    "facts": [
+      "An elephant's trunk has no bones or cartilage.",
+      "Elephants suck water into their trunks, then pour it into their mouths to drink.",
+      "Elephant tusks are enlarged incisor teeth.",
+      "New elephant molars move forward from the back of the jaw like a conveyor belt.",
+      "An elephant's large ears help release heat from its blood.",
+      "Wrinkles in elephant skin trap moisture and help the animal stay cool.",
+      "Some elephant calls are too low-pitched for human ears.",
+      "Elephants can favour one tusk, much as people favour one hand.",
+      "Elephant herds can form a protective circle with calves in the middle.",
+      "An elephant pregnancy can last around 22 months."
+    ]
+  },
+  {
+    "id": "hippo",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — hippo",
+    "source_url": "https://animals.sandiegozoo.org/animals/hippo",
+    "facts": [
+      "A hippo's reddish skin secretion is neither blood nor ordinary sweat.",
+      "Hippos produce a skin coating that helps protect them from sunburn.",
+      "Hippos can surface for air while sleeping without fully waking.",
+      "Hippos move underwater by pushing off the bottom rather than paddling like dogs.",
+      "A hippo's eyes, ears, and nostrils sit high enough to work while most of it is submerged.",
+      "Hippos can close their nostrils underwater.",
+      "A hippo's wide-open mouth can be a threat display rather than a sleepy yawn.",
+      "Hippos usually leave the water after sunset to graze on land.",
+      "Hippo mothers can nurse their calves underwater.",
+      "Hippos use their tails to scatter dung when marking territory."
+    ]
+  },
+  {
+    "id": "okapi",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — okapi",
+    "source_url": "https://animals.sandiegozoo.org/animals/okapi",
+    "facts": [
+      "The zebra-striped okapi is a giraffe relative, not a kind of zebra.",
+      "Okapis have oily coats that help shed rainforest water.",
+      "Scent glands on okapi feet leave a trail that other okapis can smell.",
+      "Okapis make some calls at frequencies too low for humans to hear.",
+      "An okapi's large ears help it detect danger in dense forest.",
+      "An okapi's flexible tongue strips leaves and buds from vegetation.",
+      "Okapi calves hide in secluded places while their mothers forage.",
+      "Newborn okapis can stand within about half an hour.",
+      "Okapis sometimes eat clay, probably to obtain minerals.",
+      "Forest communities knew okapis long before scientists formally described them in 1901."
+    ]
+  },
+  {
+    "id": "platypus",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — platypus",
+    "source_url": "https://animals.sandiegozoo.org/animals/platypus",
+    "facts": [
+      "A platypus finds underwater prey partly by detecting its electrical signals.",
+      "A swimming platypus closes its eyes and ears while hunting.",
+      "The platypus bill is flexible and soft, unlike the hard bill of a duck.",
+      "Platypuses carry caught food in cheek pouches before eating at the surface.",
+      "A platypus stores energy as fat in its tail.",
+      "Adult platypuses grind food with tough mouth pads instead of teeth.",
+      "Young platypuses lose their temporary teeth before adulthood.",
+      "Male platypuses are among the few mammals equipped to deliver venom.",
+      "A platypus is a mammal that lays eggs and then feeds its young milk.",
+      "Platypus fur traps insulating air that helps keep the animal warm in cold water."
+    ]
+  },
+  {
+    "id": "echidna",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — echidna",
+    "source_url": "https://animals.sandiegozoo.org/animals/echidna",
+    "facts": [
+      "A baby echidna is called a puggle.",
+      "An echidna mother carries her egg in a temporary belly pouch.",
+      "Newly hatched echidnas have no projecting spines, making the pouch a gentler home.",
+      "Echidna mothers secrete milk without having nipples.",
+      "Echidnas grind food against hard mouth pads because they have no teeth.",
+      "An echidna's backwards-pointing hind feet help it groom between its spines.",
+      "Echidnas can dig down until only their protected, spiny backs remain exposed.",
+      "An echidna's snout can detect electrical signals from its prey.",
+      "Echidnas can swim despite their squat appearance.",
+      "Echidna mothers move their young into burrows as the youngsters develop spines."
+    ]
+  }
+]

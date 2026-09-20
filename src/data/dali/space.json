@@ -1,0 +1,154 @@
+[
+  {
+    "id": "mercury",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Mercury",
+    "source_url": "https://science.nasa.gov/mercury/facts/",
+    "facts": [
+      "Mercury has a longer sunrise-to-sunrise day than its year: 176 Earth days versus 88.",
+      "At some locations on Mercury, the Sun briefly rises, sets, and rises again.",
+      "Mercury's craters honour artists and writers, including Dr. Seuss.",
+      "Mercury has almost no seasonal changes because it spins nearly upright.",
+      "The Sun would look over three times wider from Mercury than from Earth.",
+      "Mercury can reach 430°C by day and drop to about −180°C at night.",
+      "Mercury's enormous metal core occupies about 85% of the planet's radius.",
+      "Long cliffs on Mercury formed as its cooling interior contracted.",
+      "Bright streaks around Mercury's craters are crushed rock thrown out by impacts.",
+      "Mercury has no substantial atmosphere to hold onto daytime heat."
+    ]
+  },
+  {
+    "id": "venus",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Venus",
+    "source_url": "https://science.nasa.gov/venus/venus-facts/",
+    "facts": [
+      "Venus turns so slowly that one rotation takes longer than one orbit around the Sun.",
+      "On Venus, the Sun would rise in the west and set in the east.",
+      "Venus is hotter than Mercury even though it is farther from the Sun.",
+      "The surface of Venus is hot enough to melt lead.",
+      "Venus's surface air pressure is roughly 93 times Earth's sea-level pressure.",
+      "The morning star and evening star can both be Venus, seen at different times.",
+      "Venus shows phases through a telescope, much like our Moon.",
+      "Most named surface features on Venus commemorate women.",
+      "Venus's cloud tops race around the planet in hurricane-force winds.",
+      "About 50 kilometres above Venus's surface, atmospheric pressure is similar to Earth's at sea level."
+    ]
+  },
+  {
+    "id": "earth",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Earth",
+    "source_url": "https://science.nasa.gov/earth/facts/",
+    "facts": [
+      "Earth is the only planet whose English name does not come from Greek or Roman mythology.",
+      "Sunlight takes about eight minutes to reach Earth.",
+      "Earth's seasons come from its tilted axis, not simply its changing distance from the Sun.",
+      "About 30 Earths could fit side by side between Earth and the Moon.",
+      "Earth occasionally captures small asteroids as temporary moons.",
+      "Our Moon helps stabilise Earth's axial wobble.",
+      "Earth's inner core is solid, while its surrounding outer core is liquid.",
+      "Earth's ocean crust is generally thinner than its continental crust.",
+      "Most of the air you breathe is nitrogen, not oxygen.",
+      "Measured from its submerged base, Mauna Kea is taller than Mount Everest."
+    ]
+  },
+  {
+    "id": "mars",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Mars",
+    "source_url": "https://science.nasa.gov/mars/facts/",
+    "facts": [
+      "Mars is red because iron-bearing minerals in its dust have rusted.",
+      "A Martian day is only about 40 minutes longer than an Earth day.",
+      "Mars has seasons, but they last longer and have less equal lengths than Earth's.",
+      "Mars's two small moons are lumpy because their gravity cannot pull them into spheres.",
+      "Phobos is spiralling toward Mars and may eventually break apart into a ring.",
+      "Mars has nearly as much surface area as all Earth's dry land combined.",
+      "Valles Marineris on Mars is a canyon system roughly as long as the continental United States is wide.",
+      "Olympus Mons on Mars has a base covering an area comparable to Arizona.",
+      "Evidence from Mars shows that today's desert planet once had a wetter, warmer past.",
+      "Deimos looks smoother than Phobos because loose material fills many of its craters."
+    ]
+  },
+  {
+    "id": "jupiter",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Jupiter",
+    "source_url": "https://science.nasa.gov/jupiter/jupiter-facts/",
+    "facts": [
+      "Jupiter's Great Red Spot is a storm large enough to swallow Earth.",
+      "Jupiter spins once in about ten hours, giving it the shortest day of any planet.",
+      "Jupiter has faint rings that Voyager 1 discovered in 1979.",
+      "Jupiter's dark belts and bright zones carry winds in opposite directions.",
+      "Jupiter is about eleven times Earth's width.",
+      "Galileo spotted Jupiter's four largest moons with an early telescope in 1610.",
+      "Deep inside Jupiter, immense pressure makes hydrogen behave like an electrically conducting metal.",
+      "Juno's measurements suggest Jupiter has a partly dissolved, fuzzy core rather than a sharply bounded one.",
+      "Much of Jupiter's ring dust comes from impacts on its small inner moons.",
+      "Jupiter contains more mass than all the other planets combined."
+    ]
+  },
+  {
+    "id": "saturn",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Saturn",
+    "source_url": "https://science.nasa.gov/saturn/facts/",
+    "facts": [
+      "Saturn's average density is lower than water's, unlike every other planet in our solar system.",
+      "Saturn's rings consist of countless separate pieces of ice and rock, not solid hoops.",
+      "Different parts of Saturn's rings orbit at different speeds.",
+      "Despite their enormous width, Saturn's main rings are typically only around ten metres thick.",
+      "Some chunks in Saturn's rings are as large as houses.",
+      "Saturn has seasons because its axis is tilted, much like Earth's.",
+      "A birthday on Saturn would come roughly once every 29 Earth years.",
+      "Saturn has no solid ground on which a visiting spacecraft could land.",
+      "Saturn's rings are lettered in discovery order, not in their order around the planet.",
+      "The Cassini Division is a gap thousands of kilometres wide between two of Saturn's main rings."
+    ]
+  },
+  {
+    "id": "uranus",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Uranus",
+    "source_url": "https://science.nasa.gov/uranus/facts/",
+    "facts": [
+      "Uranus spins almost on its side, like a ball rolling around the Sun.",
+      "Parts of Uranus can endure roughly 21 Earth years of winter darkness.",
+      "Uranus's moons are named after characters from Shakespeare and Alexander Pope.",
+      "William Herschel first mistook Uranus for a comet or star when he spotted it in 1781.",
+      "Herschel wanted to name Uranus after King George III.",
+      "Methane absorbs red light in Uranus's atmosphere, helping give it its blue-green colour.",
+      "Uranus is wider than Neptune but less massive.",
+      "Despite being called an ice giant, Uranus contains hot, dense fluids deep inside.",
+      "Some atmospheric regions on Uranus are colder than those on more distant Neptune.",
+      "Uranus has both dark inner rings and differently coloured outer rings."
+    ]
+  },
+  {
+    "id": "neptune",
+    "category": "science_history_geography",
+    "subcategory": "space",
+    "source_title": "NASA — Neptune",
+    "source_url": "https://science.nasa.gov/neptune/neptune-facts/",
+    "facts": [
+      "Astronomers predicted Neptune's position from disturbances in Uranus's orbit before finding it.",
+      "Galileo recorded Neptune centuries before its discovery but mistook it for a star.",
+      "Neptune completed its first orbit since its 1846 discovery only in 2011.",
+      "Each season on Neptune lasts more than 40 Earth years.",
+      "Neptune's moon Triton orbits against the planet's rotation, suggesting it was captured.",
+      "Voyager 2 found icy geysers on Triton despite its extremely cold surface.",
+      "Pluto and Neptune avoid collisions because their orbits follow a repeating rhythm.",
+      "Noon on Neptune would look much dimmer than daylight on Earth.",
+      "Neptune's rings contain unusual clumps called arcs rather than evenly distributed dust everywhere.",
+      "Neptune's largest moon was discovered just seventeen days after the planet itself."
+    ]
+  }
+]

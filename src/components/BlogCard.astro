@@ -62,7 +62,7 @@ const readingMinutes = Math.max(1, Math.ceil(wordCount / 220));
   .minimal .card-copy { grid-template-columns: minmax(12rem, .7fr) minmax(16rem, 1.3fr) auto; align-items: center; }
   .minimal h2 { font-size: clamp(1.8rem, 3.5vw, 3rem); }
   @media (max-width: 760px) {
-    .card-copy, .featured .card-copy { grid-template-columns: 1fr auto; gap: 1rem; }
+    .card-copy, .featured .card-copy, .minimal .card-copy { grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; }
     .meta { grid-column: 1 / -1; }
     .card-copy > p { grid-column: 1; }
     .read { grid-row: 2 / span 2; grid-column: 2; }

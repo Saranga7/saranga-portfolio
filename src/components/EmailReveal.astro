@@ -1,0 +1,54 @@
+---
+import { site } from "../data/site";
+
+// Obfuscation deters basic HTML scrapers; it is not encryption or access control.
+const encoded = Array.from(site.email, (character) => character.charCodeAt(0) ^ 42).join(",");
+---
+
+<div data-email-reveal data-encoded={encoded}>
+  <button class="email" type="button" data-reveal-button aria-controls="contact-email-address" hidden>
+    Alohomora ✉️<span aria-hidden="true">↗</span>
+  </button>
+  <a class="email" id="contact-email-address" data-revealed-email hidden></a>
+  <noscript>
+    <p>Enable JavaScript to reveal my email, or <a href={site.social.linkedin}>contact me on LinkedIn</a>.</p>
+  </noscript>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-email-reveal]").forEach((container) => {
+    const button = container.querySelector<HTMLButtonElement>("[data-reveal-button]");
+    const link = container.querySelector<HTMLAnchorElement>("[data-revealed-email]");
+    if (!button || !link) return;
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      const email = (container.dataset.encoded ?? "").split(",")
+        .map((code) => String.fromCharCode(Number(code) ^ 42)).join("");
+      link.textContent = email;
+      link.href = `mailto:${email}`;
+      link.hidden = false;
+      button.hidden = true;
+      link.focus();
+    });
+  });
+</script>
+
+<style>
+  .email {
+    display: inline-flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 0 .35rem;
+    border: 0;
+    border-bottom: 1px solid var(--accent);
+    background: transparent;
+    color: var(--text);
+    font: 500 clamp(1rem, 2.4vw, 1.7rem) var(--font-sans);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+    cursor: pointer;
+  }
+  .email[hidden] { display: none; }
+  .email span { color: var(--accent); }
+</style>

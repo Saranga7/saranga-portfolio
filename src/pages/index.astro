@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SocialIcon from "../components/SocialIcon.astro";
 import SignatureDetail from "../components/SignatureDetail.astro";
+import EmailReveal from "../components/EmailReveal.astro";
 import { awards, education, experience, moreWork, site } from "../data/site";
 
 const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
@@ -17,8 +18,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   <section class="hero container" aria-labelledby="hero-title">
     <div class="hero-copy">
       <p class="eyebrow">ML Research · Paris</p>
-      <div class="stellar-signature"><SignatureDetail kind="orbit" /></div>
-      <h1 id="hero-title">Learning <span class="heading-accent">across domains.</span></h1>
+
+      <h1 id="hero-title">Learning <span class="heading-accent">across domains</span></h1>
       <p class="intro">
         I’m Saranga, a machine-learning researcher interested in computer vision, multimodal learning, generative modeling, and representation learning. My work so far has involved projects across healthcare, scientific machine learning, cultural heritage, text, and audio.
       </p>
@@ -30,7 +31,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
         <a href={site.social.github} aria-label="GitHub" title="GitHub"><SocialIcon name="github" /></a>
         <a href={site.social.linkedin} aria-label="LinkedIn" title="LinkedIn"><SocialIcon name="linkedin" /></a>
         <a href={site.social.scholar} aria-label="Google Scholar" title="Google Scholar"><SocialIcon name="scholar" /></a>
-        <a href={`mailto:${site.email}`} aria-label="Email" title="Email"><span aria-hidden="true">✉</span></a>
+        <a href="#contact" aria-label="Email contact" title="Email contact"><span aria-hidden="true">✉</span></a>
       </div>
     </div>
     <div class="portrait-wrap">
@@ -43,12 +44,6 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
         </div>
         <figcaption><span>Currently</span> Doctoral Researcher<br />Sorbonne Université</figcaption>
       </figure>
-
-      <svg class="portrait-orbit" viewBox="0 0 480 560" fill="none" aria-hidden="true">
-        <path d="M38 323C-2 180 97 31 257 22s249 159 196 306" />
-        <path d="m91 89-8-8m61-33-5-11m65-13-1-12m65 10 2-12m61 29 5-11m48 50 9-8m26 68 11-5" />
-        <circle cx="38" cy="323" r="3" />
-      </svg>
     </div>
 
   </section>
@@ -57,7 +52,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
     <div class="section-heading">
 
       <div>
-        <h2 id="work-title">Selected <span class="heading-accent">research.</span></h2>
+        <h2 id="work-title">Selected <span class="heading-accent">research</span></h2>
         <p>From ancient seal impressions and blood-smear microscopy to the hidden structure of the cosmos and the acoustics of musical instruments.</p>
       </div>
     </div>
@@ -70,7 +65,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
     <div class="container">
       <div class="section-heading">
 
-        <div><h2 id="publications-title">Research <span class="heading-accent">publications.</span></h2><p>* Equal contribution where indicated in the author list.</p></div>
+        <div><h2 id="publications-title">Research <span class="heading-accent">Publications</span></h2><p>* Equal contribution where indicated in the author list.</p></div>
       </div>
       <div class="filters" aria-label="Filter publications by domain">
         <button class="active" type="button" data-filter="all" aria-pressed="true">All</button>
@@ -106,7 +101,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   <section class="section container" id="experience" aria-labelledby="experience-title">
     <div class="section-heading">
 
-      <h2 id="experience-title">A path through <span class="heading-accent">many domains.</span></h2>
+      <h2 id="experience-title">Professional <span class="heading-accent">Pathway</span></h2>
     </div>
     <div class="timeline">
       {experience.map((item, index) => (
@@ -123,7 +118,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
     <div class="container">
       <div class="section-heading">
 
-        <h2 id="education-title">Academic <span class="heading-accent">record.</span></h2>
+        <h2 id="education-title">Academic <span class="heading-accent">Record</span></h2>
       </div>
       <div class="education">
         {education.map((item, index) => (
@@ -141,7 +136,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   <section class="section container" aria-labelledby="more-title">
     <div class="section-heading">
 
-      <h2 id="more-title">Additional <span class="heading-accent">projects.</span></h2>
+      <h2 id="more-title">additional <span class="heading-accent">projects</span></h2>
     </div>
     <div class="bento">
       {moreWork.map((work, index) => (
@@ -155,7 +150,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
 
   <section class="section awards-section">
     <div class="container awards-grid">
-      <div><div class="section-heading"><h2>A few markers <span class="heading-accent">along the way.</span></h2></div></div>
+      <div><div class="section-heading"><h2>A few milestones <span class="heading-accent">along the way</span></h2></div></div>
       <div>
         {awards.map((award) => (
           <article><span>{award.year}</span><div><h3>{award.title}</h3><p>{award.detail}</p></div></article>
@@ -197,7 +192,7 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
       <div>
         <SignatureDetail kind="tree" />
         <p class="eyebrow"><SignatureDetail kind="leaf" />Beyond research · Personal</p>
-        <h2 id="personal-title">There’s more to a man <span class="heading-accent">than his papers.</span></h2>
+        <h2 id="personal-title">There’s more to a man <span class="heading-accent">than his papers</span></h2>
         <p>I often travel and seldom write...</p>
         <div class="personal-links">
           <a class="button" href="/blog"><SocialIcon name="blog" /> Read my writing</a>
@@ -209,8 +204,8 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
 
   <section class="section contact container" id="contact" aria-labelledby="contact-title">
 
-    <div class="section-heading"><h2 id="contact-title">Have a question worth <span class="heading-accent">exploring together?</span></h2></div>
-    <a class="email" href={`mailto:${site.email}`}>{site.email} <span aria-hidden="true">↗</span></a>
+    <div class="section-heading"><h2 id="contact-title">Any questions or<span class="heading-accent"> just wanna say Hi?</span></h2></div>
+    <EmailReveal />
     <div class="contact-links">
       <a href={site.social.linkedin} aria-label="LinkedIn" title="LinkedIn"><SocialIcon name="linkedin" /></a>
       <a href={site.social.github} aria-label="GitHub" title="GitHub"><SocialIcon name="github" /></a>
@@ -360,8 +355,6 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
   .personal-links { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.2rem; }
   .contact { text-align: center; }
   .contact h2 { max-width: 23ch; margin: 1rem auto 2.5rem; font: 600 clamp(2.5rem, 5vw, 4.8rem)/1.08 var(--font-heading); letter-spacing: -.025em; }
-  .email { display: inline-flex; gap: 1rem; align-items: center; padding-bottom: .35rem; border-bottom: 1px solid var(--accent); font: 500 clamp(1rem, 2.4vw, 1.7rem) var(--font-sans); text-decoration: none; }
-  .email span { color: var(--accent); }
   .contact-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
   .closing-quote { padding: clamp(5rem, 10vw, 9rem) 1rem; color: var(--surface); background: var(--text); text-align: center; }
   :global([data-theme="dark"]) .closing-quote { color: var(--text); background: #16231b; }
@@ -388,14 +381,11 @@ const domains = [...new Set(publications.flatMap((publication) => publication.da
     .bento article:nth-child(n) { grid-column: span 12; min-height: 14rem; }
     .personal-art { min-height: 20rem; }
     .contact-links { flex-wrap: wrap; gap: 1rem; }
-    .email { font-size: .82rem; }
   }
-  .portrait-orbit { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; stroke: var(--accent); stroke-width: .8; opacity: .3; pointer-events: none; }
   .hero-copy { min-width: 0; }
-  .stellar-signature { margin: .6rem 0; }
   .awards-grid .section-heading, .contact .section-heading { display: block; }
   .awards-grid .section-heading::before { background: currentColor; opacity: .3; }
-  .awards-grid .section-heading::after { border-color: var(--accent-bright); }
+  .awards-grid .section-heading::after { background-color: var(--accent-bright); }
   .contact .section-heading::before { left: calc(50% - 2.25rem); }
   .contact .section-heading::after { left: calc(50% + 2.25rem); }
 </style>

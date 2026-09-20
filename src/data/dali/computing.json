@@ -1,0 +1,116 @@
+[
+  {
+    "id": "chm-1950",
+    "category": "computer_science_ai",
+    "subcategory": "computing-history",
+    "source_title": "Computer History Museum — 1950 timeline",
+    "source_url": "https://www.computerhistory.org/timeline/1950/",
+    "facts": [
+      "Early computer memory could store data on the surface of a spinning magnetic drum.",
+      "William Grey Walter built small wheeled robots that responded to light.",
+      "Walter's robot Elsie sought moderate light while avoiding very bright light and darkness.",
+      "Isaac Asimov's I, Robot is a collection of nine stories, not a single novel.",
+      "Asimov's fictional robots followed rules intended to protect humans.",
+      "Britain's Pilot ACE computer was based on ideas from Alan Turing.",
+      "Plans for the Simon computer were published in a hobbyist electronics magazine.",
+      "The Simon computer was designed to fit into roughly the space of a large box.",
+      "Russell Kirsch made an early scanned digital image using the SEAC computer in 1957.",
+      "The SWAC computer helped researchers discover previously unknown prime numbers."
+    ]
+  },
+  {
+    "id": "chm-1960",
+    "category": "computer_science_ai",
+    "subcategory": "computing-history",
+    "source_title": "Computer History Museum — 1960 timeline",
+    "source_url": "https://www.computerhistory.org/timeline/1960/",
+    "facts": [
+      "COBOL's name expands to Common Business-Oriented Language.",
+      "COBOL was designed to make business programs relatively easy to read.",
+      "COBOL's designers wanted programs to work on different manufacturers' computers.",
+      "A worried COBOL committee member had a mock tombstone made for the language in 1960.",
+      "The early video game Spacewar! was developed on a PDP-1 computer.",
+      "MIT programmers also made music with the PDP-1.",
+      "The PDP-1 used paper tape to get information into and out of the computer.",
+      "An early Japanese NEAC computer could handle both alphabetic and kana characters.",
+      "A NEAC computer operated an early real-time railway reservation system in Japan.",
+      "Tony Hoare developed Quicksort while working on machine translation in Moscow."
+    ]
+  },
+  {
+    "id": "chm-1970",
+    "category": "computer_science_ai",
+    "subcategory": "computing-history",
+    "source_title": "Computer History Museum — 1970 timeline",
+    "source_url": "https://www.computerhistory.org/timeline/1970/",
+    "facts": [
+      "Some early cash machines read specially treated, slightly radioactive paper vouchers.",
+      "Barclays introduced an early public cash machine in Britain in 1967.",
+      "Automated banking involved behind-the-scenes cheque processing before cash machines became common.",
+      "The unusual characters printed along the bottom of cheques help machines process them.",
+      "The Pascal programming language was named after Blaise Pascal.",
+      "Niklaus Wirth designed Pascal partly as a language for teaching programming.",
+      "Pascal was intended for scientific and business work, not just classroom exercises.",
+      "Gene Amdahl left IBM and founded a company to compete with its mainframes.",
+      "Amdahl's mainframes could run software written for IBM systems.",
+      "IBM's move from magnetic cores to semiconductor memory reduced the space needed to store data."
+    ]
+  },
+  {
+    "id": "chm-1980",
+    "category": "computer_science_ai",
+    "subcategory": "computing-history",
+    "source_title": "Computer History Museum — 1980 timeline",
+    "source_url": "https://www.computerhistory.org/timeline/1980/",
+    "facts": [
+      "William Shatner appeared in advertisements for Commodore's VIC-20 computer.",
+      "The Commodore VIC-20 became the first computer to sell more than a million units.",
+      "The VIC-20 was designed as a cheaper alternative to Commodore's PET computer.",
+      "Before creating the Web, Tim Berners-Lee built a hypertext system called Enquire.",
+      "Berners-Lee named Enquire after a Victorian reference book he enjoyed as a child.",
+      "Enquire was used for managing projects at CERN.",
+      "Enquire explored links that computers, as well as people, could interpret.",
+      "Seagate's early ST506 hard drive stored just five megabytes.",
+      "The ST506 was designed to fit into the space used by a floppy drive.",
+      "Hard drives store information magnetically on coated, rotating platters."
+    ]
+  },
+  {
+    "id": "chm-1990",
+    "category": "computer_science_ai",
+    "subcategory": "computing-history",
+    "source_title": "Computer History Museum — 1990 timeline",
+    "source_url": "https://www.computerhistory.org/timeline/1990/",
+    "facts": [
+      "Some rewritable discs combined lasers and magnets to store information.",
+      "Magneto-optical discs heated tiny areas with a laser before changing their magnetic state.",
+      "Magneto-optical discs came in protective cartridges.",
+      "Some magneto-optical discs could be rewritten around a million times.",
+      "Intel's Touchstone Delta supercomputer used 512 processors working together.",
+      "Researchers used Touchstone Delta to process satellite pictures.",
+      "Touchstone Delta also helped researchers simulate molecules.",
+      "Windows 3.0 could still run older DOS programs.",
+      "Windows 3.0 helped popularise graphical applications on personal computers.",
+      "New magnetic reading heads helped hard drives pack data more densely in 1990."
+    ]
+  },
+  {
+    "id": "chm-2000",
+    "category": "computer_science_ai",
+    "subcategory": "computing-history",
+    "source_title": "Computer History Museum — 2000 timeline",
+    "source_url": "https://www.computerhistory.org/timeline/2000/",
+    "facts": [
+      "Characters in The Sims speak an invented language called Simlish.",
+      "The Sims lets players manage everyday lives rather than complete one fixed final mission.",
+      "The Sims was led by designer Will Wright, who had previously created SimCity.",
+      "The Sims let players customise their characters and homes.",
+      "An early Sharp camera phone took pictures at only 0.11 megapixels.",
+      "Sharp's J-SH04 phone could share photographs wirelessly.",
+      "Honda's ASIMO robot could climb stairs.",
+      "ASIMO used a camera in its head to recognise faces and gestures.",
+      "ASIMO could respond to voice commands through built-in microphones.",
+      "The PlayStation 2 helped popularise DVDs because it played films as well as games."
+    ]
+  }
+]

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "koala",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — koala",
+    "source_url": "https://animals.sandiegozoo.org/animals/koala",
+    "facts": [
+      "Koalas are marsupials, not bears.",
+      "Koalas have two opposing digits on each hand to help grip branches.",
+      "Two fused toes on a koala's foot act as a grooming tool.",
+      "Koalas choose cooler tree trunks to rest against on hot days.",
+      "Koalas can tolerate compounds in eucalyptus leaves that many other animals cannot.",
+      "Koalas select among eucalyptus varieties rather than treating every leaf as equally edible.",
+      "A koala's low-energy leaf diet is one reason it spends so much time resting.",
+      "A newborn koala is roughly jellybean-sized but can crawl into its mother's pouch.",
+      "Koala joeys ride on their mothers' backs after outgrowing the pouch.",
+      "Male koalas mark trees using a scent gland on their chests."
+    ]
+  },
+  {
+    "id": "wombat",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — wombat",
+    "source_url": "https://animals.sandiegozoo.org/animals/wombat",
+    "facts": [
+      "A wombat's pouch opens backwards, helping keep dirt out while it digs.",
+      "Wombats can block a burrow entrance with their tough backsides.",
+      "Southern hairy-nosed wombats may share extensive burrow systems with other wombats.",
+      "Despite their heavy build, wombats can sprint at around 40 kilometres per hour.",
+      "Wombats obtain much of their water from the plants they eat.",
+      "A wombat can take up to two weeks to digest a meal.",
+      "Wombat tunnels branch into separate underground sleeping chambers.",
+      "Some wombats have furry noses, while the common wombat has a bare nose.",
+      "A newborn wombat is tiny and undeveloped, growing for months inside its mother's pouch.",
+      "Wombats are marsupials related to koalas, not small bears."
+    ]
+  },
+  {
+    "id": "tasmanian-devil",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — tasmanian devil",
+    "source_url": "https://animals.sandiegozoo.org/animals/tasmanian-devil",
+    "facts": [
+      "A Tasmanian devil's wide gape can signal uncertainty or fear rather than aggression.",
+      "Tasmanian devils can produce a strong odour when stressed.",
+      "Tasmanian devils often scream and growl over food without actually fighting.",
+      "Tasmanian devils have powerful jaws capable of crushing bones.",
+      "Young Tasmanian devils can climb trees more readily than adults.",
+      "Baby Tasmanian devils are called imps.",
+      "A mother Tasmanian devil can bear many young but has only four teats available.",
+      "Tasmanian devils help clean up their surroundings by eating carcasses.",
+      "Tasmanian devils may shelter in abandoned wombat burrows.",
+      "A contagious facial cancer can spread between Tasmanian devils through biting."
+    ]
+  },
+  {
+    "id": "kangaroo-and-wallaby",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — kangaroo and wallaby",
+    "source_url": "https://animals.sandiegozoo.org/animals/kangaroo-and-wallaby",
+    "facts": [
+      "A kangaroo's muscular tail helps it balance and turn during a hop.",
+      "Kangaroos can warn one another of danger by thumping their feet.",
+      "Kangaroo mothers can call their young with clicking or clucking sounds.",
+      "Some kangaroos live in trees instead of bounding across open plains.",
+      "Rock wallabies can negotiate remarkably steep rocky terrain.",
+      "The name of the kangaroo family means big feet.",
+      "Larger kangaroos can cover more than seven metres in a fast hop.",
+      "Kangaroo joeys continue nursing in a pouch long after birth.",
+      "Tree kangaroos have relatively stronger forelimbs than their ground-dwelling cousins.",
+      "Parma wallabies thought extinct were rediscovered among introduced wallabies in New Zealand."
+    ]
+  },
+  {
+    "id": "red-panda",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — red panda",
+    "source_url": "https://animals.sandiegozoo.org/animals/red-panda",
+    "facts": [
+      "Red pandas belong to their own mammal family, not the bear family.",
+      "The red panda was scientifically described before the giant panda.",
+      "Red pandas can descend tree trunks headfirst.",
+      "A red panda can wrap its bushy tail around its face while resting.",
+      "Red pandas grip bamboo with a modified wrist bone that acts like an extra thumb.",
+      "Hair on a red panda's soles helps with slippery branches and cold ground.",
+      "Red pandas mainly eat bamboo despite belonging to the order Carnivora.",
+      "Red pandas may stand on their hind legs to defend themselves.",
+      "Red panda mothers move cubs between dens by carrying them in their mouths.",
+      "Fossil relatives of red pandas once lived in North America."
+    ]
+  },
+  {
+    "id": "giant-panda",
+    "category": "wildlife",
+    "subcategory": "animals",
+    "source_title": "San Diego Zoo Wildlife Alliance — giant panda",
+    "source_url": "https://animals.sandiegozoo.org/animals/giant-panda",
+    "facts": [
+      "A giant panda's extra thumb is an enlarged wrist bone.",
+      "Some giant pandas are brown and white rather than black and white.",
+      "Male giant pandas sometimes perform handstands to place scent marks higher on trees.",
+      "Giant pandas can identify individuals and reproductive information from scent marks.",
+      "A friendly giant panda greeting can sound like a goat's bleat.",
+      "Giant panda cubs are born pink and acquire their dark markings later.",
+      "A newborn giant panda is only about the size of a stick of butter.",
+      "Giant pandas sometimes eat insects or small animals, despite their overwhelmingly bamboo-based diet.",
+      "Giant pandas depend on old trees and hollow stumps for suitable den sites.",
+      "A female giant panda is receptive to mating for only a few days each year."
+    ]
+  }
+]

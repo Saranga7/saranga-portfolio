@@ -1,0 +1,154 @@
+[
+  {
+    "id": "taj-mahal",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Taj Mahal",
+    "source_url": "https://whc.unesco.org/en/list/252/",
+    "facts": [
+      "The Taj Mahal is a mausoleum built in memory of Mumtaz Mahal.",
+      "Shah Jahan commissioned the Taj Mahal beside the Yamuna River.",
+      "The Taj Mahal's main tomb stands at one end of its garden rather than in the centre.",
+      "The Taj Mahal's decorative flowers include coloured stones inlaid into white marble.",
+      "The Taj Mahal's central burial chamber has an octagonal plan.",
+      "A carved marble lattice surrounds the Taj Mahal's two ceremonial tomb markers.",
+      "Craftspeople from Central Asia and Iran helped build the Taj Mahal.",
+      "The Taj Mahal complex includes a mosque and a matching guest house.",
+      "The Taj Mahal's surrounding buildings were completed after the main mausoleum.",
+      "Arabic inscriptions on the Taj Mahal helped historians establish its construction chronology."
+    ]
+  },
+  {
+    "id": "petra",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Petra",
+    "source_url": "https://whc.unesco.org/en/list/326/",
+    "facts": [
+      "Petra was a caravan crossroads linking Arabian incense, Chinese silk and Indian spices.",
+      "Petra's Nabataean builders carved some buildings into rock and constructed others separately.",
+      "Petra's water-storage network made a substantial city possible in an arid landscape.",
+      "The winding passage called the Siq forms Petra's famous eastern entrance.",
+      "Petra's architecture combines local Nabataean traditions with Greek-inspired designs.",
+      "Petra's ruins include churches from the Byzantine period.",
+      "Petra's builders used dams to divert water as well as cisterns to store it.",
+      "Many of Petra's spectacular carved façades belong to tombs.",
+      "Petra's Urn Tomb was later converted into a church.",
+      "Archaeological remains around Petra include prehistoric settlements and ancient copper mining."
+    ]
+  },
+  {
+    "id": "great-wall",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — The Great Wall",
+    "source_url": "https://whc.unesco.org/en/list/438/",
+    "facts": [
+      "China's Great Wall is a collection of fortifications built across many centuries.",
+      "The Great Wall includes horse tracks, shelters and fortresses as well as walls.",
+      "Some ancient Great Wall sections were made of compacted earth.",
+      "The Great Wall's familiar masonry sections include major work from the Ming dynasty.",
+      "The Great Wall's defensive system included beacon towers for signalling.",
+      "Successive Chinese empires worked on the Great Wall from antiquity into the seventeenth century.",
+      "The full Great Wall network extends for more than 20,000 kilometres.",
+      "Mountain passes were important fortified points in the Great Wall system.",
+      "The Great Wall's construction and human cost became themes in Chinese poetry.",
+      "The Great Wall's western fortifications reach the Gansu region, far from Beijing."
+    ]
+  },
+  {
+    "id": "angkor",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Angkor",
+    "source_url": "https://whc.unesco.org/en/list/668/",
+    "facts": [
+      "Angkor is an extensive former urban landscape, not just the temple Angkor Wat.",
+      "Angkor's builders engineered large reservoirs and canals.",
+      "People still live and farm within the Angkor archaeological park.",
+      "Angkor served as the centre of the Khmer kingdom for centuries.",
+      "The Angkor archaeological area covers roughly 400 square kilometres.",
+      "Angkor contains temples built across several centuries, rather than in a single construction campaign.",
+      "The Bayon and Ta Prohm are part of the wider Angkor complex.",
+      "Angkor's great reservoirs are known as barays.",
+      "Khmer architecture developed Indian influences into a distinctive regional style.",
+      "Rice cultivation remains part of life in Angkor's villages."
+    ]
+  },
+  {
+    "id": "taos",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Taos Pueblo",
+    "source_url": "https://whc.unesco.org/en/list/492/",
+    "facts": [
+      "Taos Pueblo's earthen buildings rise as high as five storeys.",
+      "Taos Pueblo is a living community, not an abandoned archaeological site.",
+      "Taos Pueblo's multi-storey homes are built from adobe.",
+      "Taos Pueblo's buildings form stepped terraces, with upper floors set back.",
+      "A stream fed by sacred Blue Lake passes through Taos Pueblo.",
+      "Taos Pueblo includes underground ceremonial chambers called kivas.",
+      "Taos Pueblo has been continuously inhabited for centuries.",
+      "The Taos Pueblo site includes a traditional foot-racing track.",
+      "Taos Pueblo preserves both the ruins of an early church and a later church.",
+      "Traditional building methods help Taos Pueblo retain its distinctive earthen architecture."
+    ]
+  },
+  {
+    "id": "ellora",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Ellora Caves",
+    "source_url": "https://whc.unesco.org/en/list/243/",
+    "facts": [
+      "Ellora's rock-cut monuments include Buddhist, Hindu and Jain sanctuaries together.",
+      "Ellora's Kailasa temple was carved from rock rather than assembled from separate stone blocks.",
+      "Ellora includes a three-storey Buddhist monastery carved into the hillside.",
+      "One Ellora sculpture depicts Ravana trying to lift Mount Kailasa.",
+      "Ellora's rock-cut temples still preserve traces of painted decoration.",
+      "The famous Ellora ensemble contains 34 numbered caves.",
+      "Ellora's Buddhist, Hindu and Jain caves were created in successive, partly overlapping phases.",
+      "Ellora's Cave 10 is nicknamed the Carpenter's Cave.",
+      "Ellora's Jain caves include exceptionally delicate carved figures.",
+      "The Kailasa temple translates the appearance of constructed architecture into a single rock-cut monument."
+    ]
+  },
+  {
+    "id": "borobudur",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Borobudur",
+    "source_url": "https://whc.unesco.org/en/list/592/",
+    "facts": [
+      "Borobudur was built around a natural hill.",
+      "Borobudur's upper circular platforms contrast with its square lower terraces.",
+      "Seventy-two openwork stupas surround Borobudur's upper platforms.",
+      "Borobudur's smaller perforated stupas each shelter a Buddha figure.",
+      "Borobudur's rising levels symbolise stages in Buddhist cosmology.",
+      "Borobudur's carved reliefs cover thousands of square metres.",
+      "Borobudur, Mendut and Pawon temples lie along a shared axis.",
+      "Borobudur combines Buddhist ideas with an older tradition of sacred terraced mountains.",
+      "Borobudur was abandoned for centuries before major modern restoration.",
+      "A large central stupa crowns Borobudur's stepped structure."
+    ]
+  },
+  {
+    "id": "acropolis",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Acropolis, Athens",
+    "source_url": "https://whc.unesco.org/en/list/404/",
+    "facts": [
+      "The Acropolis was fortified long before the Parthenon was built.",
+      "An earlier Mycenaean ruler's residence stood on the Acropolis hill.",
+      "The Parthenon is only one of several temples on the Athenian Acropolis.",
+      "Athena was worshipped on the Acropolis as Athens' patron goddess.",
+      "The grand entrance to the Acropolis is called the Propylaia.",
+      "Pericles led the major fifth-century BCE building programme on the Acropolis.",
+      "The Acropolis monuments survived changing religious uses as well as wars and earthquakes.",
+      "The Athenian Acropolis is steep on nearly every side but has a relatively flat summit.",
+      "Acropolis architecture inspired neoclassical buildings far beyond Greece.",
+      "The Parthenon was built between 447 and 432 BCE."
+    ]
+  }
+]

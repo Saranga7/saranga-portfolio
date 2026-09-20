@@ -277,7 +277,7 @@ const {
     };
     const restoreQueue = (items: Factoid[]) => {
       try {
-        const saved = JSON.parse(sessionStorage.getItem("dali-factoid-queue") ?? "[]");
+        const saved = JSON.parse(sessionStorage.getItem("dali-factoid-queue-curated-v2") ?? "[]");
         const validIds = new Set(items.map(({ id }) => id));
         if (
           Array.isArray(saved)
@@ -292,25 +292,23 @@ const {
       factQueue = shuffle(items.map(({ id }) => id));
     };
     const saveQueue = () => {
-      try { sessionStorage.setItem("dali-factoid-queue", JSON.stringify(factQueue)); } catch {}
+      try { sessionStorage.setItem("dali-factoid-queue-curated-v2", JSON.stringify(factQueue)); } catch {}
     };
     const loadFacts = async () => {
       if (facts) return facts;
-      const response = await fetch("/assets/data/dali-factoids.json");
+      const response = await fetch("/assets/data/dali-factoids.json?v=curated-v2");
       if (!response.ok) throw new Error("Fact library unavailable");
       const loaded = await response.json();
-      if (!Array.isArray(loaded) || loaded.length !== 5000) throw new Error("Invalid fact library");
-      const mechanicalComputingSubcategories = new Set([
-        "programming-languages",
-        "developer-tools",
-        "networks",
-        "web",
-        "python",
-      ]);
-      facts = (loaded as Factoid[]).filter((fact) =>
-        fact.category !== "computer_science_ai"
-        || !mechanicalComputingSubcategories.has(fact.subcategory)
-      );
+      if (!Array.isArray(loaded) || loaded.length === 0 || !loaded.every((fact) =>
+        fact && typeof fact.id === "string"
+        && typeof fact.text === "string" && fact.text.trim().length >= 20
+        && Object.hasOwn(categoryNames, fact.category)
+        && typeof fact.source_title === "string"
+        && typeof fact.source_url === "string" && fact.source_url.startsWith("https://")
+      ) || new Set(loaded.map((fact) => fact.id)).size !== loaded.length) {
+        throw new Error("Invalid fact library");
+      }
+      facts = loaded as Factoid[];
       restoreQueue(facts);
       return facts;
     };

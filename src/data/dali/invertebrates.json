@@ -1,0 +1,78 @@
+[
+  {
+    "id": "stick-insect",
+    "category": "wildlife",
+    "subcategory": "small-creatures",
+    "source_title": "San Diego Zoo Wildlife Alliance — stick insect",
+    "source_url": "https://animals.sandiegozoo.org/animals/stick-insect",
+    "facts": [
+      "Some stick insects can reproduce without males, producing daughters from unfertilised eggs.",
+      "Stick insects sometimes sway as they walk, resembling twigs moving in the wind.",
+      "Some stick insects flash bright wings, then hide them as they drop into leaf litter.",
+      "Stick insect eggs can resemble seeds.",
+      "Ants carry some stick insect eggs underground to eat an attached nutrient packet.",
+      "Stick insect young can hatch safely inside an ant nest and later walk out.",
+      "Young stick insects resemble miniature adults rather than going through a caterpillar stage.",
+      "Some stick insects spray irritating defensive chemicals.",
+      "Stick insects may eat their shed skins, recycling nutrients and removing evidence of their presence.",
+      "A stick insect's visual disguise is less useful against a hunting bat's sound-based senses."
+    ]
+  },
+  {
+    "id": "tarantula",
+    "category": "wildlife",
+    "subcategory": "small-creatures",
+    "source_title": "San Diego Zoo Wildlife Alliance — tarantula",
+    "source_url": "https://animals.sandiegozoo.org/animals/tarantula",
+    "facts": [
+      "Many American tarantulas flick irritating hairs toward threats.",
+      "Tarantulas use silk for homes and moulting mats, not just prey-catching traps.",
+      "A tarantula often lies on its back while shedding its old outer skeleton.",
+      "A shed tarantula skin can look remarkably like a second spider.",
+      "Tarantulas liquefy prey tissues before consuming them.",
+      "Some male tarantulas have leg hooks that help hold a female's fangs away during mating.",
+      "Female tarantulas can live much longer than males.",
+      "A mother tarantula guards her eggs inside a silk cocoon.",
+      "Tarantula hawk wasps paralyse spiders and leave them as food for their larvae.",
+      "The king baboon spider can make a hissing sound by rubbing its mouthparts together."
+    ]
+  },
+  {
+    "id": "scorpion",
+    "category": "wildlife",
+    "subcategory": "small-creatures",
+    "source_title": "San Diego Zoo Wildlife Alliance — scorpion",
+    "source_url": "https://animals.sandiegozoo.org/animals/scorpion",
+    "facts": [
+      "Scorpions glow under ultraviolet light because of fluorescent material in their outer covering.",
+      "Scorpions are arachnids with eight legs, not insects.",
+      "Newborn scorpions ride on their mother's back until their first moult.",
+      "Scorpions give birth to live young.",
+      "Scorpions use comb-like structures beneath their bodies to sense their surroundings.",
+      "Scorpions digest prey externally and consume it as liquid.",
+      "Scorpion courtship often involves a pair holding pincers and moving together.",
+      "Some scorpions raise their bodies off hot ground to cool their undersides.",
+      "A scorpion's apparent tail is actually an extension of its abdomen.",
+      "Some scorpions can go many months without food when water remains available."
+    ]
+  },
+  {
+    "id": "dung-beetle",
+    "category": "wildlife",
+    "subcategory": "small-creatures",
+    "source_title": "San Diego Zoo Wildlife Alliance — dung beetle",
+    "source_url": "https://animals.sandiegozoo.org/animals/dung-beetle",
+    "facts": [
+      "Not all dung beetles roll balls: some tunnel under dung and others live inside it.",
+      "Dung beetles return nutrients to soil by burying animal waste.",
+      "Some dung beetles provide their young with a buried ball of food.",
+      "Some dung beetle parents stay with their developing larvae for months.",
+      "Adult dung beetles often feed on the liquid portion of fresh dung.",
+      "Dung beetles locate fresh droppings using sensitive antennae.",
+      "Australia introduced dung beetles to help process cattle manure.",
+      "Ancient Egyptians associated scarab beetles with the rising sun.",
+      "Burrowing owls sometimes use dung as bait to attract beetles.",
+      "A Peruvian dung beetle species hunts millipedes instead of relying on manure."
+    ]
+  }
+]

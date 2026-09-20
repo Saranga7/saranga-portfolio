@@ -1,0 +1,135 @@
+[
+  {
+    "id": "chameleon",
+    "category": "wildlife",
+    "subcategory": "reptiles-and-amphibians",
+    "source_title": "San Diego Zoo Wildlife Alliance — chameleon",
+    "source_url": "https://animals.sandiegozoo.org/animals/chameleon",
+    "facts": [
+      "A chameleon can aim its two eyes at different objects at the same time.",
+      "Chameleon colour changes can communicate mood and reproductive state, not just provide camouflage.",
+      "A chameleon cannot copy any colour or pattern it happens to sit on.",
+      "A chameleon's toes form opposing grasping bundles for gripping branches.",
+      "Many chameleons use their tails like an extra anchor when climbing.",
+      "A chameleon cannot shed and regrow its tail the way some other lizards can.",
+      "Chameleons catch insects with rapidly launched, sticky-tipped tongues.",
+      "Jackson's chameleons give birth to live young rather than laying eggs.",
+      "Male Jackson's chameleons can lock horns in contests on branches.",
+      "Namaqua chameleons live in the Namib Desert and shelter in sand to escape temperature extremes."
+    ]
+  },
+  {
+    "id": "komodo-dragon",
+    "category": "wildlife",
+    "subcategory": "reptiles-and-amphibians",
+    "source_title": "San Diego Zoo Wildlife Alliance — komodo dragon",
+    "source_url": "https://animals.sandiegozoo.org/animals/komodo-dragon",
+    "facts": [
+      "Komodo dragons are the largest living lizards.",
+      "Komodo dragon skin contains small bony plates that act as armour.",
+      "Young Komodo dragons climb trees to escape predators.",
+      "Komodo dragons sometimes use abandoned bird nesting mounds to incubate their eggs.",
+      "Female Komodo dragons may dig decoy nest chambers that confuse predators.",
+      "Komodo dragon mothers guard their nests for the first months after laying.",
+      "Wild Komodo dragons live on a small group of Indonesian islands.",
+      "Komodo dragons use burrows both as cool daytime shelters and for warmth at night.",
+      "Female Komodo dragons may skip breeding years to recover the energy spent producing eggs.",
+      "Komodo dragons can detect scents with their forked tongues."
+    ]
+  },
+  {
+    "id": "crocodilian",
+    "category": "wildlife",
+    "subcategory": "reptiles-and-amphibians",
+    "source_title": "San Diego Zoo Wildlife Alliance — crocodilian",
+    "source_url": "https://animals.sandiegozoo.org/animals/crocodilian",
+    "facts": [
+      "Crocodilians are more closely related to birds than to lizards.",
+      "Crocodiles can replace lost or worn teeth repeatedly throughout their lives.",
+      "Crocodilian mothers can hear young calling from inside their eggs.",
+      "Some crocodilian mothers gently carry hatchlings to water in their mouths.",
+      "Crocodilians may gape their mouths to release excess heat.",
+      "A crocodile's visible fourth lower tooth can help distinguish it from an alligator.",
+      "Crocodiles have salt-excreting tongue glands that help them tolerate salty water.",
+      "Sensitive organs in crocodilian skin detect movement in murky water.",
+      "Incubation temperature influences whether some crocodilian hatchlings are male or female.",
+      "Male gharials use the bulb on their snouts to help make courtship sounds."
+    ]
+  },
+  {
+    "id": "snake",
+    "category": "wildlife",
+    "subcategory": "reptiles-and-amphibians",
+    "source_title": "San Diego Zoo Wildlife Alliance — snake",
+    "source_url": "https://animals.sandiegozoo.org/animals/snake",
+    "facts": [
+      "Snakes cannot blink because they lack movable eyelids.",
+      "Some tree snakes flatten their bodies and glide between trees.",
+      "Sea snakes use flattened tails to propel themselves through water.",
+      "Egg-eating snakes break shells internally and spit out the remains.",
+      "Some snakes detect warm prey using specialised heat-sensitive pits.",
+      "A snake's jaw bones are loosely connected, allowing it to swallow unusually wide meals.",
+      "Some pythons generate warmth for their eggs through shivering muscle contractions.",
+      "Not all snakes lay eggs; some give birth to live young.",
+      "Snakes can shed their outer skin inside out, rather like removing a sock.",
+      "Spitting cobras spray venom as a defence rather than as their normal way of hunting."
+    ]
+  },
+  {
+    "id": "frog-and-toad",
+    "category": "wildlife",
+    "subcategory": "reptiles-and-amphibians",
+    "source_title": "San Diego Zoo Wildlife Alliance — frog and toad",
+    "source_url": "https://animals.sandiegozoo.org/animals/frog-and-toad",
+    "facts": [
+      "Toads are included within the broader group of frogs.",
+      "Touching a toad does not give you warts.",
+      "Some poison frogs obtain defensive chemicals from their natural insect diet.",
+      "Frogs can absorb oxygen and water through their skin.",
+      "A waxy tree frog spreads a water-saving coating over its body.",
+      "Some desert frogs burrow underground to survive dry conditions.",
+      "Fire-bellied toads can display brightly coloured undersides to warn predators.",
+      "Some male frogs carry eggs or tadpoles to safer places.",
+      "Frogs have distinctive mating calls that help females recognise their own species.",
+      "A tadpole's tail is absorbed into its body as it develops into a frog."
+    ]
+  },
+  {
+    "id": "turtle-and-tortoise",
+    "category": "wildlife",
+    "subcategory": "reptiles-and-amphibians",
+    "source_title": "San Diego Zoo Wildlife Alliance — turtle and tortoise",
+    "source_url": "https://animals.sandiegozoo.org/animals/turtle-and-tortoise",
+    "facts": [
+      "A turtle cannot leave its shell: the shell is joined to its ribs and spine.",
+      "Turtles can feel pressure and pain through their shells.",
+      "Some turtles fold their necks sideways rather than pulling them straight back.",
+      "Turtles have hard beaks instead of teeth.",
+      "Leatherback turtles have flexible, leathery shells rather than rigid plated ones.",
+      "Some freshwater turtles absorb oxygen through tissues near the rear of their bodies.",
+      "Nest temperature influences the sex of hatchlings in many turtle species.",
+      "Sea turtles can migrate thousands of kilometres and return to familiar nesting beaches.",
+      "A turtle may hiss simply by expelling air as it withdraws into its shell.",
+      "The freshwater Fly River turtle has flippers resembling those of sea turtles."
+    ]
+  },
+  {
+    "id": "axolotl",
+    "category": "wildlife",
+    "subcategory": "reptiles-and-amphibians",
+    "source_title": "San Diego Zoo Wildlife Alliance — axolotl",
+    "source_url": "https://animals.sandiegozoo.org/animals/axolotl",
+    "facts": [
+      "An axolotl is a salamander that normally keeps juvenile features throughout adulthood.",
+      "Axolotls retain feathery external gills rather than losing them as they grow up.",
+      "Axolotls can regrow lost limbs, including bone, muscle, and nerves.",
+      "An axolotl can use lungs as well as gills to obtain oxygen.",
+      "Wild axolotls are usually dark, unlike the pale pink individuals familiar from captivity.",
+      "Axolotls capture small prey by sucking it into their mouths.",
+      "Axolotls lay individual eggs on underwater objects such as plants and rocks.",
+      "Axolotl hatchlings receive no parental care after hatching.",
+      "Axolotls' natural home is the freshwater wetland system of Mexico's central valley.",
+      "Conservation refuges in Xochimilco use barriers to keep introduced fish away from axolotls."
+    ]
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "id": "machu-picchu",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Machu Picchu",
+    "source_url": "https://whc.unesco.org/en/list/274/",
+    "facts": [
+      "Machu Picchu sits where the high Andes meet the Amazon Basin.",
+      "Machu Picchu was built in the fifteenth century, not in remote prehistory.",
+      "Stone terraces allowed agriculture on Machu Picchu's steep mountain slopes.",
+      "Machu Picchu's planned layout separated agricultural areas from residential ones.",
+      "The Machu Picchu sanctuary protects cloud forests as well as Inca ruins.",
+      "Machu Picchu's surrounding landscape includes a network of old roads and irrigation canals.",
+      "Machu Picchu's roughly 200 structures occupy a narrow ridge more than 2,400 metres above sea level.",
+      "Machu Picchu's exact astronomical role remains a subject of research.",
+      "The Machu Picchu sanctuary spans habitats from high grasslands down towards tropical forest.",
+      "Machu Picchu was abandoned during the sixteenth-century Spanish conquest of the Inca Empire."
+    ]
+  },
+  {
+    "id": "mogao",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Mogao Caves",
+    "source_url": "https://whc.unesco.org/en/list/440/",
+    "facts": [
+      "The Mogao Caves preserve around a thousand years of Buddhist art.",
+      "A hidden library discovered at Mogao in 1900 contained tens of thousands of manuscripts.",
+      "Mogao's murals depict everyday life as well as religious scenes.",
+      "One Mogao mural shows a camel pulling a Silk Road trade cart.",
+      "A Mogao mural maps Mount Wutai with roads, rivers, temples and travellers.",
+      "The Mogao cave complex contains about 45,000 square metres of murals.",
+      "Mogao's art combines influences from India, China, Tibet and Central Asia.",
+      "Artists carved Mogao's sanctuaries into cliffs near the Dunhuang oasis.",
+      "Mogao's preserved caves extend over several levels of the cliff face.",
+      "More than 2,000 painted sculptures survive in the Mogao Caves."
+    ]
+  },
+  {
+    "id": "terracotta",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Mausoleum of the First Qin Emperor",
+    "source_url": "https://whc.unesco.org/en/list/441/",
+    "facts": [
+      "China's Terracotta Army includes horses as well as soldiers.",
+      "The Terracotta Army belongs to the burial complex of China's first emperor.",
+      "Bronze chariots were found in the first Qin emperor's enormous funerary complex.",
+      "The Terracotta Army preserves details of ancient uniforms and military equipment.",
+      "The soldiers' burial pits are only part of a much larger imperial tomb landscape.",
+      "The first Qin emperor's mausoleum was planned to echo his capital city.",
+      "Real weapons were buried with the Terracotta Army.",
+      "Qin Shi Huang standardised writing, weights and measures across his empire.",
+      "The Terracotta Army faces outward, symbolically guarding its emperor.",
+      "The Terracotta Army provides evidence of sophisticated pottery and metalworking in ancient China."
+    ]
+  },
+  {
+    "id": "mahabalipuram",
+    "category": "science_history_geography",
+    "subcategory": "history",
+    "source_title": "UNESCO — Mahabalipuram",
+    "source_url": "https://whc.unesco.org/en/list/249/",
+    "facts": [
+      "Mahabalipuram's five famous stone rathas were each carved from a huge boulder.",
+      "Mahabalipuram was a port city of the Pallava dynasty.",
+      "The word ratha means chariot; Mahabalipuram's stone temples resemble ceremonial chariots.",
+      "Mahabalipuram's monuments include both rock-cut caves and temples built from separate stones.",
+      "Mahabalipuram's giant outdoor relief is known as Arjuna's Penance or the Descent of the Ganges.",
+      "The Shore Temple at Mahabalipuram stands directly beside the sea.",
+      "Excavation around Mahabalipuram's Shore Temple revealed structures buried beneath sand.",
+      "Mahabalipuram's carved shrines use the natural landscape as their building material.",
+      "The Olakkanesvara temple at Mahabalipuram stands on a rock near the lighthouse.",
+      "Mahabalipuram's rock carvings depict Hindu stories, royal figures and animals."
+    ]
+  }
+]

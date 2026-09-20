@@ -11,7 +11,7 @@ coverVariant: "music"
 paperUrl: "https://link.springer.com/article/10.1007/s12530-023-09540-x"
 ---
 
-Saranga worked on automatic musical-instrument recognition and classification using audio features and neural networks.
+I worked on automatic musical-instrument recognition and classification using audio features and neural networks.
 
 The research used mel-frequency cepstral coefficients to represent instrument audio, exploring both deep neural networks and convolutional neural networks for classification.
 

@@ -1,0 +1,154 @@
+[
+  {
+    "id": "simple-earthquake",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Earthquake",
+    "source_url": "https://en.wikipedia.org/wiki/Earthquake",
+    "facts": [
+      "Earthquakes release stored energy as waves travelling through the ground.",
+      "An earthquake's epicentre is the surface point above where the rupture starts.",
+      "An earthquake's starting point underground is called its focus.",
+      "Earthquakes can trigger landslides.",
+      "Strong shaking can make some waterlogged soils behave like liquids.",
+      "The 1960 Chile earthquake had a magnitude of about 9.5.",
+      "Aftershocks occur as rocks adjust after a larger earthquake.",
+      "Earthquakes can happen away from the edges of tectonic plates.",
+      "Seismic waves help scientists investigate Earth's interior.",
+      "Buildings can be engineered to absorb earthquake movement instead of resisting it rigidly."
+    ]
+  },
+  {
+    "id": "simple-tsunami",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Tsunami",
+    "source_url": "https://en.wikipedia.org/wiki/Tsunami",
+    "facts": [
+      "A tsunami is usually a series of waves, not just one.",
+      "The word tsunami comes from Japanese words meaning harbour wave.",
+      "Tsunamis are not caused by tides.",
+      "Underwater landslides can generate tsunamis.",
+      "Volcanic eruptions can also generate tsunamis.",
+      "A tsunami can cross deep ocean at speeds comparable to a jet aircraft.",
+      "A tsunami may be low in the open ocean but grow greatly near shore.",
+      "A tsunami can look like rapidly rising water rather than a curling surf wave.",
+      "Tsunami waves have much longer wavelengths than ordinary wind-driven waves.",
+      "Tsunamis can occur in large lakes as well as oceans."
+    ]
+  },
+  {
+    "id": "simple-ocean",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Ocean",
+    "source_url": "https://en.wikipedia.org/wiki/Ocean",
+    "facts": [
+      "Earth's named oceans are connected as one global body of water.",
+      "The Pacific is the largest ocean.",
+      "The Arctic is the smallest ocean.",
+      "Ocean currents redistribute heat around the planet.",
+      "Most ocean water lies far below the sunlit surface.",
+      "The average salinity of seawater is about 3.5%.",
+      "Ocean pressure increases as you descend.",
+      "Continental shelves are submerged extensions of the continents.",
+      "The intertidal zone is alternately covered and exposed by tides.",
+      "Temperature and salt content both influence how dense seawater is."
+    ]
+  },
+  {
+    "id": "simple-water",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Water",
+    "source_url": "https://en.wikipedia.org/wiki/Water",
+    "facts": [
+      "Ice floats because it is less dense than liquid water.",
+      "Liquid freshwater is densest at about 4°C.",
+      "Water expands when it freezes, which can crack pipes.",
+      "Salt water freezes at a lower temperature than fresh water.",
+      "Water boils at a lower temperature on high mountains.",
+      "Water vapour is invisible; the white cloud above a kettle contains tiny droplets.",
+      "Water can pass directly from ice to vapour through sublimation.",
+      "Surface tension helps small insects stand on water.",
+      "Water's high heat capacity helps it buffer temperature changes.",
+      "A water molecule contains two hydrogen atoms and one oxygen atom."
+    ]
+  },
+  {
+    "id": "simple-photosynthesis",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Photosynthesis",
+    "source_url": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "facts": [
+      "Photosynthesis turns light energy into stored chemical energy.",
+      "Plants use carbon dioxide as a building material for sugars.",
+      "Algae carry out photosynthesis as well as plants.",
+      "Some bacteria can photosynthesise.",
+      "The oxygen released by plants during photosynthesis comes from water molecules.",
+      "Chlorophyll absorbs light to help power photosynthesis.",
+      "Plant photosynthesis takes place inside structures called chloroplasts.",
+      "Plants carry out cellular respiration as well as photosynthesis.",
+      "Photosynthesis supplies the starting energy for most food chains.",
+      "Not every form of bacterial photosynthesis releases oxygen."
+    ]
+  },
+  {
+    "id": "simple-sound",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Sound",
+    "source_url": "https://en.wikipedia.org/wiki/Sound",
+    "facts": [
+      "Sound needs a material to travel through, so it cannot cross an empty vacuum.",
+      "Sound travels through water and solid materials as well as air.",
+      "Sound generally travels faster through water than through air.",
+      "A sound's frequency is closely related to the pitch we hear.",
+      "An echo is sound reflected back towards the listener.",
+      "Ultrasound has frequencies above the normal range of human hearing.",
+      "Infrasound has frequencies below the normal range of human hearing.",
+      "The pitch of a passing siren changes because of the Doppler effect.",
+      "Sound in air travels as alternating regions of compression and expansion.",
+      "Warmer air carries sound faster than colder air."
+    ]
+  },
+  {
+    "id": "simple-magnet",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Magnet",
+    "source_url": "https://en.wikipedia.org/wiki/Magnet",
+    "facts": [
+      "Breaking a bar magnet produces smaller magnets, each with two poles.",
+      "Opposite magnetic poles attract; matching poles repel.",
+      "Magnets do not strongly attract every metal.",
+      "Iron, nickel and cobalt are familiar magnetic metals.",
+      "Electric current can create a magnetic field.",
+      "Wrapping wire into a coil makes a useful electromagnet.",
+      "A compass needle aligns with Earth's magnetic field.",
+      "Magnetic north and geographic north are not the same location.",
+      "Loudspeakers use magnets to help convert electrical signals into sound.",
+      "Heating a permanent magnet sufficiently can destroy its magnetisation."
+    ]
+  },
+  {
+    "id": "simple-diamond",
+    "category": "science_history_geography",
+    "subcategory": "everyday-science",
+    "source_title": "Wikipedia — Diamond",
+    "source_url": "https://en.wikipedia.org/wiki/Diamond",
+    "facts": [
+      "Diamond and graphite are both forms of carbon.",
+      "Diamond's hardness comes from the way its carbon atoms are bonded.",
+      "A diamond can resist scratching yet still break under a sharp blow.",
+      "Diamonds can be manufactured in laboratories.",
+      "Most natural diamonds form deep within Earth's mantle.",
+      "Volcanic rocks can carry diamonds towards Earth's surface.",
+      "Diamonds conduct heat unusually well.",
+      "Small impurities can give diamonds colours such as yellow or blue.",
+      "Industrial diamonds are used for cutting, grinding and drilling.",
+      "Tiny minerals trapped inside diamonds can reveal conditions deep inside Earth."
+    ]
+  }
+]

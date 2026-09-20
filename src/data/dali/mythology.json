@@ -1,0 +1,97 @@
+[
+  {
+    "id": "myth-prometheus",
+    "category": "world_mythology",
+    "subcategory": "greek-mythology",
+    "source_title": "Wikipedia — Prometheus (classical traditions)",
+    "source_url": "https://en.wikipedia.org/wiki/Prometheus",
+    "facts": [
+      "In Greek myth, Prometheus stole fire from the gods to give it to humanity.",
+      "Some Greek stories credit Prometheus with shaping humans from clay.",
+      "Prometheus hid stolen fire inside a fennel stalk in Hesiod's account.",
+      "Prometheus tricked Zeus with an offering of bones disguised beneath appealing fat.",
+      "Prometheus's punishment involved an eagle eating a liver that regrew each night.",
+      "Heracles eventually freed Prometheus in a major version of the myth.",
+      "Prometheus's name is traditionally interpreted as forethought; Epimetheus's as afterthought.",
+      "Mary Shelley's Frankenstein carries the alternative title The Modern Prometheus.",
+      "In Hesiod's story, Pandora arrives as part of Zeus's retaliation for Prometheus's deception.",
+      "Pandora's famous container was a jar in the ancient account, not a box."
+    ]
+  },
+  {
+    "id": "myth-theseus",
+    "category": "world_mythology",
+    "subcategory": "greek-mythology",
+    "source_title": "Wikipedia — Theseus (classical traditions)",
+    "source_url": "https://en.wikipedia.org/wiki/Theseus",
+    "facts": [
+      "In Greek myth, Ariadne gave Theseus thread to retrace his route through the Labyrinth.",
+      "Theseus's father left a sword and sandals beneath a heavy rock as proof of his son's identity.",
+      "Young Theseus chose the dangerous land route to Athens rather than the safer sea journey.",
+      "In the myth, Aegeus recognised Theseus by his sword before he drank poisoned wine.",
+      "Theseus volunteered to accompany the young Athenians sent to Crete's Minotaur.",
+      "Theseus forgot to change his ship's black sails, leading his father to believe he had died.",
+      "The Aegean Sea's name is linked in myth to King Aegeus.",
+      "Ariadne was abandoned on Naxos in a familiar version of Theseus's return voyage.",
+      "The ship of Theseus became a philosophical puzzle about identity after all its parts were replaced.",
+      "In Greek legend, Theseus captured the bull that had been terrorising Marathon."
+    ]
+  },
+  {
+    "id": "myth-heracles",
+    "category": "world_mythology",
+    "subcategory": "greek-mythology",
+    "source_title": "Wikipedia — Heracles (classical traditions)",
+    "source_url": "https://en.wikipedia.org/wiki/Heracles",
+    "facts": [
+      "Heracles is the Greek hero whom the Romans called Hercules.",
+      "Heracles's famous labours were originally ten; two were rejected, bringing the total to twelve.",
+      "Heracles cleaned the Augean stables by diverting rivers through them.",
+      "Heracles wore the Nemean lion's skin after defeating it.",
+      "Iolaus helped Heracles defeat the Hydra by burning its severed neck stumps.",
+      "One of Heracles's tasks required capturing Artemis's sacred deer alive.",
+      "Heracles frightened the Stymphalian birds into flight with a rattle supplied by Athena.",
+      "Heracles had to capture Cerberus, the guardian dog of the underworld.",
+      "Heracles joined the Argonauts in stories outside his twelve labours.",
+      "Greek stories describe Heracles as both a mortal hero and a figure later admitted among the gods."
+    ]
+  },
+  {
+    "id": "myth-odysseus",
+    "category": "world_mythology",
+    "subcategory": "greek-mythology",
+    "source_title": "Wikipedia — Odysseus (classical traditions)",
+    "source_url": "https://en.wikipedia.org/wiki/Odysseus",
+    "facts": [
+      "Odysseus tricked the Cyclops by claiming his name was Nobody.",
+      "In the Odyssey, a bag thought to contain treasure actually held dangerous winds.",
+      "Circe transformed some of Odysseus's companions into pigs.",
+      "Odysseus returned to Ithaca disguised as a beggar.",
+      "Odysseus's old dog Argos recognised him after his long absence.",
+      "A nurse recognised Odysseus by a scar from a boar hunt.",
+      "Penelope tested Odysseus with a bed built around a living olive tree.",
+      "The Odyssey describes a ten-year homeward journey after the Trojan War.",
+      "Odysseus won the bow contest that none of Penelope's suitors could complete.",
+      "Greek tradition credits Odysseus with devising the Trojan Horse strategy."
+    ]
+  },
+  {
+    "id": "myth-perseus",
+    "category": "world_mythology",
+    "subcategory": "greek-mythology",
+    "source_title": "Wikipedia — Perseus (classical traditions)",
+    "source_url": "https://en.wikipedia.org/wiki/Perseus",
+    "facts": [
+      "In Greek myth, Perseus used a reflection to approach Medusa without meeting her gaze.",
+      "The Graeae sisters shared one eye, which Perseus seized to obtain information.",
+      "Perseus and his mother survived being cast out to sea inside a chest.",
+      "Perseus rescued Andromeda from a sea monster, not from Medusa.",
+      "Perseus used a helmet of invisibility to escape the surviving Gorgons.",
+      "Even after Medusa's death, her severed head retained its petrifying power in the myth.",
+      "Zeus reached Perseus's imprisoned mother in the form of a shower of gold.",
+      "Perseus is a legendary founder of Mycenae.",
+      "Perseus was both a half-brother and an ancestor of Heracles in Greek genealogies.",
+      "A fisherman named Dictys sheltered Perseus and his mother when their chest reached shore."
+    ]
+  }
+]

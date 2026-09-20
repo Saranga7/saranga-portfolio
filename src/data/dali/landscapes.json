@@ -1,0 +1,116 @@
+[
+  {
+    "id": "grand-canyon",
+    "category": "science_history_geography",
+    "subcategory": "places-and-history",
+    "source_title": "National Park Service — Grand Canyon geology",
+    "source_url": "https://www.nps.gov/grca/learn/nature/geologicformations.htm",
+    "facts": [
+      "The Grand Canyon's exposed rocks record nearly two billion years of Earth's history.",
+      "The Grand Canyon is far younger than the rocks forming its walls.",
+      "Ancient seas left limestone layers high in today's Grand Canyon walls.",
+      "Lava has cascaded down the Grand Canyon's walls during volcanic eruptions.",
+      "The Grand Canyon's cliffs and slopes differ because some rock layers resist erosion better than others.",
+      "Much of the Grand Canyon's missing dinosaur-age rock was removed by erosion.",
+      "Nearly forty identified rock layers make up the Grand Canyon's walls.",
+      "The Colorado River cut downward faster than the dry landscape could widen into a broad valley.",
+      "The Grand Canyon's oldest exposed rocks were transformed by intense heat and pressure.",
+      "Some tilted rock layers in the Grand Canyon record ancient mountain building followed by erosion."
+    ]
+  },
+  {
+    "id": "yellowstone",
+    "category": "science_history_geography",
+    "subcategory": "places-and-history",
+    "source_title": "National Park Service — Yellowstone hydrothermal features",
+    "source_url": "https://www.nps.gov/yell/learn/nature/hydrothermal-features.htm",
+    "facts": [
+      "Yellowstone contains more than 500 geysers, the greatest concentration on Earth.",
+      "Microbes create many of the vivid colours around Yellowstone's hot springs.",
+      "Different temperature-loving microbes form different coloured bands around a hot spring.",
+      "Geysers erupt because narrow underground passages trap heat and pressure.",
+      "Yellowstone's Steamboat Geyser can throw water more than 90 metres high.",
+      "Old Faithful does not erupt at exactly the same interval every time.",
+      "The rotten-egg smell around Yellowstone mudpots comes from hydrogen sulfide.",
+      "Microbes help turn rock into clay in Yellowstone's bubbling mudpots.",
+      "Yellowstone's travertine terraces grow as spring water deposits dissolved limestone.",
+      "Some Yellowstone steam vents hiss because their water boils away before reaching the surface."
+    ]
+  },
+  {
+    "id": "reef",
+    "category": "science_history_geography",
+    "subcategory": "places-and-history",
+    "source_title": "UNESCO — Great Barrier Reef",
+    "source_url": "https://whc.unesco.org/en/list/154/",
+    "facts": [
+      "The Great Barrier Reef is a network of thousands of reefs, not one continuous wall.",
+      "The Great Barrier Reef World Heritage area includes more than 900 islands.",
+      "Six of the world's seven sea-turtle species occur in the Great Barrier Reef region.",
+      "The Great Barrier Reef includes deep ocean water as well as shallow coral gardens.",
+      "Raine Island is a globally important nesting ground for green turtles.",
+      "Corals on the Great Barrier Reef release eggs and sperm in spectacular mass-spawning events.",
+      "The Great Barrier Reef's seagrass meadows feed dugongs.",
+      "During past ice ages, lower sea levels exposed parts of the Great Barrier Reef as limestone hills.",
+      "The Great Barrier Reef supports over 1,500 fish species.",
+      "Aboriginal and Torres Strait Islander peoples have longstanding cultural connections with the Great Barrier Reef."
+    ]
+  },
+  {
+    "id": "victoria-falls",
+    "category": "science_history_geography",
+    "subcategory": "places-and-history",
+    "source_title": "UNESCO — Mosi-oa-Tunya / Victoria Falls",
+    "source_url": "https://whc.unesco.org/en/list/509/",
+    "facts": [
+      "Victoria Falls spans the border between Zambia and Zimbabwe.",
+      "The Zambezi plunges across a curtain roughly 1.7 kilometres wide at Victoria Falls.",
+      "Spray from Victoria Falls can be visible from tens of kilometres away.",
+      "Victoria Falls sustains a small rainforest through its constant spray.",
+      "The gorges below Victoria Falls trace earlier positions of the waterfall.",
+      "Victoria Falls cuts into basalt, a rock formed from volcanic lava.",
+      "Victoria Falls' downstream gorges follow a striking zigzag course.",
+      "Islands along Victoria Falls divide its curtain into separate sections.",
+      "The rock gorges near Victoria Falls provide nesting sites for rare birds.",
+      "Victoria Falls keeps changing as erosion cuts back into the rock."
+    ]
+  },
+  {
+    "id": "namib",
+    "category": "science_history_geography",
+    "subcategory": "places-and-history",
+    "source_title": "UNESCO — Namib Sand Sea",
+    "source_url": "https://whc.unesco.org/en/list/1430/",
+    "facts": [
+      "Fog supplies the main source of water in the Namib Sand Sea.",
+      "Namib dune sand travelled through rivers, ocean currents and wind before reaching the desert.",
+      "Young, moving dunes cover an older dune system in the Namib Sand Sea.",
+      "Some Namib animals escape surface heat by diving into loose sand.",
+      "The Namib Sand Sea lies beside the Atlantic Ocean.",
+      "Changing winds continually reshape the Namib's dunes.",
+      "The Namib Sand Sea includes a coastal lagoon as well as dunes.",
+      "Some Namib species live nowhere else, having evolved for its fog-fed desert.",
+      "Temporary rivers occur even in the extremely dry Namib Sand Sea.",
+      "Rocky hills stand like islands within the Namib's sea of sand."
+    ]
+  },
+  {
+    "id": "versailles",
+    "category": "science_history_geography",
+    "subcategory": "places-and-history",
+    "source_title": "UNESCO — Palace and Park of Versailles",
+    "source_url": "https://whc.unesco.org/en/list/83/",
+    "facts": [
+      "Versailles grew from a smaller château built by Louis XIII.",
+      "Louis XIV expanded Versailles into both a royal home and a centre of government.",
+      "Versailles' gardens were designed by André Le Nôtre.",
+      "The Hall of Mirrors sits between rooms devoted to War and Peace.",
+      "Versailles influenced the design of royal residences across Europe.",
+      "Marie-Antoinette had a picturesque hamlet built within the Versailles estate.",
+      "The Petit Trianon at Versailles was designed by Jacques-Ange Gabriel.",
+      "The Versailles estate took roughly a century and a half of royal building work to develop.",
+      "Versailles' gardens use long sightlines, water and geometry to extend the palace's architecture outdoors.",
+      "The Versailles World Heritage property includes the Trianon palaces, not just the main palace."
+    ]
+  }
+]

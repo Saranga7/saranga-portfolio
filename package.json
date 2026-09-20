@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "npm run validate:factoids && astro check && astro build",
     "check": "npm run validate:factoids && astro check",
-    "validate:factoids": "node scripts/validate-dali-factoids.mjs",
+    "build:factoids": "node scripts/build-dali-factoids.mjs",
+    "validate:factoids": "npm run build:factoids && node scripts/validate-dali-factoids.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

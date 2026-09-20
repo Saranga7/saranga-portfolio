@@ -1,0 +1,10 @@
+<canvas class="element-effects" data-element-canvas aria-hidden="true"></canvas>
+<script>
+  import { startElementEffects } from "../scripts/element-effects";
+  const canvas = document.querySelector<HTMLCanvasElement>("[data-element-canvas]");
+  if (canvas) startElementEffects(canvas);
+</script>
+<style>
+  .element-effects { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 40; }
+  @media (prefers-reduced-motion: reduce), (forced-colors: active) { .element-effects { display: none; } }
+</style>

@@ -1,0 +1,173 @@
+[
+  {
+    "id": "everyday-coffee",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Coffee",
+    "source_url": "https://en.wikipedia.org/wiki/Coffee",
+    "facts": [
+      "Coffee beans are seeds from the fruit of a coffee plant.",
+      "Coffee fruit is often called a cherry.",
+      "Unroasted coffee beans are known as green coffee.",
+      "Roasting changes both the colour and chemistry of coffee beans.",
+      "Arabica and robusta are the two main types of commercially grown coffee.",
+      "Coffee plants belong to the same botanical family as gardenias.",
+      "Espresso is brewed by forcing hot water through finely ground coffee.",
+      "Instant coffee is brewed coffee that has been dried.",
+      "Decaffeinated coffee usually retains a small amount of caffeine.",
+      "The origin of the phrase cup of Joe is disputed."
+    ]
+  },
+  {
+    "id": "everyday-chocolate",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Chocolate",
+    "source_url": "https://en.wikipedia.org/wiki/Chocolate",
+    "facts": [
+      "Chocolate comes from seeds inside cacao pods.",
+      "Cacao seeds are fermented before being dried and processed into chocolate.",
+      "White chocolate contains cocoa butter but not the dark cocoa solids.",
+      "Chocolate was consumed as a drink long before modern chocolate bars.",
+      "Cocoa butter is the fat naturally present in cacao seeds.",
+      "Chocolate can absorb smells from nearby foods.",
+      "A pale coating on chocolate can come from fat or sugar crystals, not mould.",
+      "Tempering helps chocolate set with a glossy surface and a clean snap.",
+      "Chocolate contains caffeine as well as another stimulant called theobromine.",
+      "A mocha combines coffee with chocolate."
+    ]
+  },
+  {
+    "id": "everyday-chess",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Chess",
+    "source_url": "https://en.wikipedia.org/wiki/Chess",
+    "facts": [
+      "A chessboard has 64 squares.",
+      "Each player begins a standard chess game with sixteen pieces.",
+      "A knight can jump over other chess pieces.",
+      "A bishop stays on the same square colour throughout the game.",
+      "Castling moves a king and a rook in the same turn.",
+      "A pawn reaching the far end of the board can become a queen.",
+      "Pawn promotion can give a player more than one queen.",
+      "Stalemate ends a chess game in a draw, not a win.",
+      "Chess clocks track each player's thinking time separately.",
+      "Chess developed from earlier games, including India's chaturanga."
+    ]
+  },
+  {
+    "id": "everyday-glass",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Glass",
+    "source_url": "https://en.wikipedia.org/wiki/Glass",
+    "facts": [
+      "Glass is a solid, not a very slow-flowing liquid.",
+      "Glass lacks the regularly repeating atomic pattern found in a crystal.",
+      "Obsidian is naturally occurring volcanic glass.",
+      "Most ordinary bottles and windows use soda-lime glass.",
+      "Glass can be drawn into fibres thinner than a human hair.",
+      "Optical fibres carry signals using light travelling through glass.",
+      "Borosilicate glass tolerates temperature changes better than ordinary window glass.",
+      "Annealing means cooling glass in a controlled way to relieve internal stresses.",
+      "Laminated glass holds broken fragments together with a layer between glass sheets.",
+      "Different ingredients can give glass different colours."
+    ]
+  },
+  {
+    "id": "everyday-rainbow",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Rainbow",
+    "source_url": "https://en.wikipedia.org/wiki/Rainbow",
+    "facts": [
+      "A rainbow is a full circle, although the ground usually hides its lower portion.",
+      "Two people standing apart do not see light from exactly the same rainbow droplets.",
+      "Rainbows form when light bends and reflects inside water droplets.",
+      "A double rainbow's outer arc has its colours in reverse order.",
+      "The space between a primary and secondary rainbow often looks darker.",
+      "Moonlight can produce a rainbow, known as a moonbow.",
+      "A rainbow's colours blend continuously rather than forming exactly seven separate stripes.",
+      "The Sun is behind you when you see an ordinary sunlight rainbow.",
+      "A fine spray from a garden hose can create a rainbow.",
+      "An aeroplane passenger can sometimes see a complete circular rainbow."
+    ]
+  },
+  {
+    "id": "everyday-aurora",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Aurora",
+    "source_url": "https://en.wikipedia.org/wiki/Aurora",
+    "facts": [
+      "Auroras glow when energetic particles excite gases high in the atmosphere.",
+      "The northern lights are also called the aurora borealis.",
+      "The southern lights are called the aurora australis.",
+      "Oxygen can produce green light in an aurora.",
+      "Oxygen can also produce red auroral light at higher altitudes.",
+      "Nitrogen contributes blue and purplish colours to auroras.",
+      "Auroras often appear as moving curtains rather than a uniform glow.",
+      "Strong geomagnetic storms can make auroras visible far from the poles.",
+      "Earth's magnetic field helps guide particles involved in auroras.",
+      "Auroras occur on other planets as well as Earth."
+    ]
+  },
+  {
+    "id": "everyday-snowflake",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Snowflake",
+    "source_url": "https://en.wikipedia.org/wiki/Snowflake",
+    "facts": [
+      "Snow looks white because its many ice surfaces scatter light.",
+      "Snow crystals can form needles and columns, not just star shapes.",
+      "Temperature and humidity influence a growing snow crystal's shape.",
+      "A snowflake's sixfold structure reflects the arrangement of molecules in ice.",
+      "Many real snowflakes are irregular rather than perfectly symmetrical.",
+      "Snow crystals can grow directly from water vapour.",
+      "Colliding snow crystals can stick together to form larger flakes.",
+      "Snowflakes often begin growing around tiny airborne particles.",
+      "Falling snow crystals can collect supercooled droplets that freeze onto them.",
+      "A snow crystal's journey through changing cloud conditions influences its final shape."
+    ]
+  },
+  {
+    "id": "everyday-lightning",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Lightning",
+    "source_url": "https://en.wikipedia.org/wiki/Lightning",
+    "facts": [
+      "Lightning is a giant electrical discharge.",
+      "Much lightning stays within clouds rather than striking the ground.",
+      "Thunder comes from air expanding rapidly after lightning heats it.",
+      "Lightning can strike the same place repeatedly.",
+      "Lightning flashes can contain several separate electrical strokes.",
+      "Volcanic eruptions can produce lightning in their ash clouds.",
+      "Lightning sometimes occurs during snowstorms.",
+      "A lightning flash can reach the ground far from the rain beneath its storm.",
+      "Lightning can fuse sandy ground into glassy formations called fulgurites.",
+      "Lightning can start wildfires."
+    ]
+  },
+  {
+    "id": "everyday-volcano",
+    "category": "science_history_geography",
+    "subcategory": "everyday-curiosity",
+    "source_title": "Wikipedia — Volcano",
+    "source_url": "https://en.wikipedia.org/wiki/Volcano",
+    "facts": [
+      "Molten rock underground is called magma; at the surface it is called lava.",
+      "Volcanic ash consists of tiny rock and glass fragments, not burned wood.",
+      "Many volcanoes lie beneath the ocean.",
+      "Shield volcanoes have broad, gently sloping sides.",
+      "Some volcanoes form above hot spots far from plate boundaries.",
+      "Volcanic eruptions release gases as well as molten rock.",
+      "Pumice can be light enough to float because it contains so many gas bubbles.",
+      "A caldera is a large depression often formed when a volcano's summit collapses.",
+      "Volcanic mudflows can carry water, ash and rock down valleys.",
+      "Not every volcano is a cone-shaped mountain."
+    ]
+  }
+]

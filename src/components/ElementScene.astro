@@ -1,0 +1,86 @@
+---
+import { getImage } from "astro:assets";
+import ElementIcon from "./ElementIcon.astro";
+import { elements } from "../data/elements";
+import air from "../../atla/air_nomads.png";
+import water from "../../atla/water_tribe.png";
+import earth from "../../atla/earth_kingdom.png";
+import fire from "../../atla/fire_nation.png";
+
+const sources = { air, water, earth, fire };
+const nations = elements.filter(e => e.id !== "original");
+const artwork = await Promise.all(nations.map(async nation => {
+  const widths = [480, 960, 1672];
+  const images = await Promise.all(widths.map(width => getImage({
+    src: sources[nation.id], width, format: "webp", quality: 82,
+  })));
+  return { ...nation, src: images[1].src, srcset: images.map((image, i) => `${image.src} ${widths[i]}w`).join(", ") };
+}));
+---
+<figure class="nation-opening" data-nation-opening>
+  <div class="nation-picture" data-nation-picture>
+    <p class="artwork-fallback" hidden data-artwork-fallback>Artwork unavailable</p>
+    <div class="artwork-mount" data-artwork-mount></div>
+  </div>
+  <figcaption>
+    {nations.map(nation => <span class="nation-caption" data-nation-caption={nation.id} hidden>
+      <span class="caption-symbol"><ElementIcon element={nation.id} /></span>
+      <span class="sr-only">{nation.label}</span>
+    </span>)}
+  </figcaption>
+  {artwork.map(nation => <template data-nation-template={nation.id}>
+    <img src={nation.src} srcset={nation.srcset} sizes="100vw"
+      width="1672" height="941" alt="" style={`object-position: ${nation.focalPosition}`}
+      decoding="async" />
+  </template>)}
+</figure>
+<script>
+  const opening = document.querySelector<HTMLElement>("[data-nation-opening]");
+  const mount = opening?.querySelector<HTMLElement>("[data-artwork-mount]");
+  const fallback = opening?.querySelector<HTMLElement>("[data-artwork-fallback]");
+  if (opening && mount && fallback) {
+    let current = "";
+    const sync = () => {
+      const selected = document.documentElement.dataset.blogElement ?? "original";
+      if (selected === current) return;
+      current = selected;
+      mount.replaceChildren();
+      fallback.hidden = true;
+      opening.querySelectorAll<HTMLElement>("[data-nation-caption]").forEach(caption => {
+        caption.hidden = caption.dataset.nationCaption !== selected;
+      });
+      const template = Array.from(opening.querySelectorAll<HTMLTemplateElement>("template"))
+        .find(item => item.dataset.nationTemplate === selected);
+      if (!template) return;
+      const img = template.content.querySelector("img")!.cloneNode(true) as HTMLImageElement;
+      img.addEventListener("error", () => {
+        if (mount.contains(img)) { img.hidden = true; fallback.hidden = false; }
+      });
+      mount.append(img);
+    };
+    sync();
+    document.addEventListener("blog-element-change", sync);
+  }
+</script>
+<style>
+  .nation-opening { display: none; width: min(100% - 2rem, 76rem); margin: 1.25rem auto 0; }
+  :global(html[data-blog-element]:not([data-blog-element="original"])) .nation-opening { display: block; }
+  :global(html[data-blog-element]:not([data-blog-element="original"]) main) { position: relative; isolation: isolate; }
+  .nation-picture { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: var(--bg); }
+  .nation-picture::after { content: ""; position: absolute; inset: 0; background:
+    linear-gradient(90deg, color-mix(in srgb, var(--bg) 20%, transparent), color-mix(in srgb, var(--bg) 85%, transparent) 28%, color-mix(in srgb, var(--bg) 85%, transparent) 72%, color-mix(in srgb, var(--bg) 20%, transparent)),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg) 25%, transparent), color-mix(in srgb, var(--bg) 45%, transparent) 45%, color-mix(in srgb, var(--bg) 70%, transparent));
+  }
+  .artwork-mount { width: 100%; height: 100%; }
+  .artwork-mount :global(img) { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .artwork-mount :global(img[hidden]) { display: none; }
+  .artwork-fallback { position: absolute; inset: 0; margin: 0; display: grid; place-items: center; color: var(--muted); font: .85rem var(--font-sans); }
+  .artwork-fallback[hidden], .nation-caption[hidden] { display: none; }
+  figcaption { width: fit-content; }
+  .nation-caption { display: block; color: var(--accent); }
+  .caption-symbol { display: block; width: clamp(3.25rem, 5vw, 4rem); height: clamp(3.25rem, 5vw, 4rem); }
+  @media (max-width: 600px) {
+    .nation-opening { margin-top: 1.25rem; }
+    .nation-picture::after { background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 74%, transparent), color-mix(in srgb, var(--bg) 91%, transparent) 50%); }
+  }
+</style>

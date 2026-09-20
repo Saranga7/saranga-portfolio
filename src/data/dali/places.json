@@ -1,0 +1,78 @@
+[
+  {
+    "id": "places-antarctica",
+    "category": "science_history_geography",
+    "subcategory": "geography",
+    "source_title": "Wikipedia — Antarctica",
+    "source_url": "https://en.wikipedia.org/wiki/Antarctica",
+    "facts": [
+      "Antarctica is a desert: its interior receives very little precipitation.",
+      "Antarctica holds roughly 70% of Earth's freshwater reserves, locked in ice.",
+      "Antarctica's ice sheet averages nearly two kilometres thick.",
+      "The lowest directly measured air temperature was recorded at Antarctica's Vostok Station: −89.2°C.",
+      "Antarctica was once part of Gondwana and supported forests.",
+      "Antarctica has rivers, including a seasonal meltwater river called the Onyx.",
+      "Lake Vostok lies hidden beneath Antarctica's ice sheet.",
+      "Antarctica's Mount Erebus is an active volcano near the South Pole.",
+      "Antarctica is almost twice the size of Australia.",
+      "The Antarctic Treaty prohibits nuclear explosions and radioactive-waste disposal on the continent."
+    ]
+  },
+  {
+    "id": "places-sahara",
+    "category": "science_history_geography",
+    "subcategory": "geography",
+    "source_title": "Wikipedia — Sahara",
+    "source_url": "https://en.wikipedia.org/wiki/Sahara",
+    "facts": [
+      "The Sahara is the largest hot desert, but the polar deserts are larger.",
+      "The Sahara spans roughly a third of Africa.",
+      "The Sahara has repeatedly shifted between dry desert and much greener landscapes.",
+      "The Sahara's highest mountain, Emi Koussi, is a volcano.",
+      "The Sahara includes rocky plateaus and gravel plains, not just sand dunes.",
+      "Some Saharan dunes rise more than 180 metres high.",
+      "The name Sahara comes from an Arabic word for deserts.",
+      "The Sahel forms a semi-arid transition between the Sahara and wetter regions farther south.",
+      "The Sahara reaches from the Atlantic Ocean to the Red Sea.",
+      "The Sahara contains entire mountain ranges, including the Tibesti and Ahaggar."
+    ]
+  },
+  {
+    "id": "places-lake_baikal",
+    "category": "science_history_geography",
+    "subcategory": "geography",
+    "source_title": "Wikipedia — Lake Baikal",
+    "source_url": "https://en.wikipedia.org/wiki/Lake_Baikal",
+    "facts": [
+      "Lake Baikal holds more freshwater than all five North American Great Lakes combined.",
+      "Lake Baikal reaches more than 1.6 kilometres deep.",
+      "At around 25–30 million years old, Baikal is Earth's oldest surviving lake.",
+      "Lake Baikal occupies a rift where Earth's crust is slowly pulling apart.",
+      "Lake Baikal's surface is above sea level, but its deepest bottom lies far below it.",
+      "Lake Baikal is slightly larger in surface area than Belgium.",
+      "Lake Baikal has islands; the largest, Olkhon, is about 72 kilometres long.",
+      "The Angara is the river through which Lake Baikal drains.",
+      "Many species living in Lake Baikal occur nowhere else.",
+      "Kilometres of sediment beneath Lake Baikal preserve a long record of changing climates."
+    ]
+  },
+  {
+    "id": "places-dead_sea",
+    "category": "science_history_geography",
+    "subcategory": "geography",
+    "source_title": "Wikipedia — Dead Sea",
+    "source_url": "https://en.wikipedia.org/wiki/Dead_Sea",
+    "facts": [
+      "The Dead Sea is actually a landlocked lake, not a sea.",
+      "The Dead Sea's shores form Earth's lowest exposed land.",
+      "The Dead Sea is roughly ten times saltier than the ocean.",
+      "The Dead Sea's dense, salty water makes people unusually buoyant.",
+      "The Jordan River feeds the Dead Sea, but no river flows out.",
+      "The Dead Sea supplied asphalt used in ancient Egyptian mummification.",
+      "The Dead Sea has shrunk dramatically as water that once fed it has been diverted.",
+      "The Dead Sea is very salty, but some other lakes and ponds are saltier.",
+      "The Dead Sea lies between Jordan, the West Bank and Israel.",
+      "The Dead Sea's Hebrew name means Sea of Salt."
+    ]
+  }
+]

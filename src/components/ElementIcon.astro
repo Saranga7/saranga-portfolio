@@ -1,0 +1,43 @@
+---
+import type { ElementTheme } from "../data/elements";
+interface Props { element: ElementTheme; }
+const { element } = Astro.props;
+// Sample the original sheet, preserving its geometry rather than tracing it.
+const crops = {
+  earth: { box: "20 18 312 275", threshold: .395, gain: 4.4 },
+  water: { box: "396 8 333 298", threshold: .72, gain: 1.9 },
+  fire: { box: "45 348 278 284", threshold: .46, gain: 4 },
+  // Include the bottom spiral (ending around y=625), without the tile border.
+  air: { box: "400 355 310 280", threshold: .83, gain: 5.2 },
+};
+const crop = element === "original" ? undefined : crops[element];
+const [cropX, cropY, cropWidth, cropHeight] = crop?.box.split(" ").map(Number) ?? [];
+const uid = `nation-${crypto.randomUUID()}`;
+---
+{element === "original" ? (
+  <img class="nation-symbol combined-symbol" src="/assets/elements/atla.png" alt="" width="1254" height="1254" aria-hidden="true" />
+) : (
+  <svg class="nation-symbol" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id={`${uid}-ink`} color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+        <feColorMatrix type="matrix" values={`0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  ${-.2126 * crop!.gain} ${-.7152 * crop!.gain} ${-.0722 * crop!.gain} 0 ${crop!.threshold * crop!.gain}`} />
+      </filter>
+      <clipPath id={`${uid}-clip`}>
+        {element === "water" ? <ellipse cx="562.5" cy="157" rx="165" ry="148" /> : <rect x={cropX} y={cropY} width={cropWidth} height={cropHeight} />}
+      </clipPath>
+      <mask id={uid} maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64" style="mask-type: alpha">
+        <svg x="3" y="3" width="58" height="58" viewBox={crop!.box} preserveAspectRatio="xMidYMid meet" overflow="hidden">
+          <g clip-path={`url(#${uid}-clip)`}>
+            <image href="/assets/elements/elemental_symbols.jpg" width="736" height="649" filter={`url(#${uid}-ink)`} />
+          </g>
+        </svg>
+      </mask>
+    </defs>
+    <rect width="64" height="64" fill="currentColor" mask={`url(#${uid})`} />
+  </svg>
+)}
+<style>
+  .nation-symbol { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: transparent; padding: 0; }
+  .combined-symbol { filter: grayscale(1) contrast(3); mix-blend-mode: multiply; }
+  :global(html[data-theme="dark"]) .combined-symbol { filter: grayscale(1) contrast(3) invert(1); mix-blend-mode: screen; }
+</style>

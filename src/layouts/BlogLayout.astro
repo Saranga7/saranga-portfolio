@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import BlogNav from "../components/BlogNav.astro";
+import ElementScene from "../components/ElementScene.astro";
+import ElementEffects from "../components/ElementEffects.astro";
+import "../styles/elements.css";
 
 interface Props {
   title: string;
@@ -11,6 +14,7 @@ const { title, description, active = "home" } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
+  <ElementEffects />
   <div class="blog-masthead container">
     <a class="portfolio-link" href="/">← Research portfolio</a>
     <a class="blog-brand" href="/blog" aria-label="Seventh Insight, blog home">
@@ -19,6 +23,7 @@ const { title, description, active = "home" } = Astro.props;
     </a>
     <BlogNav active={active} />
   </div>
+  <ElementScene />
   <slot />
 </BaseLayout>
 
@@ -28,7 +33,7 @@ const { title, description, active = "home" } = Astro.props;
   .blog-brand { grid-row: 2; color: var(--text); text-decoration: none; }
   .blog-brand strong { display: block; font: 500 clamp(2rem, 4vw, 3.5rem)/1 var(--font-serif); letter-spacing: -.035em; }
   .blog-brand strong em { color: var(--accent); font-style: normal; }
-  .blog-brand span { display: block; margin-top: .45rem; color: var(--muted); font: italic .83rem var(--font-serif); }
+  .blog-brand > span { display: block; margin-top: .45rem; color: var(--muted); font: italic .83rem var(--font-serif); }
   :global(.blog-nav) { grid-row: 2; }
   @media (max-width: 800px) {
     .blog-masthead { grid-template-columns: 1fr; align-items: start; }

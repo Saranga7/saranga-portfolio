@@ -1,0 +1,135 @@
+[
+  {
+    "id": "flamingo",
+    "category": "wildlife",
+    "subcategory": "birds",
+    "source_title": "San Diego Zoo Wildlife Alliance — flamingo",
+    "source_url": "https://animals.sandiegozoo.org/animals/flamingo",
+    "facts": [
+      "Flamingos filter food while holding their bills upside down in the water.",
+      "A flamingo's bill contains tiny filtering plates that trap food as water flows out.",
+      "Flamingos build raised mud nests to help protect their eggs from flooding.",
+      "Both male and female flamingos can feed chicks a milk-like digestive secretion.",
+      "Flamingo parents can lose some of their bright colour while feeding young.",
+      "Flamingo parents recognise their own chicks by their calls in crowded colonies.",
+      "Flamingo chicks gather in nursery groups watched by adults.",
+      "Some flamingos feed in salty or caustic lakes that few other animals tolerate.",
+      "Flamingos often take a running start into the wind to get airborne.",
+      "Courting flamingos can march in tightly packed groups, abruptly changing direction together."
+    ]
+  },
+  {
+    "id": "ostrich",
+    "category": "wildlife",
+    "subcategory": "birds",
+    "source_title": "San Diego Zoo Wildlife Alliance — ostrich",
+    "source_url": "https://animals.sandiegozoo.org/animals/ostrich",
+    "facts": [
+      "Ostriches do not bury their heads in sand when frightened.",
+      "An ostrich has only two toes on each foot.",
+      "Ostriches use their wings for balance during sharp turns even though they cannot fly.",
+      "Ostriches swallow small stones to help grind food inside their bodies.",
+      "Several female ostriches can lay eggs in one communal nest.",
+      "Male ostriches generally take the night shift when incubating eggs.",
+      "Ostriches can shelter their chicks beneath their wings from sun and rain.",
+      "An ostrich can sprint at around 70 kilometres per hour.",
+      "Ostrich feathers lack the tightly interlocking structure of many flying birds' feathers.",
+      "An ostrich egg is enormous, but small compared with the size of the bird laying it."
+    ]
+  },
+  {
+    "id": "kiwi",
+    "category": "wildlife",
+    "subcategory": "birds",
+    "source_title": "San Diego Zoo Wildlife Alliance — kiwi",
+    "source_url": "https://animals.sandiegozoo.org/animals/kiwi",
+    "facts": [
+      "A kiwi has nostrils near the tip of its long bill, useful for locating food.",
+      "Kiwis have tiny wings hidden beneath their feathers.",
+      "Kiwi feathers are loose and hair-like rather than forming a smooth flying surface.",
+      "Kiwis have whisker-like feathers around the face.",
+      "A kiwi lays an egg that can weigh about a fifth of its own body weight.",
+      "Kiwi chicks emerge with substantial yolk reserves to fuel their first days.",
+      "Unlike many birds, kiwis have heavy bones filled with marrow.",
+      "Kiwis can sneeze dirt out of the nostrils at their bill tips.",
+      "Kiwis use underground burrows as shelter.",
+      "Genetic evidence links kiwis closely to Madagascar's extinct elephant birds."
+    ]
+  },
+  {
+    "id": "hornbill",
+    "category": "wildlife",
+    "subcategory": "birds",
+    "source_title": "San Diego Zoo Wildlife Alliance — hornbill",
+    "source_url": "https://animals.sandiegozoo.org/animals/hornbill",
+    "facts": [
+      "A hornbill's long eyelashes are modified feathers.",
+      "Many hornbills seal their nesting female inside a tree cavity, leaving a feeding slit.",
+      "Male hornbills deliver food through the narrow opening of a sealed nest.",
+      "Some hornbill chicks reseal their cavity after their mother leaves.",
+      "Ground hornbills do not follow the sealed-nest routine of many tree-dwelling relatives.",
+      "Yellow-billed hornbills forage alongside dwarf mongooses, benefiting from insects the mammals disturb.",
+      "The helmeted hornbill has a dense casque, unlike the mostly hollow structures of other hornbills.",
+      "Some male hornbills collide their casques in mid-flight contests.",
+      "Some nesting female hornbills shed flight feathers while safely enclosed in their cavities.",
+      "Ground hornbills can use their long bills like tongs when handling dangerous prey."
+    ]
+  },
+  {
+    "id": "owl",
+    "category": "wildlife",
+    "subcategory": "birds",
+    "source_title": "San Diego Zoo Wildlife Alliance — owl",
+    "source_url": "https://animals.sandiegozoo.org/animals/owl",
+    "facts": [
+      "An owl's facial disc channels sound toward its ear openings.",
+      "Owls turn their heads to look around because their eyes cannot swivel like ours.",
+      "Owls can turn their heads roughly three-quarters of a circle, not a full revolution.",
+      "Soft feather edges help many owls fly with very little noise.",
+      "Owls regurgitate pellets containing bones and hair they cannot digest.",
+      "Not all owls hunt at night; some are active in daylight.",
+      "Many owls reuse abandoned nests instead of constructing their own.",
+      "Burrowing owls use underground burrows as homes.",
+      "Barn owls have heart-shaped facial discs.",
+      "Owls sharing a region can reduce competition by hunting different prey or at different times."
+    ]
+  },
+  {
+    "id": "cassowary",
+    "category": "wildlife",
+    "subcategory": "birds",
+    "source_title": "San Diego Zoo Wildlife Alliance — cassowary",
+    "source_url": "https://animals.sandiegozoo.org/animals/cassowary",
+    "facts": [
+      "Cassowary feathers look almost like coarse black hair.",
+      "A cassowary's helmet has a spongy interior beneath a keratin covering.",
+      "Female cassowaries are generally larger than males.",
+      "Cassowaries produce deep booming calls that can carry through dense forest.",
+      "A cassowary has a long, dagger-like claw on each inner toe.",
+      "Cassowaries can swim despite being large, flightless forest birds.",
+      "Cassowaries spread large rainforest seeds in their droppings.",
+      "Some rainforest seeds germinate better after passing through a cassowary.",
+      "The dwarf cassowary lacks the dangling neck wattles of its larger relatives.",
+      "Cassowary plumage helps protect against rainforest thorns rather than powering flight."
+    ]
+  },
+  {
+    "id": "secretary-bird",
+    "category": "wildlife",
+    "subcategory": "birds",
+    "source_title": "San Diego Zoo Wildlife Alliance — secretary bird",
+    "source_url": "https://animals.sandiegozoo.org/animals/secretary-bird",
+    "facts": [
+      "Secretary birds are birds of prey that usually hunt on foot.",
+      "A secretary bird can kill prey with powerful stamping kicks.",
+      "Secretary birds can fly well despite spending much of the day walking.",
+      "Secretary birds roost and nest high in trees.",
+      "A secretary bird can cover more than thirty kilometres during a day's hunt.",
+      "Secretary birds carry food in their bills rather than grasping it with their feet.",
+      "Secretary birds may search recently burned ground for exposed prey.",
+      "Pairs of secretary birds can reuse the same large nest for years.",
+      "Secretary bird parents feed their chicks regurgitated food.",
+      "Secretary bird courtship can involve circling, swooping flights high above their walking territory."
+    ]
+  }
+]

@@ -1,19 +1,11 @@
 ---
-interface Props { kind: "orbit" | "tree" | "leaf"; }
+interface Props { kind: "tree" | "leaf"; }
 const { kind } = Astro.props;
 ---
 
-<!-- Original small line drawings, inspired by astronomy, fantasy engravings,
+<!-- Original small line drawings, inspired by fantasy engravings,
      and the leaf/spiral motif. Decorative rather than navigational. -->
 <svg class:list={["signature-detail", kind]} viewBox="0 0 100 70" fill="none" aria-hidden="true" focusable="false">
-  {kind === "orbit" && (
-    <g>
-      <circle cx="50" cy="35" r="15" />
-      <path d="M35 35c0-22 30-22 30 0M35 35c0 22 30 22 30 0" />
-      <ellipse cx="50" cy="35" rx="43" ry="7" transform="rotate(-12 50 35)" />
-      <path d="M7 22v6m-3-3h6m75 26v4m-2-2h4" />
-    </g>
-  )}
   {kind === "tree" && (
     <g>
       <path d="M50 59V26m0 13L34 28l-8-1m24 5 15-14m-15 30L29 38l-8-10m29 16 23-13 7-12M34 28l-1-11m32 1 1-9M50 29 43 17l-1-8M50 24l7-13M73 31l11 2M50 53 39 61m11-8 11 8M30 63h40" />
@@ -31,5 +23,4 @@ const { kind } = Astro.props;
   .signature-detail { display: block; width: 4.5rem; height: auto; color: var(--muted); opacity: .55; stroke: currentColor; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
   .tree { width: 4rem; margin-bottom: 1.25rem; }
   .leaf { display: inline-block; width: 2rem; vertical-align: middle; margin-right: .4rem; }
-  .orbit { width: 5rem; }
 </style>
